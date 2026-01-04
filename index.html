@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Trishika 🥀</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500&display=swap');
+
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg,#ffd1dc,#ffeaa7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    text-align:center;
+}
+
+.screen{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.hidden{display:none;}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:3rem;
+    color:#d63031;
+}
+
+.btn{
+    padding:15px 35px;
+    border:none;
+    border-radius:40px;
+    background:#ff6b6b;
+    color:white;
+    font-size:1.2rem;
+    cursor:pointer;
+}
+
+.message-box{
+    font-size:1.4rem;
+    max-width:90%;
+    color:#2d3436;
+    min-height:120px;
+}
+
+.tap{
+    margin-top:20px;
+    font-size:0.9rem;
+    opacity:0.7;
+    animation:bounce 1.5s infinite;
+}
+
+.big{
+    font-family:'Dancing Script',cursive;
+    font-size:3rem;
+    color:#c0392b;
+}
+
+.cake{
+    width:200px;
+    height:140px;
+    margin-top:30px;
+    position:relative;
+    cursor:pointer;
+}
+
+.layer{
+    position:absolute;
+    background:#fd79a8;
+    border-radius:10px;
+}
+
+.bottom{
+    width:200px;
+    height:70px;
+    bottom:0;
+}
+
+.top{
+    width:140px;
+    height:55px;
+    bottom:70px;
+    left:30px;
+    background:#fab1a0;
+}
+
+.candle{
+    width:10px;
+    height:30px;
+    background:#0984e3;
+    position:absolute;
+    top:-30px;
+    left:95px;
+}
+
+.flame{
+    width:12px;
+    height:18px;
+    background:#feca57;
+    border-radius:50%;
+    position:absolute;
+    top:-18px;
+    left:-1px;
+    box-shadow:0 0 10px orange;
+    animation:flicker 1s infinite;
+}
+
+@keyframes flicker{
+    from{opacity:1;}
+    to{opacity:0.6;}
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="start" class="screen">
+    <h1>Ek Surprise Hai 💖</h1>
+    <button class="btn" onclick="start()">Open</button>
+</div>
+
+<div id="main" class="screen hidden">
+    <div class="message-box" id="msg"></div>
+    <div class="tap">Tap anywhere 💌</div>
+
+    <div class="cake hidden" id="cake" onclick="cutCake()">
+        <div class="layer bottom"></div>
+        <div class="layer top"></div>
+        <div class="candle">
+            <div class="flame" id="flame"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+const messages = [
+"Hey Trishika 🥀",
+"Aaj ka din bahut khaas hai…",
+"Kyunki aaj tumhara birthday hai 🎂",
+"Tumhari smile kisi ka bhi din bana deti hai ✨",
+"Tum strong ho, beautiful ho aur special ho 💫",
+"Bhagwan kare tumhari har wish poori ho 🌸",
+"Life tumhe hamesha khush rakhe 🤍",
+"Kabhi khud ko kam mat samajhna 🌷",
+"Kyuki tum bahut important ho ❤️",
+"Aaj sirf celebrate nahi…",
+"Aaj tumhe feel karana hai ki tum kitni khaas ho 💖",
+"Ab ek wish maango… ✨",
+"Aur cake cut karo 🎂👇"
+];
+
+let i = 0;
+const msg = document.getElementById("msg");
+
+function start(){
+    document.getElementById("start").classList.add("hidden");
+    document.getElementById("main").classList.remove("hidden");
+    msg.innerHTML = messages[0];
+    i = 1;
+}
+
+document.body.addEventListener("click",()=>{
+    if(i < messages.length){
+        msg.innerHTML = messages[i];
+        i++;
+        if(i === messages.length){
+            document.getElementById("cake").classList.remove("hidden");
+        }
+    }
+});
+
+function cutCake(){
+    document.getElementById("flame").style.display="none";
+    msg.innerHTML = `
+        <div class="big">Happy Birthday Trishika 🥀</div>
+        <p>May your life always shine ✨<br>— Siva Singh ❤️</p>
+    `;
+    confetti({particleCount:200,spread:360});
+}
+</script>
+
+</body>
+</html>
