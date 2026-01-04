@@ -2,109 +2,191 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Trishika 🎂💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>Happy Birthday Trishika 🎂❤️</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap');
+
 body{
     margin:0;
-    height:100vh;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-    display:flex;
-    justify-content:center;
-    align-items:center;
     font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ffe0ec,#fff);
     text-align:center;
-    overflow:hidden;
+    overflow-x:hidden;
 }
 
-.box{
-    background:rgba(255,255,255,0.25);
-    backdrop-filter:blur(10px);
-    padding:25px;
-    border-radius:20px;
-    max-width:90%;
-    animation:fade 1s ease;
+/* Floating hearts */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation:floatUp 6s linear infinite;
 }
+@keyframes floatUp{
+    from{transform:translateY(0);opacity:1}
+    to{transform:translateY(-110vh);opacity:0}
+}
+
+/* Sections */
+.section{
+    display:none;
+    padding:30px;
+    animation:fade 1.5s ease;
+}
+.section.active{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
 
 h1{
-    font-size:26px;
-    color:#fff;
+    font-family:'Dancing Script',cursive;
+    color:#ff4d6d;
+    font-size:3rem;
 }
-
 p{
-    font-size:18px;
-    color:#fff;
-    margin-top:15px;
-    line-height:1.6;
+    font-size:1.2rem;
+    color:#444;
 }
 
+/* Button */
 button{
-    margin-top:20px;
-    padding:12px 25px;
-    font-size:18px;
-    border:none;
-    border-radius:30px;
     background:#ff4d6d;
-    color:#fff;
+    color:white;
+    border:none;
+    padding:14px 30px;
+    border-radius:30px;
+    font-size:1rem;
     cursor:pointer;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    margin-top:20px;
+    box-shadow:0 6px 20px rgba(255,77,109,.4);
+}
+button:hover{transform:scale(1.05)}
+
+/* Cake */
+.cake-box{margin:40px auto;cursor:pointer}
+.cake{
+    width:180px;height:120px;
+    background:#f4a261;
+    margin:auto;
+    border-radius:10px;
+    position:relative;
+}
+.icing{
+    position:absolute;
+    top:-15px;left:-10px;
+    width:200px;height:30px;
+    background:#e76f51;
+    border-radius:20px;
+}
+.candle{
+    width:10px;height:40px;
+    background:#ffd166;
+    position:absolute;
+    top:-50px;left:85px;
+}
+.flame{
+    width:15px;height:20px;
+    background:orange;
+    border-radius:50%;
+    position:absolute;
+    top:-20px;left:-3px;
+    animation:flicker .4s infinite;
+}
+@keyframes flicker{50%{transform:scale(1.2)}}
+.cut{
+    display:none;
+    position:absolute;
+    top:55px;
+    width:100%;height:3px;
+    background:white;
 }
 
-button:hover{
-    transform:scale(1.05);
-}
-
-@keyframes fade{
-    from{opacity:0;transform:scale(0.9);}
-    to{opacity:1;transform:scale(1);}
+/* Footer */
+footer{
+    margin:30px;
+    color:#888;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
-    <h1 id="title">🎉 Hey Trishika 🎉</h1>
-    <p id="msg">Tap the button 💖</p>
-    <button onclick="next()">Tap to Start 🎵</button>
-</div>
-
-<audio id="music" loop>
-    <source src="birthday.mp3" type="audio/mpeg">
+<audio id="song">
+  <source src="birthday.mp3" type="audio/mpeg">
 </audio>
 
+<!-- SECTION 1 -->
+<div class="section active" id="s1">
+    <h1>Hey Trishika ❤️</h1>
+    <p>Aaj tumhara birthday hai 🎂  
+    Aur main tumhare liye ek chhota sa magic laya hoon ✨</p>
+    <button onclick="next(1)">Start Surprise 🎁</button>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section" id="s2">
+    <h1>Make a Wish 🎂✨</h1>
+    <p>Tap the cake to blow candle & cut it 💖</p>
+    <div class="cake-box" onclick="cutCake()">
+        <div class="cake">
+            <div class="icing"></div>
+            <div class="candle" id="candle"><div class="flame" id="flame"></div></div>
+            <div class="cut" id="cut"></div>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section" id="s3">
+    <h1>For My Love ❤️</h1>
+    <p id="msg"></p>
+    <button onclick="nextMsg()">Next 💌</button>
+</div>
+
+<footer>Made with ❤️ by Sivasingh 🥀</footer>
+
 <script>
-let messages = [
-"🌸 Trishika, tumhari muskaan duniya ki sabse pyaari cheez hai 💕",
-"💖 Tum sirf beautiful nahi, dil se bhi utni hi special ho ✨",
-"🌹 Tumhari ek smile din ko roshan kar deti hai ☀️",
-"🥀 Tumhare saath har moment ek yaad ban jata hai 💫",
-"🎂 Happy Birthday meri jaan Trishika 💕",
-"🎁 Dua hai tumhari zindagi hamesha khushiyon se bhari rahe 🌈",
-"❤️ Tumhari har wish poori ho, har sapna sach ho ✨",
-"💞 Always stay the same beautiful soul you are 💖",
-"🎉 Once again, Happy Birthday Trishika 🎉"
+/* hearts */
+for(let i=0;i<20;i++){
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="❤️";
+ h.style.left=Math.random()*100+"vw";
+ h.style.animationDelay=Math.random()*5+"s";
+ document.body.appendChild(h);
+}
+
+/* navigation */
+function next(n){
+ document.getElementById("s"+n).classList.remove("active");
+ document.getElementById("s"+(n+1)).classList.add("active");
+}
+
+/* cake */
+function cutCake(){
+ document.getElementById("flame").style.display="none";
+ document.getElementById("cut").style.display="block";
+ document.getElementById("song").play();
+ setTimeout(()=>next(2),2000);
+}
+
+/* messages */
+const messages=[
+"🎉 Happy Birthday Meri Trishika 🎉\nTum sirf meri girlfriend nahi ho, tum meri duniya ho ❤️",
+"💖 Tumhari smile meri saari thakaan mita deti hai 💖\nTumhara saath meri sabse badi blessing hai ✨",
+"🌸 Har din dua karta hoon ki tum hamesha khush raho 🌸\nTum deserve karti ho duniya ki saari khushiyan 😘",
+"🥀 Main hamesha tumhare saath rahunga 🥀\nHar khushi, har mushkil, har pal ❤️",
+"🎂 Aaj ka din sirf tumhara hai 🎂\nAur mera dil bhi hamesha tumhara hi rahega 💍",
+"💞 I Love You So Much Trishika 💞\n— Tumhara Sivasingh 🥀"
 ];
 
-let i = 0;
-let started = false;
-
-function next(){
-    const music = document.getElementById("music");
-
-    if(!started){
-        music.play().catch(()=>{});
-        started = true;
-    }
-
-    if(i < messages.length){
-        document.getElementById("msg").innerHTML = messages[i];
-        i++;
-    }
+let i=0;
+function nextMsg(){
+ if(i<messages.length){
+  document.getElementById("msg").innerText=messages[i];
+  i++;
+ }
 }
+nextMsg();
 </script>
 
 </body>
