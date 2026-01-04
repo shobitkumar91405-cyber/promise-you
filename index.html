@@ -197,6 +197,24 @@ function cutCake(){
     confetti({particleCount:200,spread:360});
 }
 </script>
+<audio id="bg-music" loop>
+  <source src="birthday.mp3" type="audio/mpeg">
+</audio>
 
+<button onclick="document.getElementById('bg-music').play()"
+style="
+position:fixed;
+bottom:20px;
+right:20px;
+padding:10px 15px;
+border:none;
+border-radius:20px;
+background:#ff4d6d;
+color:white;
+font-size:14px;
+z-index:9999;
+">
+🎵 Play Music
+</button>
 </body>
 </html>
