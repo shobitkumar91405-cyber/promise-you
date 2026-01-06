@@ -22,6 +22,7 @@ display:flex;
 flex-direction:column;
 align-items:center;
 padding:20px;
+overflow-x:hidden;
 }
 
 header{text-align:center;margin-bottom:20px}
@@ -90,6 +91,21 @@ overflow:hidden;
 60%{transform:scale(1.2)}
 100%{transform:scale(1);opacity:1}
 }
+
+/* 🌈 FULL SCREEN LIGHT EFFECT */
+.light{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:9999;
+animation:lightFlash .6s ease-out forwards;
+}
+
+@keyframes lightFlash{
+0%{opacity:0}
+30%{opacity:.8}
+100%{opacity:0}
+}
 </style>
 </head>
 
@@ -108,8 +124,8 @@ overflow:hidden;
 <p>Click photo & cards 🎁</p>
 </header>
 
-<!-- 📸 PHOTO CLICK -->
-<div class="photo-box" onclick="nextPhoto()">
+<!-- 📸 PHOTO -->
+<div class="photo-box" onclick="nextPhoto();lightEffect();">
 <img id="photo" src="photo1.jpg">
 <p>Click photo 📸</p>
 </div>
@@ -118,18 +134,34 @@ overflow:hidden;
 <div class="grid" id="shayariGrid"></div>
 
 <script>
-/* MUSIC */
+/* 🎵 MUSIC */
 const music=document.getElementById("bgMusic");
 document.addEventListener("click",()=>music.play().catch(()=>{}));
 
-/* PHOTO SYSTEM */
+/* 📸 PHOTO SYSTEM */
 let p=1;
 function nextPhoto(){
 p++; if(p>10) p=1;
 document.getElementById("photo").src=`photo${p}.jpg`;
 }
 
-/* 💖 ALL SHAYARIS – SAME */
+/* 🌈 LIGHT EFFECT FUNCTION */
+function lightEffect(){
+const colors=[
+"radial-gradient(circle, rgba(255,71,87,.8), transparent)",
+"radial-gradient(circle, rgba(255,215,0,.8), transparent)",
+"radial-gradient(circle, rgba(0,255,255,.8), transparent)",
+"radial-gradient(circle, rgba(138,43,226,.8), transparent)",
+"radial-gradient(circle, rgba(0,255,127,.8), transparent)"
+];
+const l=document.createElement("div");
+l.className="light";
+l.style.background=colors[Math.floor(Math.random()*colors.length)];
+document.body.appendChild(l);
+setTimeout(()=>l.remove(),600);
+}
+
+/* 💖 SHAYARIS (UNCHANGED) */
 const shayaris=[
 "Zindagi ke safar mein tera sath chahiye, tanhaiyon mein tera hath chahiye.",
 "Phoolon ki mehak bhi fiki lagti hai, jab Pallavi teri muskurahat dikhti hai.",
@@ -163,6 +195,7 @@ c.className="card";
 c.innerHTML=`<div class="cover">${emojis[Math.floor(Math.random()*emojis.length)]}</div>
 <div class="content">${t}</div>`;
 c.onclick=()=>{
+lightEffect();
 c.querySelector(".cover").style.display="none";
 const ct=c.querySelector(".content");
 ct.style.display="block";
