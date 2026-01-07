@@ -22,62 +22,8 @@ overflow-x:hidden;
 text-align:center;
 }
 
-/* 🌌 START SCREEN */
+/* ===== INTRO HEART SCREEN ===== */
 #startScreen{
-position:fixed;
-inset:0;
-background:radial-gradient(circle,#200020,#000);
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-z-index:10000;
-}
-
-/* 3D HEART */
-#bigHeart{
-font-size:120px;
-cursor:pointer;
-animation:spin 3s linear infinite;
-transform-style:preserve-3d;
-}
-
-@keyframes spin{
-from{transform:rotateY(0deg)}
-to{transform:rotateY(360deg)}
-}
-
-/* START TEXT */
-#startText{
-display:none;
-font-size:22px;
-margin:20px;
-background:linear-gradient(90deg,#ff4d6d,#ffd700,#00eaff);
--webkit-background-clip:text;
-color:transparent;
-animation:glow 2s infinite;
-}
-
-@keyframes glow{
-50%{filter:drop-shadow(0 0 10px #ff4d6d)}
-}
-
-/* YES BUTTON */
-#yesBtn{
-display:none;
-margin-top:20px;
-padding:12px 25px;
-font-size:18px;
-border:none;
-border-radius:30px;
-background:#ff4d6d;
-color:white;
-cursor:pointer;
-box-shadow:0 0 20px #ff4d6d;
-}
-
-/* ❤️ INTRO */
-#intro{
 position:fixed;
 inset:0;
 background:#000;
@@ -85,27 +31,53 @@ display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-z-index:9999;
-animation:fadeOut 4s forwards;
+z-index:10000;
+}
+
+.big-heart{
+font-size:140px;
+animation:rotate 4s linear infinite, color 2s infinite;
+cursor:pointer;
+}
+
+@keyframes rotate{
+to{transform:rotate(360deg)}
+}
+@keyframes color{
+0%{color:#ff4757}
+50%{color:#ffdd59}
+100%{color:#1e90ff}
+}
+
+#startText{
 display:none;
+margin-top:20px;
+font-size:20px;
+line-height:1.5;
+animation:fadeIn 1s forwards;
 }
 
-#intro h1{
-font-size:2.5em;
-color:#ff4d6d;
-animation:pulse 1s infinite;
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
 }
 
-@keyframes pulse{
-50%{transform:scale(1.15)}
+#yesBtn{
+display:none;
+margin-top:20px;
+padding:12px 30px;
+border:none;
+border-radius:30px;
+font-size:18px;
+background:#ff4757;
+color:#fff;
+cursor:pointer;
 }
 
-@keyframes fadeOut{
-0%,70%{opacity:1}
-100%{opacity:0;visibility:hidden}
-}
+/* ===== MAIN SITE ===== */
+#mainSite{display:none}
 
-/* 🌧️ RAIN */
+/* RAIN */
 .rain{
 position:fixed;
 top:-10px;
@@ -115,20 +87,19 @@ background:#5dade2;
 animation:fall linear infinite;
 opacity:.6;
 }
-@keyframes fall{
-to{transform:translateY(110vh)}
-}
+@keyframes fall{to{transform:translateY(110vh)}}
 
-/* ⚡ LIGHT */
+/* LIGHT */
 .light{
 position:fixed;
 inset:0;
 background:white;
 opacity:0;
 pointer-events:none;
+transition:.1s;
 }
 
-/* ❤️ HEARTS */
+/* HEARTS */
 .heart{
 position:fixed;
 font-size:22px;
@@ -144,11 +115,7 @@ h2{color:var(--accent)}
 .made{opacity:.7}
 
 /* INSTAGRAM */
-.insta a{
-color:#ff69b4;
-font-weight:bold;
-text-decoration:none;
-}
+.insta a{color:#ff69b4;text-decoration:none;font-weight:bold}
 
 /* VIDEOS */
 .videos{
@@ -159,21 +126,9 @@ padding:15px;
 max-width:900px;
 margin:auto;
 }
-
-.vcard{
-background:var(--card);
-border-radius:20px;
-padding:10px;
-}
-.vcard video{
-width:100%;
-border-radius:15px;
-display:none;
-}
-.play{
-font-size:40px;
-cursor:pointer;
-}
+.vcard{background:var(--card);border-radius:20px;padding:10px}
+.vcard video{width:100%;border-radius:15px;display:none}
+.play{font-size:40px;cursor:pointer}
 
 /* PHOTO */
 .photo-box img{
@@ -197,32 +152,31 @@ background:var(--card);
 border-radius:15px;
 padding:15px;
 cursor:pointer;
+transition:.3s;
 }
+.card:active{transform:scale(1.08)}
 .cover{font-size:35px}
-.content{display:none;font-weight:bold}
+.content{display:none;font-size:14px;font-weight:bold}
 
-/* AUDIO */
 audio{display:none}
 </style>
 </head>
 
 <body>
 
-<!-- 🌌 START -->
+<!-- ===== START SCREEN ===== -->
 <div id="startScreen">
-<div id="bigHeart">❤️</div>
+<div class="big-heart" onclick="startLove()">❤️</div>
 <div id="startText">
-Aarvi ji 💖 Welcome to SivaSingh's Heart <br><br>
-I want to say I Love You ❤️ <br>
+Aarvi ji welcome to SivaSingh heart 💖<br>
+I want to say I love you…<br>
 Do you love me?
 </div>
-<button id="yesBtn">YES ❤️</button>
+<button id="yesBtn" onclick="openSite()">YES ❤️</button>
 </div>
 
-<!-- ❤️ INTRO -->
-<div id="intro">
-<h1>❤️ I Love You Aarvi ji 😍 ❤️</h1>
-</div>
+<!-- ===== MAIN WEBSITE ===== -->
+<div id="mainSite">
 
 <div id="light" class="light"></div>
 
@@ -251,23 +205,21 @@ Do you love me?
 </div>
 
 <div class="grid" id="shayariGrid"></div>
+</div>
 
 <script>
-/* START LOGIC */
-const bigHeart=document.getElementById("bigHeart");
-const text=document.getElementById("startText");
-const yesBtn=document.getElementById("yesBtn");
+/* START HEART */
+function startLove(){
+heartBlast(innerWidth/2,innerHeight/2);
+document.getElementById("startText").style.display="block";
+document.getElementById("yesBtn").style.display="inline-block";
+}
 
-bigHeart.onclick=e=>{
-text.style.display="block";
-yesBtn.style.display="inline-block";
-heartBlast(e.clientX,e.clientY);
-};
-
-yesBtn.onclick=()=>{
+/* OPEN SITE */
+function openSite(){
 document.getElementById("startScreen").style.display="none";
-document.getElementById("intro").style.display="flex";
-};
+document.getElementById("mainSite").style.display="block";
+}
 
 /* RAIN */
 for(let i=0;i<120;i++){
@@ -278,7 +230,7 @@ r.style.animationDuration=0.5+Math.random()+"s";
 document.body.appendChild(r);
 }
 
-/* FLASH */
+/* LIGHT */
 function flash(){
 let l=document.getElementById("light");
 l.style.opacity=0.9;
@@ -300,13 +252,9 @@ setTimeout(()=>h.remove(),2500);
 
 /* VIDEO */
 function toggleVideo(el){
-const card=el.parentElement;
-const video=card.querySelector("video");
-document.querySelectorAll(".vcard video").forEach(v=>{
-if(v!==video){
-v.pause();v.style.display="none";
-v.parentElement.querySelector(".play").style.display="block";
-}
+const video=el.nextElementSibling;
+document.querySelectorAll("video").forEach(v=>{
+if(v!==video){v.pause();v.style.display="none";v.previousElementSibling.style.display="block";}
 });
 el.style.display="none";
 video.style.display="block";
@@ -317,26 +265,47 @@ video.play();
 let p=1;
 function nextPhoto(){
 p++; if(p>10)p=1;
-photo.src=`photo${p}.jpg`;
+photo.src="photo"+p+".jpg";
 }
 
-/* SHAYARI */
-const music=document.getElementById("bgMusic");
+/* SHAYARI (FULL – NOTHING REMOVED) */
 const shayaris=[
-"Aarvi ji 😍 tum meri zindagi ka sabse khoobsurat ehsaas ho.",
-"Har muskurahat tumhari dil chura leti hai.",
-"SivaSingh ke dil ka sabse pyara hissa ho tum ❤️"
+"Zindagi ke safar mein tera sath chahiye, tanhaiyon mein tera hath chahiye.",
+"Phoolon ki mehak bhi fiki lagti hai, jab Aarvi ji 😍 teri muskurahat dikhti hai.",
+"Khuda kare har khushi teri ho, har kadam pe kamyabi teri ho.",
+"Dosti ka rishta sabse pyara hai, tu hi is dil ka sitara hai.",
+"Chand se pyari chandni, chandni se pyari raat, raat se pyari zindagi, aur zindagi se pyari teri dosti.",
+"Aapki dosti ne humein jeena sikhaya, har mod pe saath nibhaya.",
+"Khuda se mangi thi ek dua, mil gayi tum jaisi dost wafa.",
+"Dil se likhi hai baat, hamesha rahe Aarvi ji 😍 tera saath.",
+"Teri dosti ka nasha hai, har dard ki yahi dawa hai.",
+"Suraj ki pehli kiran ho tum, mere liye sabse khas ho tum.",
+"Bas tum haste raho, yahi dua hai meri har pal.",
+"Duniya ki har khushi Aarvi ji 😍 ke naam ho, tera har din ek naya paigam ho.",
+"Dil ke rishte kabhi toote nahi karte, sachi dost kabhi rootha nahi karte.",
+"Aapki muskurahat sabse haseen hai, aap jaisa koi aur nahi hai.",
+"Zindagi mein aaye ho aise, jaise koi dua qubool hui ho.",
+"Khushboo ki tarah mehko tum sada, dosti ka yahi hai asli maza.",
+"Har pal tumhein yaad karte hain, tumhari dosti pe naaz karte hain.",
+"Aarvi ji 😍, tum meri dosti ka maan ho, is dil ki tum hi shaan ho.",
+"Rabb se bas yahi maangte hain, ki tum hamesha salamat raho.",
+"Dosti ka safar yunhi chalta rahe, waqt badle par hum na badlein.",
+"SivaSingh ki taraf se dosti ka uphar ❤️"
 ];
 
 const grid=document.getElementById("shayariGrid");
+const emojis=["🌟","✨","💎","🌸","🦋","🎈","❤️"];
+
 shayaris.forEach(t=>{
 let c=document.createElement("div");
 c.className="card";
-c.innerHTML=`<div class="cover">💖</div><div class="content">${t}</div>`;
+c.innerHTML=`<div class="cover">${emojis[Math.random()*emojis.length|0]}</div><div class="content">${t}</div>`;
 c.onclick=e=>{
 c.querySelector(".cover").style.display="none";
 c.querySelector(".content").style.display="block";
-music.play(); flash(); heartBlast(e.clientX,e.clientY);
+bgMusic.play();
+flash();
+heartBlast(e.clientX,e.clientY);
 };
 grid.appendChild(c);
 });
