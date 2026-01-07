@@ -32,7 +32,7 @@ padding:20px;
 h1{color:var(--accent)}
 .made-by{opacity:.8;font-style:italic}
 
-/* HEART INTRO */
+/* INTRO */
 #intro{
 position:fixed;
 inset:0;
@@ -65,7 +65,7 @@ animation:bounce 2s infinite;
 50%{transform:translateY(-20px)}
 }
 
-/* VIDEO CARDS */
+/* VIDEO */
 .video-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -79,8 +79,6 @@ padding:15px;
 background:var(--card);
 border-radius:15px;
 padding:10px;
-cursor:pointer;
-text-align:center;
 border:2px solid #333;
 }
 
@@ -162,7 +160,7 @@ animation:fly 2s linear forwards;
 <p>Tap anywhere ✨</p>
 </div>
 
-<!-- MUSIC (LAST CARD ONLY PLAY) -->
+<!-- MUSIC -->
 <audio id="bgMusic" loop>
 <source src="newsong.mp3" type="audio/mpeg">
 </audio>
@@ -192,12 +190,10 @@ animation:fly 2s linear forwards;
 <div class="grid" id="shayariGrid"></div>
 
 <script>
-/* INTRO */
 document.getElementById("intro").onclick=()=>{
 document.getElementById("intro").style.display="none";
 };
 
-/* PHOTO */
 let p=1;
 function nextPhoto(){
 p++; if(p>10) p=1;
@@ -205,20 +201,18 @@ document.getElementById("photo").src=`photo${p}.jpg`;
 heartBurst();
 }
 
-/* HEART EFFECT */
 function heartBurst(){
-for(let i=0;i<20;i++){
+for(let i=0;i<25;i++){
 let h=document.createElement("div");
 h.className="heart";
 h.innerHTML="❤️";
 h.style.left=Math.random()*100+"%";
-h.style.bottom="0px";
+h.style.bottom="0";
 document.body.appendChild(h);
 setTimeout(()=>h.remove(),2000);
 }
 }
 
-/* SHAYARI DATA (ALL SAME) */
 const shayaris=[
 "Zindagi ke safar mein tera sath chahiye, tanhaiyon mein tera hath chahiye.",
 "Phoolon ki mehak bhi fiki lagti hai, jab Pallavi teri muskurahat dikhti hai.",
@@ -247,10 +241,10 @@ const emojis=["🌟","✨","🔥","💎","🌸","🦋","🎈","🍫"];
 const grid=document.getElementById("shayariGrid");
 const music=document.getElementById("bgMusic");
 
-shayaris.forEach((t,i)=>{
+shayaris.forEach(t=>{
 const c=document.createElement("div");
 c.className="card";
-c.innerHTML=`<div class="cover">${emojis[i%emojis.length]}</div>
+c.innerHTML=`<div class="cover">${emojis[Math.floor(Math.random()*emojis.length)]}</div>
 <div class="content">${t}</div>`;
 c.onclick=()=>{
 c.querySelector(".cover").style.display="none";
