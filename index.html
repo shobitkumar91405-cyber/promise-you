@@ -3,217 +3,322 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Last Call 💔</title>
+<title>Trishika 💖 Premium Love Story</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family: 'Segoe UI',sans-serif}
+:root{
+  --bg:#0b0e14;
+  --accent:#ff4d6d;
+  --accent2:#ff9aa2;
+  --gold:#ffd166;
+  --text:#f5f5f5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-background:#0b0e14;
-color:#e0e0e0;
-overflow-x:hidden;
+  font-family:"Georgia","Segoe UI",serif;
+  background:radial-gradient(circle at top,#1a1f35 0%,#0b0e14 60%);
+  color:var(--text);
+  overflow-x:hidden;
 }
 
-/* RAIN */
-.rain{
-position:fixed;top:0;left:0;width:100%;height:100%;
-background:url("https://i.imgur.com/N7ETzFO.png");
-animation:rain 0.4s linear infinite;
-opacity:.25;
-pointer-events:none;
+/* BACKGROUND MUSIC */
+#bgMusic{display:none}
+
+/* PREMIUM FLOATING PARTICLES */
+.particles span{
+  position:fixed;
+  width:6px;height:6px;
+  background:rgba(255,77,109,.7);
+  border-radius:50%;
+  animation:float 12s linear infinite;
 }
-@keyframes rain{
-0%{background-position:0 0}
-100%{background-position:0 100%}
+@keyframes float{
+  from{transform:translateY(110vh) scale(.4);opacity:0}
+  10%{opacity:1}
+  to{transform:translateY(-20vh) scale(1.2);opacity:0}
 }
 
-/* CALL SCREEN */
-#callScreen{
-position:fixed;
-inset:0;
-background:linear-gradient(#000,#0b0e14);
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:10;
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
 }
-.call-name{
-font-size:28px;
-margin-bottom:20px;
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,rgba(255,77,109,.15),transparent 60%);
+  animation:pulseBg 6s ease-in-out infinite;
 }
-.accept{
-padding:14px 40px;
-border:none;
-border-radius:30px;
-background:#8b0000;
-color:white;
-font-size:18px;
+@keyframes pulseBg{
+  0%,100%{opacity:.4}
+  50%{opacity:.8}
 }
-
-/* MAIN CONTENT */
-#main{
-display:none;
-padding:20px;
-max-width:420px;
-margin:auto;
+.hero-inner{
+  position:relative;
+  z-index:2;
 }
-
-/* TYPE TEXT */
-#typing{
-min-height:70px;
-font-size:18px;
-line-height:1.5;
-margin:20px 0;
+.hero h1{
+  font-size:3rem;
+  background:linear-gradient(90deg,#ffb3c1,#ff4d6d,#ffd166);
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:shine 6s linear infinite;
 }
-
-/* HEART */
-.heart{
-width:120px;
-height:120px;
-margin:30px auto;
-background:url("https://i.imgur.com/fHyEMsl.png") center/contain no-repeat;
-animation:beat 1.2s infinite;
+@keyframes shine{
+  from{background-position:0%}
+  to{background-position:200%}
 }
-@keyframes beat{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.15)}
+.hero h2{
+  margin-top:10px;
+  letter-spacing:3px;
+  opacity:.85;
 }
-.broken{
-filter:grayscale(1);
-animation:shake .3s infinite;
+.start-btn{
+  margin-top:35px;
+  padding:16px 44px;
+  border:none;
+  border-radius:50px;
+  font-size:1.05rem;
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  box-shadow:0 0 35px rgba(255,77,109,.7);
+  animation:glowBtn 2.5s infinite alternate;
 }
-@keyframes shake{
-0%{transform:translateX(0)}
-25%{transform:translateX(-3px)}
-50%{transform:translateX(3px)}
+@keyframes glowBtn{
+  from{box-shadow:0 0 15px rgba(255,77,109,.4)}
+  to{box-shadow:0 0 45px rgba(255,77,109,1)}
 }
 
-/* VIDEO CARD */
+/* SECTION */
+.section{
+  padding:100px 20px;
+  position:relative;
+}
 .card{
-background:#131722;
-border-radius:16px;
-padding:10px;
-margin:20px 0;
+  max-width:820px;
+  margin:0 auto 120px;
+  text-align:center;
+  opacity:0;
+  transform:translateY(60px);
+  transition:1.2s ease;
 }
-video{
-width:100%;
-border-radius:12px;
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.card img{
+  width:170px;
+  margin-bottom:28px;
+  animation:floatImg 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 30px rgba(255,77,109,.7));
+}
+@keyframes floatImg{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
+}
+.shayari-title{
+  font-size:1.9rem;
+  color:var(--accent2);
+  margin-bottom:30px;
+}
+.poem{
+  font-size:1.18rem;
+  line-height:1.95;
 }
 
-/* PHOTOS */
-.photos{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
+/* INSTAGRAM */
+.insta{
+  text-align:center;
+  padding:80px 20px;
+  background:linear-gradient(180deg,transparent,#0e1224);
 }
-.photos img{
-width:100%;
-border-radius:12px;
-filter:grayscale(.3);
+.insta h3{
+  color:var(--gold);
+  margin-bottom:20px;
+}
+.handle{
+  font-size:1.15rem;
+  margin:6px 0;
+  animation:fadePulse 3s infinite;
+}
+@keyframes fadePulse{
+  0%,100%{opacity:.6}
+  50%{opacity:1}
 }
 
-/* GOODBYE */
-#goodbye{
-display:none;
-text-align:center;
-margin-top:40px;
-font-size:20px;
-opacity:0;
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:40px;
+  opacity:.6;
+  font-size:.9rem;
+}
+
+/* CURSOR HEART SPARK */
+.spark{
+  position:fixed;
+  width:8px;height:8px;
+  background:var(--accent);
+  transform:rotate(45deg);
+  animation:spark 1s forwards;
+}
+.spark::before,.spark::after{
+  content:"";
+  position:absolute;
+  width:8px;height:8px;
+  background:var(--accent);
+  border-radius:50%;
+}
+.spark::before{left:-4px}
+.spark::after{top:-4px}
+@keyframes spark{
+  to{opacity:0;transform:translateY(-20px) scale(1.5) rotate(45deg)}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{font-size:2.3rem}
+  .poem{font-size:1.05rem}
 }
 </style>
 </head>
 
 <body>
 
-<div class="rain"></div>
+<audio id="bgMusic" src="newsong.mp3" loop></audio>
 
-<!-- CALL -->
-<div id="callScreen">
-<div class="call-name">📞 Trishika🥀 calling…</div>
-<button class="accept" onclick="acceptCall()">Accept</button>
+<!-- PARTICLES -->
+<div class="particles" id="particles"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Trishika 💖</h1>
+    <h2>A Luxury Love Story</h2>
+    <button class="start-btn" onclick="startStory()">Begin Our Story</button>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section">
+
+  <div class="card">
+    <img src="gif1.gif">
+    <div class="shayari-title">𝐌𝐞𝐫𝐢 𝐇𝐚𝐫 𝐁𝐚𝐚𝐭 𝐓𝐮𝐦𝐬𝐞</div>
+    <div class="poem">
+      Mujhe pasand ho tum,<br>
+      mujhse apni har baat bataya karo na,<br><br>
+      Main to jatata hoon haq apna tumpe,<br>
+      tum bhi thoda sa jataya karo na.
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="gif2.gif">
+    <div class="poem">
+      Main maan lunga har baat tumhari,<br>
+      tum bas hukm karke bataya karo na,<br><br>
+      Koi pooche kaun hai ye ladka,<br>
+      to mujhe apna aur khud ko mera mehboob bataya karo na.
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="gif3.gif">
+    <div class="poem">
+      Mujhe pasand hai tumhari muskaan,<br>
+      tum hamesha yun hi muskuraya karo na,<br><br>
+      Tum bahut khoobsurat ho,<br>
+      phir bhi thoda sa singaar lagaya karo na.
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="gif4.gif">
+    <div class="poem">
+      Main din-raat tumhare baare mein sochta hoon,<br>
+      kya tum bhi sochti ho — sach batao na.<br><br>
+      Tumhari khoobsurti ki kya tareef karoon,<br>
+      sabko khud se thoda kam bataya karo na.
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="gif5.gif">
+    <div class="poem">
+      Tumhare aankho me yu dub jata hu har baar,<br>
+      mera haath pakad kar nikala karo na.<br><br>
+      Mujhe tumhara dupatta pasand hai,<br>
+      hamesha yun hi lagaya karo na.
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="gif6.gif">
+    <div class="poem">
+      Tumhare kaanon ke ghumke mujhe bahut pasand hain,<br>
+      unhe sabko na dikhaya karo na.<br><br>
+      Tumhare hothon ki laali kyun mujhe itni achhi lagti hai,<br>
+      mujhe tum hi batao na.
+    </div>
+  </div>
+
+</section>
+
+<!-- INSTAGRAM -->
+<section class="insta">
+  <h3>📸 Instagram</h3>
+  <div class="handle">@black_its_me20</div>
+  <div class="handle">@smss1708</div>
+</section>
+
+<div class="footer">
+  A premium luxury love story for Trishika 💖
 </div>
-
-<!-- MAIN -->
-<div id="main">
-
-<div id="typing"></div>
-
-<div class="heart" id="heart"></div>
-
-<div class="card">
-<video src="video1.mp4" controls></video>
-</div>
-
-<div class="card">
-<video src="video2.mp4" controls></video>
-</div>
-
-<div class="photos">
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
-<img src="photo1.jpg">
-</div>
-
-<div id="goodbye">Good bye…<br>tum badal gaye ho 💔</div>
-
-</div>
-
-<!-- AUDIO -->
-<audio id="bgm" src="newsong.mp3" loop></audio>
-<audio id="breaksound" src="broken.mp3"></audio>
 
 <script>
-const bgm=document.getElementById("bgm");
-const heart=document.getElementById("heart");
-const typing=document.getElementById("typing");
-const goodbye=document.getElementById("goodbye");
-
-const lines=[
-"Hello…",
-"Sun rahi hoon…",
-"Tum badal gaye ho…",
-"Maine sirf tumse pyaar kiya tha…",
-"Par tumne mera hi dil tod diya 💔"
-];
-
-let i=0,j=0;
-
-function typeLine(){
-if(i>=lines.length)return;
-if(j<lines[i].length){
-typing.innerHTML+=lines[i][j++];
-setTimeout(typeLine,60);
-}else{
-typing.innerHTML+="<br><br>";
-i++;j=0;
-setTimeout(typeLine,900);
-}
+/* MUSIC */
+function startStory(){
+  const m=document.getElementById("bgMusic");
+  m.volume=0.7;
+  m.play();
+  document.querySelector(".hero").style.display="none";
 }
 
-function acceptCall(){
-document.getElementById("callScreen").style.display="none";
-document.getElementById("main").style.display="block";
-bgm.volume=0.7;
-bgm.play();
-typeLine();
-
-setTimeout(()=>{
-heart.classList.add("broken");
-document.getElementById("breaksound").play();
-},6000);
-
-setTimeout(()=>{
-goodbye.style.display="block";
-goodbye.style.opacity=1;
-},12000);
+/* PARTICLES */
+const p=document.getElementById("particles");
+for(let i=0;i<40;i++){
+  const s=document.createElement("span");
+  s.style.left=Math.random()*100+"%";
+  s.style.animationDelay=Math.random()*10+"s";
+  s.style.opacity=Math.random();
+  p.appendChild(s);
 }
 
-/* VIDEO ↔ SONG CONTROL */
-document.querySelectorAll("video").forEach(v=>{
-v.addEventListener("play",()=>{bgm.pause()});
-v.addEventListener("pause",()=>{bgm.play()});
-v.addEventListener("ended",()=>{bgm.play()});
+/* SCROLL REVEAL */
+const cards=document.querySelectorAll(".card");
+window.addEventListener("scroll",()=>{
+  cards.forEach(c=>{
+    const top=c.getBoundingClientRect().top;
+    if(top<window.innerHeight-100)c.classList.add("show");
+  });
+});
+
+/* CURSOR HEART SPARK */
+document.addEventListener("mousemove",e=>{
+  const s=document.createElement("div");
+  s.className="spark";
+  s.style.left=e.clientX+"px";
+  s.style.top=e.clientY+"px";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),1000);
 });
 </script>
 
