@@ -3,323 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Khushi ❤️</title>
+    <title>For My Forever Valentine 💖</title>
     <style>
+        /* --- CSS STYLES --- */
         :root {
-            --primary-pink: #ff4d6d;
-            --soft-pink: #ffb3c1;
-            --dark-pink: #c9184a;
+            --pink: #ffafbd;
+            --lavender: #e2d1f9;
+            --cream: #fff0f5;
+            --deep-pink: #ff4d6d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background: #120107;
-            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, var(--pink), var(--lavender));
+            height: 100vh;
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            overflow-x: hidden;
-            color: white;
+            color: #4a4a4a;
         }
 
-        /* Credits Section */
-        .header-credit {
-            padding: 10px;
-            font-size: 14px;
-            letter-spacing: 2px;
-            color: var(--soft-pink);
-            text-transform: uppercase;
-        }
-
-        /* Floating Hearts Animation */
-        .hearts-container {
+        /* Full Screen Section Management */
+        .section {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* The Book Styling */
-        .book-container {
-            perspective: 1500px;
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-        }
-
-        .book {
-            width: 350px;
-            height: 500px;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 1s ease;
-            cursor: pointer;
-        }
-
-        .book.open {
-            transform: rotateY(-180deg) translateX(50%);
-        }
-
-        .page {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: #fff;
-            color: #333;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transform-origin: left;
-            transform-style: preserve-3d;
-            transition: transform 1s;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             padding: 20px;
-            box-sizing: border-box;
-            border-radius: 5px 15px 15px 5px;
-            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(20px);
         }
 
-        .cover {
-            background: linear-gradient(45deg, var(--dark-pink), var(--primary-pink));
-            color: white;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+        .section.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
         }
 
-        .page.flipped {
-            transform: rotateY(-180deg);
-        }
-
-        /* Content Styling */
-        h1, h2 { color: var(--dark-pink); }
-        .cover h1 { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-
-        .media-container {
-            width: 100%;
-            height: 200px;
-            margin: 10px 0;
-            background: #eee;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        img, video {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-        }
-
-        .message-text {
-            font-size: 16px;
-            line-height: 1.5;
-            text-align: center;
-            margin-top: 10px;
-            font-style: italic;
-        }
-
-        .nav-buttons {
-            margin-top: 20px;
-            display: flex;
-            gap: 20px;
-            z-index: 100;
-        }
-
-        button {
-            background: var(--primary-pink);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.4);
-        }
-
-        button:hover { background: var(--dark-pink); }
-
-        /* Hidden back side of pages */
-        .back {
-            transform: rotateY(180deg);
-            background: #f9f9f9;
-        }
-
-        .audio-player {
+        /* Background Floating Hearts */
+        .bg-hearts {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 77, 109, 0.2);
-            padding: 10px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .heart-particle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Buttons & UI Components */
+        .btn-romantic {
+            background-color: var(--deep-pink);
+            color: white;
+            border: none;
+            padding: 15px 30px;
             border-radius: 50px;
-            backdrop-filter: blur(5px);
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+            transition: transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-romantic:hover {
+            transform: scale(1.1);
+        }
+
+        /* Page 2: Message Cards */
+        .cards-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .card.opened {
+            transform: scale(1.2) rotate(5deg);
+            background: var(--cream);
+            color: var(--deep-pink);
+            border: 2px solid var(--deep-pink);
+        }
+
+        /* Page 4: Envelope Animation */
+        .envelope-wrapper {
+            position: relative;
+            width: 280px;
+            height: 180px;
+            background: #f08080;
+            margin-top: 50px;
+            cursor: pointer;
+        }
+
+        .letter {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            width: 260px;
+            height: 160px;
+            background: white;
+            padding: 15px;
+            transition: transform 0.5s;
+            z-index: 1;
+            font-size: 0.8rem;
+            overflow-y: auto;
+        }
+
+        .envelope-wrapper.open .letter {
+            transform: translateY(-100px);
+            height: 250px;
+            z-index: 10;
+        }
+
+        /* Page 5: Audio Player */
+        .player-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        /* Page 6: Video */
+        video {
+            width: 90%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Page 7: Final Heart */
+        .huge-heart {
+            font-size: 100px;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .gif-img {
+            width: 150px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="header-credit">MADE BY SIVASINGH</div>
+    <div class="bg-hearts" id="bgHearts"></div>
 
-    <div class="hearts-container" id="hearts"></div>
+    <section class="section active" id="page1">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBps67K0bV9pAqi/giphy.gif" class="gif-img" alt="Cute heart">
+        <h1>Little things I want to tell you...</h1>
+        <button class="btn-romantic" onclick="nextPage(2)">Tap to begin 💖</button>
+    </section>
 
-    <div class="book-container">
-        <div class="book" id="myBook">
-            
-            <div class="page cover" id="p1" style="z-index: 5;">
-                <img src="heart1.gif" style="width: 100px;">
-                <h1>For My Khushi ❤️</h1>
-                <p>Click to Open Our Story</p>
-            </div>
-
-            <div class="page" id="p2" style="z-index: 4;">
-                <h2>Dear Khushi...</h2>
-                <div class="media-container">
-                    <img src="photo1.jpg" alt="Our Moment">
-                </div>
-                <p class="message-text">"The moment I saw you, I knew you were the one. Your smile lights up my world."</p>
-            </div>
-
-            <div class="page" id="p3" style="z-index: 3;">
-                <h2>Our Memories</h2>
-                <div class="media-container">
-                    <video id="vdo1" controls>
-                        <source src="video1.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="message-text">Look at how happy we are together! Every second with you is magic.</p>
-            </div>
-
-            <div class="page" id="p4" style="z-index: 2;">
-                <h2>Always Yours</h2>
-                <div class="media-container">
-                    <img src="hug.gif" alt="Hug">
-                </div>
-                <p class="message-text">No matter where life takes us, my hand will always be in yours.</p>
-                <img src="kiss.gif" style="width: 50px; align-self: center;">
-            </div>
-
-            <div class="page" id="p5" style="z-index: 1;">
-                <h2>Will You Be Mine?</h2>
-                <div class="media-container">
-                    <img src="promise.gif" alt="Promise">
-                </div>
-                <p class="message-text">Happy Valentine's Day, Khushi! I promise to love you forever.</p>
-                <h3 style="text-align: center; color: var(--dark-pink);">Forever & Always</h3>
-            </div>
-
+    <section class="section" id="page2">
+        <h2>Tap a card to read</h2>
+        <div class="cards-container">
+            <div class="card" onclick="openCard(this, 'You are the reason my heart smiles.')">?</div>
+            <div class="card" onclick="openCard(this, 'With you, everything feels magical.')">?</div>
+            <div class="card" onclick="openCard(this, 'I fall in love with you again every day.')">?</div>
         </div>
-    </div>
+        <button class="btn-romantic" onclick="nextPage(3)">Continue 💌</button>
+    </section>
 
-    <div class="nav-buttons">
-        <button onclick="prevPage()">PREVIOUS</button>
-        <button onclick="nextPage()">NEXT PAGE</button>
-    </div>
+    <section class="section" id="page3">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3JueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/vXo67WZ5fNAnlB0609/giphy.gif" class="gif-img">
+        <h1 style="font-size: 3rem; color: var(--deep-pink);">I'm Sorry ❤️</h1>
+        <p>For every little mistake, I love you more than words.</p>
+        <button class="btn-romantic" onclick="nextPage(4)">Open My Letter</button>
+    </section>
 
-    <div class="audio-player">
-        <audio id="bgMusic" loop>
-            <source src="tere-liye.mp3" type="audio/mpeg">
-        </audio>
-        <button id="musicBtn" onclick="toggleMusic()">🎵 Play Song</button>
-    </div>
+    <section class="section" id="page4">
+        <div class="envelope-wrapper" id="envelope" onclick="toggleLetter()">
+            <div class="letter">
+                <h3>My Dearest,</h3>
+                <p>Every moment spent with you is like a beautiful dream. I want to hold your hand through every season of life. You are my greatest adventure and my favorite "I love you".</p>
+            </div>
+        </div>
+        <p style="margin-top: 20px;">(Tap the envelope to open)</p>
+        <button class="btn-romantic" onclick="nextPage(5)">Listen to This</button>
+    </section>
+
+    <section class="section" id="page5">
+        <div class="player-box">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7TKoWXlo3M1nKS6A/giphy.gif" width="80">
+            <h3 id="songName">Romantic Melody.mp3</h3>
+            <audio id="mainAudio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" controls></audio>
+        </div>
+        <button class="btn-romantic" onclick="nextPage(6)">Watch This Video</button>
+    </section>
+
+    <section class="section" id="page6">
+        <h2>A Little Video for You</h2>
+        <video id="romanticVideo" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button class="btn-romantic" onclick="nextPage(7)">Final Surprise</button>
+    </section>
+
+    <section class="section" id="page7">
+        <div class="huge-heart" onclick="burstHearts()">💖</div>
+        <div id="quoteContainer">
+            <p>"With you, time stops."</p>
+        </div>
+        <h2 style="margin-top: 20px;">Happy Valentine's Day!</h2>
+    </section>
 
     <script>
-        let currentPage = 1;
-        const totalPages = 5;
-        const book = document.getElementById('myBook');
-        const bgMusic = document.getElementById('bgMusic');
-        const vdo1 = document.getElementById('vdo1');
-        const musicBtn = document.getElementById('musicBtn');
-
-        // Book Navigation Logic
-        function nextPage() {
-            if(currentPage < totalPages) {
-                const page = document.getElementById('p' + currentPage);
-                page.classList.add('flipped');
-                page.style.zIndex = currentPage;
-                currentPage++;
-                
-                if(currentPage === 2) {
-                    book.classList.add('open');
-                }
+        // --- 1. Page Navigation Logic ---
+        function nextPage(pageNumber) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById('page' + pageNumber).classList.add('active');
+            
+            // Auto play audio on Page 5
+            if(pageNumber === 5) {
+                const audio = document.getElementById('mainAudio');
+                audio.play().catch(e => console.log("User interaction required for audio"));
             }
         }
 
-        function prevPage() {
-            if(currentPage > 1) {
-                currentPage--;
-                const page = document.getElementById('p' + currentPage);
-                page.classList.remove('flipped');
-                
-                if(currentPage === 1) {
-                    book.classList.remove('open');
-                }
-            }
-        }
-
-        // Auto Stop Music when Video Plays
-        vdo1.onplay = function() {
-            bgMusic.pause();
-            musicBtn.innerText = "🎵 Song Paused";
-        };
-
-        vdo1.onpause = function() {
-            // Optional: resume music when video stops
-            // bgMusic.play();
-        };
-
-        function toggleMusic() {
-            if (bgMusic.paused) {
-                bgMusic.play();
-                musicBtn.innerText = "🎵 Music On";
-            } else {
-                bgMusic.pause();
-                musicBtn.innerText = "🎵 Music Off";
-            }
-        }
-
-        // Floating Hearts Generator
+        // --- 2. Floating Background Hearts ---
         function createHeart() {
             const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
             heart.innerHTML = '❤️';
-            heart.style.position = 'fixed';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = '100vh';
             heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            heart.style.opacity = Math.random();
-            heart.style.transition = 'all 4s linear';
-            heart.style.color = '#ff4d6d';
-            
-            document.getElementById('hearts').appendChild(heart);
+            heart.style.duration = (Math.random() * 3 + 3) + 's';
+            document.getElementById('bgHearts').appendChild(heart);
 
-            setTimeout(() => {
-                heart.style.top = '-10vh';
-                heart.style.left = (parseFloat(heart.style.left) + (Math.random() * 20 - 10)) + 'vw';
-            }, 100);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
+            setTimeout(() => { heart.remove(); }, 6000);
         }
-
         setInterval(createHeart, 300);
 
-        // Click on cover to start
-        document.getElementById('p1').addEventListener('click', () => {
-            nextPage();
-            if(bgMusic.paused) toggleMusic();
-        });
+        // --- 3. Message Cards Logic ---
+        function openCard(element, message) {
+            element.innerHTML = message;
+            element.classList.add('opened');
+            // Mini burst effect logic can be added here
+        }
+
+        // --- 4. Envelope Logic ---
+        function toggleLetter() {
+            document.getElementById('envelope').classList.toggle('open');
+        }
+
+        // --- 5. Audio/Video Sync Logic ---
+        const mainAudio = document.getElementById('mainAudio');
+        const romanticVideo = document.getElementById('romanticVideo');
+
+        // Pause audio when video starts
+        romanticVideo.onplay = () => {
+            mainAudio.pause();
+        };
+
+        // Resume audio when video ends
+        romanticVideo.onended = () => {
+            mainAudio.play();
+        };
+
+        // --- 6. Final Page Burst ---
+        const quotes = [
+            "Your smile lights up my world.",
+            "You are my forever.",
+            "I love you to the moon and back.",
+            "You are my favorite person."
+        ];
+
+        function burstHearts() {
+            const container = document.getElementById('quoteContainer');
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            container.innerHTML = `<h3 style="color:var(--deep-pink); animation: fadeIn 1s;">${randomQuote}</h3>`;
+            
+            // Add a temporary burst of many hearts
+            for(let i=0; i<15; i++) {
+                createHeart();
+            }
+        }
     </script>
 </body>
 </html>
