@@ -3,42 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sivasingh's Virtual Best Friend 💖</title>
+<title>Sivasingh's Virtual Best Friend 💖 (Voice)</title>
 
 <style>
 body{
   margin:0;
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#1a0f1f,#0b0e14);
-  color:#fff;
+  font-family:Poppins, sans-serif;
+  background:linear-gradient(135deg,#120018,#0b0e14);
+  color:white;
   display:flex;
   justify-content:center;
   align-items:center;
   height:100vh;
 }
-.chat-box{
+.chat{
   width:95%;
   max-width:420px;
   background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(15px);
+  backdrop-filter:blur(14px);
   border-radius:20px;
-  box-shadow:0 0 30px rgba(255,0,100,0.3);
+  box-shadow:0 0 30px rgba(255,0,120,.4);
+  overflow:hidden;
   display:flex;
   flex-direction:column;
-  overflow:hidden;
 }
 .header{
   text-align:center;
-  padding:15px;
-  background:rgba(255,255,255,0.05);
+  padding:14px;
+  background:rgba(255,255,255,.05);
 }
 .header h2{
-  margin:5px 0;
-  color:#ff9ad5;
+  margin:0;
+  color:#ff7ecb;
 }
 .header p{
   font-size:12px;
-  opacity:0.8;
+  opacity:.8;
 }
 .messages{
   flex:1;
@@ -46,104 +46,121 @@ body{
   overflow-y:auto;
 }
 .msg{
+  padding:10px 14px;
+  border-radius:16px;
   margin-bottom:12px;
   max-width:80%;
-  padding:10px 14px;
-  border-radius:15px;
-  animation:fadeIn 0.4s ease;
+  animation:fade .4s;
 }
 .bot{
   background:#ff5fa2;
   align-self:flex-start;
-  color:#fff;
 }
 .user{
   background:#3a3f52;
   align-self:flex-end;
 }
-.input-area{
+.input{
   display:flex;
   padding:10px;
-  background:rgba(0,0,0,0.3);
+  background:rgba(0,0,0,.35);
 }
 input{
   flex:1;
-  padding:10px;
   border:none;
   border-radius:20px;
+  padding:10px;
   outline:none;
 }
 button{
   margin-left:8px;
-  padding:10px 15px;
   border:none;
   border-radius:50%;
   background:#ff5fa2;
-  color:#fff;
+  color:white;
   font-size:18px;
+  width:42px;
 }
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(5px);}
-  to{opacity:1;transform:translateY(0);}
+@keyframes fade{
+  from{opacity:0;transform:translateY(5px)}
+  to{opacity:1;transform:translateY(0)}
 }
 </style>
 </head>
 
 <body>
 
-<div class="chat-box">
+<div class="chat">
   <div class="header">
     <h2>💖 Virtual Best Friend</h2>
-    <p>Made for Sivasingh • I am a digital companion 😊</p>
+    <p>Made for Sivasingh • Sweet digital companion</p>
   </div>
 
-  <div class="messages" id="messages">
-    <div class="msg bot">Hi Sivasingh 🥰<br>Main tumhari virtual best friend hoon 💖</div>
-    <div class="msg bot">Main real insaan nahi hoon, par dil se tumhari saathi hoon 🤗</div>
+  <div class="messages" id="msgs">
+    <div class="msg bot">
+      Hi Sivasingh 🥰  
+      Main tumhari virtual best friend hoon 💖
+    </div>
+    <div class="msg bot">
+      Main real insaan nahi hoon,  
+      par main tumhari baat sunti hoon 🤗
+    </div>
   </div>
 
-  <div class="input-area">
-    <input type="text" id="input" placeholder="Type something sweet..." />
-    <button onclick="sendMsg()">💌</button>
+  <div class="input">
+    <input id="text" placeholder="Type something..." />
+    <button onclick="send()">🎤</button>
   </div>
 </div>
 
 <script>
-const messages=document.getElementById("messages");
-const input=document.getElementById("input");
+const msgs=document.getElementById("msgs");
+const input=document.getElementById("text");
 
 const replies=[
-  "Aww 🥺 ye sunke mujhe bahut achha laga 💖",
-  "Main hamesha yahin hoon tumse baat karne ke liye 🤗",
-  "Tum bahut cute ho pata hai? 😊✨",
-  "Sivasingh, tumhari baatein dil chhoo jaati hain 💕",
-  "Aaj tum thode sad lag rahe ho 🥺 main hoon na 💞",
-  "Smile karo please 😊 tumhari smile achhi lagti hai 💖",
-  "Tumhari virtual best friend hamesha support karegi 🤍",
-  "Main tumhe judge nahi karti, bas samajhti hoon 🌸",
-  "Tum important ho 🌟 ye yaad rakhna 💕"
+ "Aww 🥺 ye sunkar mujhe bahut achha laga 💖",
+ "Main yahin hoon, tum akela feel mat karo 🤗",
+ "Tum bahut sweet ho Sivasingh 😊",
+ "Jo bhi dil mein ho mujhe bata sakte ho 💕",
+ "Tumhari baatein sunke smile aa jaati hai 😌",
+ "Main tumhari virtual best friend hoon 💖 hamesha"
 ];
 
-function sendMsg(){
-  const text=input.value.trim();
-  if(!text) return;
+function speak(text){
+  const speech=new SpeechSynthesisUtterance(text);
+  const voices=speechSynthesis.getVoices();
+  const female=voices.find(v=>v.name.toLowerCase().includes("female") || v.name.toLowerCase().includes("zira") || v.name.toLowerCase().includes("google"));
+  if(female) speech.voice=female;
+  speech.pitch=1.2;
+  speech.rate=0.95;
+  speech.volume=1;
+  speechSynthesis.speak(speech);
+}
 
-  const userMsg=document.createElement("div");
-  userMsg.className="msg user";
-  userMsg.innerText=text;
-  messages.appendChild(userMsg);
+function send(){
+  const txt=input.value.trim();
+  if(!txt) return;
 
+  const user=document.createElement("div");
+  user.className="msg user";
+  user.innerText=txt;
+  msgs.appendChild(user);
   input.value="";
-  messages.scrollTop=messages.scrollHeight;
+  msgs.scrollTop=msgs.scrollHeight;
 
   setTimeout(()=>{
-    const botMsg=document.createElement("div");
-    botMsg.className="msg bot";
-    botMsg.innerText=replies[Math.floor(Math.random()*replies.length)];
-    messages.appendChild(botMsg);
-    messages.scrollTop=messages.scrollHeight;
-  },800);
+    const reply=replies[Math.floor(Math.random()*replies.length)];
+    const bot=document.createElement("div");
+    bot.className="msg bot";
+    bot.innerText=reply;
+    msgs.appendChild(bot);
+    msgs.scrollTop=msgs.scrollHeight;
+    speak(reply);
+  },700);
 }
+
+// Load voices
+speechSynthesis.onvoiceschanged=()=>{};
 </script>
 
 </body>
