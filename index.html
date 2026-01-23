@@ -5,116 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For My Dear Morni 💖</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
         :root {
             --pink: #ff007f;
             --blue: #00d4ff;
-            --glass: rgba(255, 255, 255, 0.1);
-            --glow: 0 0 15px var(--pink);
+            --glass: rgba(15, 15, 15, 0.8);
+            --neon-shadow: 0 0 20px var(--pink), 0 0 40px var(--pink);
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
         
         body, html {
             width: 100%; height: 100%; overflow: hidden;
-            background: #050505; font-family: 'Poppins', sans-serif; color: white;
+            background: #000; font-family: 'Poppins', sans-serif; color: white;
         }
 
         #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
 
-        /* Navigation Logic */
+        /* Scannable Hierarchy */
         .page {
             position: absolute; width: 100%; height: 100%;
             display: none; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; padding: 20px; transition: 0.5s ease-in-out;
+            text-align: center; padding: 20px; z-index: 10;
         }
-        .active { display: flex; animation: fadeIn 0.8s forwards; }
+        .active { display: flex; animation: zoomIn 0.6s ease-out; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* Header */
+        /* Premium Header */
         header {
-            position: fixed; top: 20px; width: 100%; z-index: 100;
-            text-shadow: 0 0 10px var(--pink); font-weight: bold;
+            position: fixed; top: 15px; width: 100%; z-index: 100;
+            text-align: center;
         }
-        .insta-id { font-size: 0.9rem; color: var(--blue); margin-top: 5px; }
-        .insta-thumb { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--pink); margin-top: 5px; }
+        .header-text { font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: var(--pink); text-shadow: 0 0 10px var(--pink); }
+        .insta-profile { display: flex; flex-direction: column; align-items: center; margin-top: 5px; }
+        .insta-thumb { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--blue); box-shadow: 0 0 10px var(--blue); }
+        .insta-handle { font-size: 0.75rem; color: #ccc; letter-spacing: 1px; margin-top: 4px; }
 
-        /* Glassmorphism */
+        /* Glassmorphism Card */
         .glass-card {
-            background: var(--glass); backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.2); border-radius: 25px;
-            padding: 30px; width: 90%; max-width: 400px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            background: var(--glass); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 0, 127, 0.3); border-radius: 30px;
+            padding: 25px; width: 92%; max-width: 380px;
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.15);
+            position: relative;
         }
 
-        .neon-pink { color: var(--pink); text-shadow: var(--glow); font-size: 2rem; }
-        .neon-blue { color: var(--blue); text-shadow: 0 0 10px var(--blue); }
-        
-        .msg-text { font-size: 1.1rem; line-height: 1.6; margin: 20px 0; font-weight: 500; }
+        .neon-title { font-family: 'Dancing Script', cursive; font-size: 2.8rem; color: #fff; text-shadow: var(--neon-shadow); margin-bottom: 15px; }
+        .romantic-text { font-size: 1.05rem; line-height: 1.6; color: #efefef; margin-bottom: 20px; font-weight: 300; }
+
+        /* Specialized Rose CSS */
+        .rose-box { width: 80px; height: 80px; margin: 0 auto 15px; position: relative; }
+        .rose-petal { 
+            position: absolute; width: 40px; height: 40px; background: radial-gradient(circle, #ff004f, #8b0000); 
+            border-radius: 50% 50% 10% 50%; filter: drop-shadow(0 0 5px #ff004f);
+        }
 
         /* Buttons */
-        .btn {
-            background: transparent; border: 2px solid var(--pink); color: white;
-            padding: 12px 35px; border-radius: 50px; font-size: 1.1rem;
-            cursor: pointer; box-shadow: var(--glow); transition: 0.3s;
+        .btn-glow {
+            background: none; border: 2px solid var(--pink); color: white;
+            padding: 12px 40px; border-radius: 50px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px;
+            box-shadow: 0 0 15px var(--pink); cursor: pointer; transition: 0.4s;
         }
 
-        /* Video Styling */
-        #video-page video { width: 100%; height: 100%; object-fit: cover; }
+        /* Video Logic */
+        #video-container video { width: 100%; height: 100%; object-fit: cover; }
 
-        /* SVG REAL ROSE */
-        .rose-container { width: 100px; height: 100px; margin: 0 auto; filter: drop-shadow(0 0 10px red); }
-        
-        /* Proposal Scene */
-        .proposal-scene {
-            position: relative; width: 100%; height: 250px; overflow: hidden;
-            margin-top: 20px;
+        /* Proposal Section */
+        .proposal-container { position: relative; width: 100%; height: 200px; margin-bottom: 20px; }
+        .neon-character { position: absolute; bottom: 10px; transition: all 3s ease-in-out; }
+        .boy-character { left: -60px; filter: drop-shadow(0 0 10px var(--blue)); }
+        .girl-character { right: 20px; filter: drop-shadow(0 0 10px var(--pink)); }
+
+        /* High Quality Auto Photo Slider */
+        .slider-wrapper {
+            width: 220px; height: 300px; margin: 0 auto;
+            position: relative; perspective: 1000px;
         }
-        .boy { position: absolute; left: -100px; bottom: 20px; width: 60px; transition: 3s linear; }
-        .girl { position: absolute; right: 20px; bottom: 20px; width: 60px; filter: drop-shadow(0 0 10px var(--pink)); }
-        
-        /* Photo Slider */
-        .slider-box {
-            width: 200px; height: 280px; position: relative;
-            perspective: 1000px; transform-style: preserve-3d;
-        }
-        .slide {
+        .slide-img {
             position: absolute; width: 100%; height: 100%;
-            border: 3px solid var(--blue); border-radius: 15px;
-            box-shadow: 0 0 20px var(--blue); object-fit: cover;
-            transition: 1s;
+            border-radius: 15px; object-fit: cover; border: 2px solid var(--pink);
+            box-shadow: 0 0 20px var(--pink); opacity: 0; transition: 1s ease-in-out;
+            transform: scale(0.8) rotateY(10deg);
         }
+        .slide-img.active-slide { opacity: 1; transform: scale(1) rotateY(0deg); }
 
-        /* GIF Section */
-        .gif-display { width: 100%; border-radius: 15px; margin-bottom: 15px; border: 1px solid var(--glass); }
-        
-        .tap-msg { font-weight: bold; font-size: 1.3rem; margin-top: 15px; display: none; }
+        /* GIF Styling */
+        .gif-main { width: 100%; border-radius: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .tap-reveal { font-size: 1.2rem; font-weight: 600; color: var(--blue); text-shadow: 0 0 10px var(--blue); display: none; margin-top: 10px; }
 
-        /* Copy Button Overlay */
-        #copy-overlay {
-            position: fixed; bottom: 20px; right: 20px; z-index: 1000;
-            background: var(--pink); color: white; padding: 10px; border-radius: 5px;
-            cursor: pointer; font-size: 0.8rem;
+        /* Heart Animation */
+        .floating-heart {
+            position: fixed; color: var(--pink); pointer-events: none;
+            z-index: 1000; animation: floatUp 4s linear forwards;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
 <canvas id="bg-canvas"></canvas>
-<audio id="main-music" src="tere-liye.mp3" loop></audio>
+<audio id="bg-audio" src="tere-liye.mp3" loop></audio>
 
 <header>
-    <div>Made by Sivasingh 💖</div>
-    <img src="https://unavatar.io/instagram/smss1708" class="insta-thumb">
-    <div class="insta-id">@smss1708</div>
+    <div class="header-text">Made by Sivasingh 💖</div>
+    <div class="insta-profile">
+        <img src="https://unavatar.io/instagram/smss1708" class="insta-thumb">
+        <span class="insta-handle">@smss1708</span>
+    </div>
 </header>
 
 <div id="p1" class="page active">
     <div class="glass-card">
-        <img src="intro.gif" class="gif-display">
-        <h1 class="neon-pink">Hey Morni 💖</h1>
-        <p class="msg-text">I have something very special to tell you. Will you listen with your heart?</p>
-        <button class="btn" onclick="startExperience()">Open 💌</button>
+        <img src="intro.gif" class="gif-main">
+        <h1 class="neon-title">Hey Morni 💖</h1>
+        <p class="romantic-text">I've built this little world just for you. Every pixel here carries a piece of my heart.</p>
+        <button class="btn-glow" onclick="startJourney()">Open 💌</button>
     </div>
 </div>
 
@@ -124,125 +135,184 @@
 
 <div id="p2" class="page">
     <div class="glass-card">
-        <p class="msg-text">“25 September was the day our eyes met for the first time — a silent eye contact that slowly became my favorite memory.”</p>
-        <div class="rose-container" onclick="showGifMsg(this, 'Every petal of this rose represents my love for you, Betuu ji.')">
-            <svg viewBox="0 0 100 100">
-                <path d="M50 95 Q50 70 50 50" stroke="#2d5a27" stroke-width="4" fill="none"/>
-                <path d="M50 50 Q70 30 50 10 Q30 30 50 50" fill="#ff004f"/>
-                <path d="M50 45 Q65 25 50 15 Q35 25 50 45" fill="#d4003f"/>
-            </svg>
+        <div class="rose-box">
+            <div class="rose-petal" style="transform: rotate(0deg)"></div>
+            <div class="rose-petal" style="transform: rotate(72deg)"></div>
+            <div class="rose-petal" style="transform: rotate(144deg)"></div>
+            <div class="rose-petal" style="transform: rotate(216deg)"></div>
+            <div class="rose-petal" style="transform: rotate(288deg)"></div>
         </div>
-        <div class="tap-msg neon-blue"></div>
+        <p class="romantic-text">“25 September was the day our eyes met for the first time — a silent eye contact that slowly became my favorite memory.”</p>
+        <img src="rose.gif" class="gif-main" onclick="handleTap(this, 'You are as beautiful as a blooming rose, Betuu ji.')">
+        <div class="tap-reveal">Click again to continue...</div>
     </div>
 </div>
 
-<div id="p3" class="page"><div class="glass-card"><img src="heart1.gif" class="gif-display" onclick="showGifMsg(this, 'You are the beat of my heart, Morni.')"><div class="tap-msg neon-pink"></div></div></div>
-<div id="p4" class="page"><div class="glass-card"><img src="heart2.gif" class="gif-display" onclick="showGifMsg(this, 'I found my world in your eyes.')"><div class="tap-msg neon-blue"></div></div></div>
+<div id="p3" class="page">
+    <div class="glass-card">
+        <img src="heart1.gif" class="gif-main" onclick="handleTap(this, 'My heart beats only for you, Dear Morni.')">
+        <div class="tap-reveal"></div>
+    </div>
+</div>
+
+<div id="p4" class="page">
+    <div class="glass-card">
+        <img src="heart2.gif" class="gif-main" onclick="handleTap(this, 'You are the rhythm to my soul.')">
+        <div class="tap-reveal"></div>
+    </div>
+</div>
 
 <div id="p5" class="page">
     <div class="glass-card">
-        <div class="proposal-scene">
-            <div class="boy" id="boy-bot">
-                <svg viewBox="0 0 100 100" width="60"><circle cx="50" cy="20" r="10" fill="#00d4ff"/><path d="M50 30 L50 70 L30 90 M50 70 L70 90 M30 50 L70 50" stroke="#00d4ff" stroke-width="3"/></svg>
-                <div style="position:absolute; top:40px; right:-10px; font-size:20px;">🌹</div>
+        <div class="proposal-container">
+            <div id="boy" class="neon-character boy-character">
+                <svg width="50" height="80" viewBox="0 0 50 80">
+                    <circle cx="25" cy="15" r="8" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                    <path d="M25 23 v30 m-10 15 l10 -15 l10 15 m-20 -20 h20" stroke="#00d4ff" stroke-width="2" fill="none"/>
+                    <text x="32" y="45" font-size="15">🌹</text>
+                </svg>
             </div>
-            <div class="girl">
-                <svg viewBox="0 0 100 100" width="60"><circle cx="50" cy="20" r="10" fill="#ff007f"/><path d="M50 30 L50 60 L30 90 M50 60 L70 90 M50 40 L80 40" stroke="#ff007f" stroke-width="3" fill="none"/></svg>
+            <div class="neon-character girl-character">
+                <svg width="50" height="80" viewBox="0 0 50 80">
+                    <circle cx="25" cy="15" r="8" fill="none" stroke="#ff007f" stroke-width="2"/>
+                    <path d="M25 23 v25 l-15 20 m15 -20 l15 20 m-25 -15 h20" stroke="#ff007f" stroke-width="2" fill="none"/>
+                </svg>
             </div>
         </div>
-        <p class="msg-text neon-pink" id="prop-text">Betuu ji, My life is incomplete without you...</p>
-        <button class="btn" id="prop-btn" style="display:none;" onclick="nextPage()">Accept 💖</button>
+        <p class="romantic-text" id="prop-msg">Betuu ji, every step I take is towards you...</p>
+        <button class="btn-glow" id="prop-btn" style="display:none;" onclick="nextPage()">Accept Forever 💖</button>
     </div>
 </div>
 
-<div id="p6" class="page"><div class="glass-card"><img src="hug.gif" class="gif-display" onclick="showGifMsg(this, 'A warm hug to solve all our worries.')"><div class="tap-msg neon-pink"></div></div></div>
-<div id="p7" class="page"><div class="glass-card"><img src="kiss.gif" class="gif-display" onclick="showGifMsg(this, 'A promise of forever in one kiss.')"><div class="tap-msg neon-blue"></div></div></div>
+<div id="p6" class="page">
+    <div class="glass-card">
+        <img src="hug.gif" class="gif-main" onclick="handleTap(this, 'I want to hold you and never let go.')">
+        <div class="tap-reveal"></div>
+    </div>
+</div>
+
+<div id="p7" class="page">
+    <div class="glass-card">
+        <img src="kiss.gif" class="gif-main" onclick="handleTap(this, 'A thousand kisses for my Morni.')">
+        <div class="tap-reveal"></div>
+    </div>
+</div>
 
 <div id="p8" class="page">
     <div class="glass-card">
-        <div class="slider-box" id="slider">
-            <img src="photo1.jpg" class="slide" style="transform: rotateY(0deg) translateZ(150px)">
-            <img src="photo2.jpg" class="slide" style="transform: rotateY(90deg) translateZ(150px)">
-            <img src="photo3.jpg" class="slide" style="transform: rotateY(180deg) translateZ(150px)">
-            <img src="photo4.jpg" class="slide" style="transform: rotateY(270deg) translateZ(150px)">
+        <div class="slider-wrapper" id="photo-slider">
+            <img src="photo1.jpg" class="slide-img active-slide">
+            <img src="photo2.jpg" class="slide-img">
+            <img src="photo3.jpg" class="slide-img">
+            <img src="photo4.jpg" class="slide-img">
         </div>
-        <p class="msg-text">Our Beautiful Memories...</p>
-        <button class="btn" onclick="nextPage()">Continue ✨</button>
+        <p class="romantic-text" style="margin-top:20px;">Every photo is a treasure of us.</p>
+        <button class="btn-glow" onclick="nextPage()">More Love ✨</button>
     </div>
 </div>
 
-<div id="p9" class="page"><div class="glass-card"><img src="cute.gif" class="gif-display" onclick="showGifMsg(this, 'You look so cute when you smile, Morni!')"><div class="tap-msg neon-pink"></div></div></div>
-<div id="p10" class="page"><div class="glass-card"><img src="promise.gif" class="gif-display" onclick="showGifMsg(this, 'I promise to be yours, always.')"><div class="tap-msg neon-blue"></div></div></div>
+<div id="p9" class="page">
+    <div class="glass-card">
+        <img src="cute.gif" class="gif-main" onclick="handleTap(this, 'You are the cutest person alive!')">
+        <div class="tap-reveal"></div>
+    </div>
+</div>
+
+<div id="p10" class="page">
+    <div class="glass-card">
+        <img src="promise.gif" class="gif-main" onclick="handleTap(this, 'I promise to stay, no matter what.')">
+        <div class="tap-reveal"></div>
+    </div>
+</div>
 
 <div id="p11" class="page">
     <div class="glass-card">
-        <img src="endlove.gif" class="gif-display">
-        <h2 class="neon-pink">Forever Yours</h2>
-        <p class="msg-text">“Dear Morni, this is not just a moment — it’s the beginning of everything I feel for you.”</p>
-        <p class="neon-blue" style="font-size: 1.5rem;">I Love You, Betuu ji! 💖</p>
+        <img src="endlove.gif" class="gif-main">
+        <h2 class="neon-title" style="font-size:2.2rem;">Forever Yours</h2>
+        <p class="romantic-text">“Dear Morni, this is not just a moment — it’s the beginning of everything I feel for you.”</p>
+        <div class="header-text" style="font-size:2rem; color:var(--blue);">I Love You!</div>
     </div>
 </div>
 
 <script>
-    let currentPage = 1;
-    const music = document.getElementById('main-music');
+    let currentStep = 1;
+    const audio = document.getElementById('bg-audio');
     const video = document.getElementById('love-video');
 
-    // Canvas Background
+    // Particles Background
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
     let particles = [];
 
-    function initParticles() {
-        for(let i=0; i<60; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 3,
-                color: i % 2 === 0 ? '#ff007f' : '#00d4ff',
-                vX: Math.random() * 1 - 0.5,
-                vY: Math.random() * 1 - 0.5
-            });
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.onresize = resize; resize();
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = Math.random() * 1 - 0.5;
+            this.speedY = Math.random() * 1 - 0.5;
+            this.color = Math.random() > 0.5 ? '#ff007f' : '#00d4ff';
+        }
+        update() {
+            this.x += this.speedX; this.y += this.speedY;
+            if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.shadowBlur = 10; ctx.shadowColor = this.color;
+            ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
         }
     }
 
-    function drawParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            p.x += p.vX; p.y += p.vY;
-            if(p.x < 0 || p.x > canvas.width) p.vX *= -1;
-            if(p.y < 0 || p.y > canvas.height) p.vY *= -1;
-            ctx.fillStyle = p.color;
-            ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
-        });
-        requestAnimationFrame(drawParticles);
-    }
-    initParticles(); drawParticles();
+    for(let i=0; i<70; i++) particles.push(new Particle());
 
-    function startExperience() {
-        music.volume = 0.35;
-        music.play();
-        playVideo();
+    function animate() {
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
     }
+    animate();
 
-    function playVideo() {
+    function spawnHeart() {
+        const h = document.createElement('div');
+        h.innerHTML = '💖';
+        h.className = 'floating-heart';
+        h.style.left = Math.random() * 100 + 'vw';
+        h.style.top = '105vh';
+        h.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 4000);
+    }
+    setInterval(spawnHeart, 400);
+
+    // Navigation & Logic
+    function startJourney() {
+        audio.volume = 0.35;
+        audio.play();
         showPage('p-video');
-        music.pause();
-        music.currentTime = 0;
+        audio.pause();
         video.play();
         video.onended = () => {
-            music.play();
+            audio.play();
             nextPage();
         };
     }
 
     function nextPage() {
-        currentPage++;
-        showPage('p' + currentPage);
-        if(currentPage === 5) runProposal();
-        if(currentPage === 8) runSlider();
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        currentStep++;
+        const target = document.getElementById('p' + currentStep);
+        if(target) target.classList.add('active');
+        
+        if(currentStep === 5) runProposal();
+        if(currentStep === 8) startAutoSlider();
     }
 
     function showPage(id) {
@@ -250,55 +320,38 @@
         document.getElementById(id).classList.add('active');
     }
 
-    function showGifMsg(el, text) {
-        const tapMsg = el.nextElementSibling;
-        if(tapMsg.style.display === 'block') {
+    function handleTap(el, msg) {
+        const reveal = el.nextElementSibling;
+        if(reveal.style.display === 'block') {
             nextPage();
         } else {
-            tapMsg.innerText = text;
-            tapMsg.style.display = 'block';
-            burstHearts();
+            reveal.innerText = msg;
+            reveal.style.display = 'block';
+            for(let i=0; i<10; i++) spawnHeart();
         }
     }
 
     function runProposal() {
-        const boy = document.getElementById('boy-bot');
+        const boy = document.getElementById('boy');
         setTimeout(() => {
-            boy.style.left = "calc(50% - 70px)";
+            boy.style.left = 'calc(50% - 60px)';
             setTimeout(() => {
-                document.getElementById('prop-text').innerText = "Will you be mine forever, Morni? 💍";
-                document.getElementById('prop-btn').style.display = "inline-block";
-                burstHearts();
+                document.getElementById('prop-msg').innerText = "Betuu ji, will you hold my hand forever?";
+                document.getElementById('prop-btn').style.display = 'inline-block';
+                for(let i=0; i<20; i++) spawnHeart();
             }, 3200);
         }, 500);
     }
 
-    let rotation = 0;
-    function runSlider() {
+    function startAutoSlider() {
+        let slides = document.querySelectorAll('.slide-img');
+        let index = 0;
         setInterval(() => {
-            rotation -= 90;
-            document.getElementById('slider').style.transform = `rotateY(${rotation}deg)`;
-        }, 3000);
-    }
-
-    function burstHearts() {
-        for(let i=0; i<15; i++) {
-            const h = document.createElement('div');
-            h.innerHTML = "💖";
-            h.style.position = "fixed";
-            h.style.left = Math.random() * 100 + "vw";
-            h.style.top = "100vh";
-            h.style.fontSize = Math.random() * 20 + 20 + "px";
-            h.style.transition = "3s";
-            h.style.zIndex = "1000";
-            document.body.appendChild(h);
-            setTimeout(() => {
-                h.style.top = "-10vh";
-                h.style.left = (Math.random() * 100) + "vw";
-                h.style.opacity = "0";
-            }, 10);
-            setTimeout(() => h.remove(), 3000);
-        }
+            slides[index].classList.remove('active-slide');
+            index = (index + 1) % slides.length;
+            slides[index].classList.add('active-slide');
+            spawnHeart();
+        }, 2500);
     }
 </script>
 
