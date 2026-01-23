@@ -1,575 +1,293 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
-    <meta name="description" content="Artillio Yepmo - Ingénieur DevOps & Développeur Full-Stack | Expert CI/CD, Kubernetes, IaC, Cloud (AWS/GCP), C#/.NET, Java/Spring. Disponible pour missions et CDI en 2025.">
-    <meta name="keywords" content="Artillio Yepmo, DevOps Engineer, Platform Engineering, Full-Stack Developer, CI/CD, GitOps, Kubernetes, Docker, Terraform, Ansible, AWS, GCP, Azure, C#, .NET, Java, Spring Boot, React, Angular, FinOps, SRE, Observability">
-    <meta name="author" content="Artillio Yepmo">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0a0a0a">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://digitillio.netlify.app/">
-    <meta property="og:title" content="Artillio Yepmo - Ingénieur DevOps & Full-Stack | Expert Cloud & Automation">
-    <meta property="og:description" content="Portfolio d'un ingénieur passionné par l'automatisation, le Platform Engineering et le développement Full-Stack. Expertise CI/CD, Kubernetes, IaC et Cloud.">
-    <meta property="og:image" content="https://digitillio.netlify.app/ressources/logo.png">
-    <meta property="og:locale" content="fr_FR">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Artillio Yepmo - Ingénieur DevOps & Full-Stack">
-    <meta name="twitter:description" content="Expert CI/CD, Kubernetes, IaC, Cloud et développement Full-Stack (C#, Java/Spring, React).">
-    <meta name="twitter:image" content="https://digitillio.netlify.app/ressources/logo.png">
-
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-    <!-- Critical CSS inline preload -->
-    <link rel="preload" href="styles/style.css?v=8" as="style">
-    <link rel="preload" href="ressources/Artillio.png" as="image">
-
-    <!-- Fonts with display swap -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Stylesheets -->
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet"/>
-    <link href="styles/style.css?v=8" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" media="print" onload="this.media='all'">
-
-    <!-- Favicon -->
-    <link rel="icon" href="/ressources/logo.png" type="image/png">
-    <link rel="apple-touch-icon" href="/ressources/logo.png">
-
-    <title>Artillio Yepmo | Ingénieur DevOps & Full-Stack - Portfolio 2025</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>For Morni 💖</title>
+<style>
+:root {
+--neon-pink: #ff2d75;
+--neon-blue: #18ffff;
+--glass: rgba(255, 255, 255, 0.1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
+body { background: #050505; color: #fff; overflow: hidden; height: 100vh; width: 100vw; touch-action: manipulation; }
+#header { position: fixed; top: 15px; width: 100%; text-align: center; z-index: 1000; pointer-events: none; }
+#header .made-by { font-size: 14px; letter-spacing: 1px; color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); margin-bottom: 5px; font-weight: bold; }
+#header a { pointer-events: auto; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+#header img { width: 35px; height: 35px; border-radius: 50%; border: 2px solid var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); object-fit: cover; }
+#header .insta-handle { color: #fff; font-size: 12px; opacity: 0.8; }
+#canvas-bg { position: fixed; top: 0; left: 0; z-index: -1; }
+.page { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.8s ease, visibility 0.8s; padding: 20px; text-align: center; }
+.page.active { opacity: 1; visibility: visible; }
+.glass-card { background: var(--glass); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 25px; width: 90%; max-width: 400px; box-shadow: 0 0 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.05); position: relative; overflow: hidden; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; cursor: pointer; }
+.card-open { transform: rotateY(180deg); }
+.card-content { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.card-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 15, 15, 0.98); backface-visibility: hidden; -webkit-backface-visibility: hidden; transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; padding: 25px; color: #fff; font-size: 18px; line-height: 1.6; border-radius: 20px; border: 1px solid var(--neon-blue); box-shadow: inset 0 0 20px var(--neon-blue); }
+.neon-text-pink { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); }
+.neon-text-blue { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
+.gif-container { width: 100%; height: 180px; margin-bottom: 20px; border-radius: 12px; overflow: hidden; border: 1px solid var(--glass); background: #000; }
+.gif-container img { width: 100%; height: 100%; object-fit: cover; }
+.btn { margin-top: 20px; padding: 12px 30px; border: 2px solid var(--neon-pink); background: transparent; color: #fff; border-radius: 50px; text-transform: uppercase; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px var(--neon-pink); animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+#mute-btn { position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px; border-radius: 50%; background: var(--glass); border: 1px solid var(--neon-blue); color: var(--neon-blue); display: flex; align-items: center; justify-content: center; z-index: 1001; cursor: pointer; font-size: 20px; box-shadow: 0 0 10px var(--neon-blue); }
+#intro-video-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; background: #000; display: none; transition: opacity 1s; }
+video { width: 100%; height: 100%; object-fit: cover; }
+.scene-container { position: relative; width: 300px; height: 250px; margin-top: 20px; overflow: hidden; border-bottom: 2px solid var(--neon-blue); }
+.character { position: absolute; bottom: 0; width: 60px; height: 100px; }
+.boy { left: -80px; filter: drop-shadow(0 0 8px var(--neon-blue)); transition: left 3.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.girl { right: 20px; filter: drop-shadow(0 0 8px var(--neon-pink)); }
+.rose-mini { position: absolute; bottom: 35px; left: 45px; width: 25px; opacity: 0; transition: opacity 0.5s 3.5s; filter: drop-shadow(0 0 5px red); }
+.slider-container { width: 240px; height: 320px; perspective: 1000px; margin: 20px auto; }
+.slider { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; animation: rotateSlider 15s infinite linear; }
+.slide { position: absolute; width: 100%; height: 100%; border: 2px solid var(--neon-blue); border-radius: 15px; box-shadow: 0 0 15px var(--neon-blue); overflow: hidden; backface-visibility: hidden; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+.slide:nth-child(1) { transform: rotateY(0deg) translateZ(150px); }
+.slide:nth-child(2) { transform: rotateY(90deg) translateZ(150px); }
+.slide:nth-child(3) { transform: rotateY(180deg) translateZ(150px); }
+.slide:nth-child(4) { transform: rotateY(270deg) translateZ(150px); }
+@keyframes rotateSlider { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+.heart-burst { position: absolute; pointer-events: none; z-index: 1002; font-size: 24px; animation: burst 1.2s ease-out forwards; }
+@keyframes burst { 0% { transform: translateY(0) scale(0.5); opacity: 1; } 100% { transform: translateY(-150px) scale(1.5); opacity: 0; } }
+</style>
 </head>
-<body>
-    <!-- Skip link for accessibility -->
-    <a href="#accueil" class="skip-link">Aller au contenu principal</a>
+<body onclick="handleInteraction()">
 
-    <nav class="navbar" role="navigation" aria-label="Navigation principale">
-        <div class="nav-content">
-            <div id="hamburger" class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div id="nav-menu" class="nav-menu">
-                <a href="#accueil" class="nav-link">Accueil</a>
-                <a href="#portfolio" class="nav-link">Portfolio</a>
-                <a href="#about" class="nav-link">À Propos</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-        </div>
-    </nav>
+<div id="header">
+    <div class="made-by">Made by Sivasingh 💖</div>
+    <a href="https://www.instagram.com/smss1708" target="_blank">
+        <img src="https://instagram.fdel1-2.fna.fbcdn.net/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fdel1-2.fna.fbcdn.net&_nc_cat=1&_nc_ohc=abc&edm=AIWpxGQBAAAA&ccb=7-5&oh=00_AfC-f&oe=65E1" onerror="this.src='https://via.placeholder.com/150/ff2d75/ffffff?text=S'" alt="Sivasingh">
+        <span class="insta-handle">@smss1708</span>
+    </a>
+</div>
 
-    <section id="accueil" class="welcome-section">
-        <div class="welcome-content container-fluid">
-            <div class="row align-items-center">
-                <div class="col-12 col-lg-6 order-1 order-lg-1">
-                    <div class="cyber-box">
-                        <div class="cyber-lines"></div>
-                        <div class="glitch-container">
-                            <div class="glitch" data-text="Artillio">Artillio</div>
-                            <div class="typing-text">Ingénieur Informatique</div>
-                            <div class="cyber-badge">Platform Engineering <span class="cyber-dot"></span> Full-Stack Dev <span class="cyber-dot"></span> Cloud & GitOps</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 order-2 order-lg-2 text-center">
-                    <div class="cyber-profile" id="cyber-profile">
-                        <!-- Anneau orbital interne -->
-                        <div class="orbit-ring"></div>
-                        <!-- Particules orbitales -->
-                        <div class="orbital-particle"></div>
-                        <div class="orbital-particle"></div>
-                        <div class="orbital-particle"></div>
-                        <!-- Ligne de scan holographique -->
-                        <div class="cyber-scan-line"></div>
-                        <!-- Photo de profil -->
-                        <img src="ressources/Artillio.png" alt="Artillio Yepmo - Photo de profil d'ingénieur en informatique" class="profile-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<canvas id="canvas-bg"></canvas>
 
-    <div class="py-5" id="portfolio">
-        <h2 class="text-center mb-5 text-uppercase fade-in portfolio-title" data-aos="fade-up">Portfolio de Réalisations Techniques</h2>
-        <div class="container py-5">
-        <div class="row">
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card-container mb-4">
-                <div class="card-flip">
-                    <div class="card-front mb-4 shadow-sm depth-effect">
-                        <img alt="Développement Full-Stack Orange" class="card-img-top fade-in" data-aos="zoom-in" src="ressources/angular-icon.svg" loading="lazy" width="480" height="240"/>
-                        <div class="card-body">
-                            <h4 class="fade-in">Projet Orange - Full-Stack</h4>
-                            <div class="mt-auto text-center">
-                                <span class="text-muted">Survolez pour les détails techniques</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <div class="card-body">
-                            <h4 class="fade-in">Projet Orange - Full-Stack</h4>
-                            <p class="fade-in">Développement d'un portail de candidature Angular 16 + Node/Express (REST) avec MongoDB/Mongoose et Redis (sessions/cache) ; auth OIDC (front) + JWT/Passport (back) avec protections CORS/CSRF et rate‑limit. APIs (/communities, /stats, /auth/login/oidc), proxy HTTPS 4443→4041.</p>
-                            <div class="mt-auto text-center">
-                                <a href="https://github.com/Artillio7/oema-platform" target="_blank">
-                                    <button class="btn btn-danger" type="button">Voir le projet</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card-container mb-4">
-                <div class="card-flip">
-                    <div class="card-front mb-4 shadow-sm depth-effect">
-                        <img alt="Pipelines CI/CD" class="card-img-top fade-in" data-aos="zoom-in" src="ressources/animation.jpg" loading="lazy" width="480" height="240" srcset="ressources/animation.jpg 1200w, ressources/animation.jpg 800w, ressources/animation.jpg 480w" sizes="(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw"/>
-                        <div class="card-body">
-                            <h4 class="fade-in">Ingénierie CI/CD</h4>
-                            <div class="mt-auto text-center">
-                                <span class="text-muted">Survolez pour les détails techniques</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <div class="card-body">
-                            <h4 class="fade-in">Ingénierie CI/CD</h4>
-                            <p class="fade-in">Conception de pipelines d'intégration et de déploiement continu avec GitLab CI, Jenkins et GitHub Actions. Automatisation des builds, tests multi-niveaux et déploiements canary pour fiabiliser les mises en production et réduire le time-to-market.</p>
-                            <div class="mt-auto text-center">
-                                <a href="https://github.com/Artillio7/PORTE-FOLIO" target="_blank">
-                                    <button class="btn btn-danger" type="button">Voir un exemple (ce site)</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card-container mb-4">
-                <div class="card-flip">
-                    <div class="card-front mb-4 shadow-sm depth-effect">
-                        <img alt="Portfolio en déploiement continu" class="card-img-top fade-in" data-aos="zoom-in" src="ressources/SiteMenu.png" loading="lazy" width="480" height="240" srcset="ressources/SiteMenu.png 1200w, ressources/SiteMenu.png 800w, ressources/SiteMenu.png 480w" sizes="(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw"/>
-                        <div class="card-body">
-                            <h4 class="fade-in">Portfolio en Déploiement Continu</h4>
-                            <div class="mt-auto text-center">
-                                <span class="text-muted">Survolez pour les détails techniques</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-back mb-4 shadow-sm depth-effect">
-                        <div class="card-body d-flex flex-column justify-content-center">
-                            <h4 class="fade-in">Portfolio en Déploiement Continu</h4>
-                            <p class="fade-in">Ce portfolio est une démonstration pratique de CI/CD. Développé en vanilla JS/HTML/CSS, chaque `push` sur la branche `main` déclenche un pipeline GitHub Actions qui valide, teste et déploie le site sur Netlify. Une vitrine de l'automatisation de bout en bout.</p>
-                            <div class="mt-auto text-center">
-                                <a class="text-dark" href="https://github.com/Artillio7/PORTE-FOLIO" target="_blank">
-                                    <button class="btn btn-danger" type="button">Consulter le Pipeline</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card-container mb-4">
-                <div class="card-flip">
-                    <div class="card-front mb-4 shadow-sm depth-effect">
-                        <img alt="Application Angular et API REST" class="card-img-top fade-in" data-aos="zoom-in" src="ressources/MeteoApp.png" loading="lazy" width="480" height="240" srcset="ressources/MeteoApp.png 1200w, ressources/MeteoApp.png 800w, ressources/MeteoApp.png 480w" sizes="(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw"/>
-                        <div class="card-body">
-                            <h4 class="fade-in">Application Angular & API REST</h4>
-                            <div class="mt-auto text-center">
-                                <span class="text-muted">Survolez pour les détails techniques</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <div class="card-body">
-                            <h4 class="fade-in">Application Angular & API REST</h4>
-                            <p class="fade-in">Développement d'une application météo en Angular démontrant la gestion d'état côté client, la communication asynchrone avec des APIs REST et une couverture de tests unitaires pour garantir la fiabilité des composants et services.</p>
-                            <div class="mt-auto text-center">
-                                <a href="https://github.com/Artillio7/meteoAngular-" target="_blank">
-                                    <button class="btn btn-danger" type="button">Explorer le Code</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card-container mb-4">
-                <div class="card-flip">
-                    <div class="card-front mb-4 shadow-sm depth-effect">
-                        <img alt="Infrastructure as Code" class="card-img-top fade-in" data-aos="zoom-in" src="ressources/grid.jpg" loading="lazy" width="480" height="240" srcset="ressources/grid.jpg 1200w, ressources/grid.jpg 800w, ressources/grid.jpg 480w" sizes="(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw"/>
-                        <div class="card-body">
-                            <h4 class="fade-in">Infrastructure as Code (IaC)</h4>
-                            <div class="mt-auto text-center">
-                                <span class="text-muted">Survolez pour les détails techniques</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-back mb-4 shadow-sm depth-effect">
-                        <div class="card-body d-flex flex-column justify-content-center">
-                            <h4 class="fade-in">Infrastructure as Code (IaC)</h4>
-                            <p class="fade-in">Architecture d'infrastructures cloud via Terraform et Ansible pour provisionner des environnements AWS/GCP reproductibles et versionnés. Cette approche GitOps garantit des déploiements scalables, auditables et une cohérence totale entre les environnements.</p>
-                            <div class="mt-auto text-center">
-                                <a class="text-dark" href="https://github.com/Artillio7/jboss-domain-ansible" target="_blank">
-                                    <button class="btn btn-danger" type="button">Voir un exemple de code</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card-container mb-4">
-                <div class="card-flip">
-                    <div class="card-front mb-4 shadow-sm depth-effect">
-                        <img alt="Orchestration de conteneurs" class="card-img-top fade-in" data-aos="zoom-in" src="ressources/SiteResPic.jpg" loading="lazy" width="480" height="240" srcset="ressources/SiteResPic.jpg 1200w, ressources/SiteResPic.jpg 800w, ressources/SiteResPic.jpg 480w" sizes="(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw"/>
-                        <div class="card-body">
-                            <h4 class="fade-in">Orchestration de Conteneurs</h4>
-                            <div class="mt-auto text-center">
-                                <span class="text-muted">Survolez pour les détails techniques</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <div class="card-body">
-                            <h4 class="fade-in">Orchestration de Conteneurs</h4>
-                            <p class="fade-in">Déploiement de l'application 'Conciergerie' (Java Spring Boot/React) sur un cluster Kubernetes. Maîtrise de la conteneurisation Docker, de la configuration de services résilients (liveness/readiness probes) et des déploiements sans interruption (zero-downtime).</p>
-                            <div class="mt-auto text-center">
-                                <a class="text-dark" href="https://github.com/Artillio7/reddit-comment-cards" target="_blank">
-                                    <button class="btn btn-danger" type="button">Explorer les manifestes K8s</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card-container mb-4">
-                <div class="card-flip">
-                    <div class="card-front mb-4 shadow-sm depth-effect">
-                        <img alt="Observabilité & DataOps" class="card-img-top fade-in" data-aos="zoom-in" src="ressources/Visu.jpg" loading="lazy" width="480" height="240" srcset="ressources/Visu.jpg 1200w, ressources/Visu.jpg 800w, ressources/Visu.jpg 480w" sizes="(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw"/>
-                        <div class="card-body">
-                            <h4 class="fade-in">Observabilité & DataOps</h4>
-                            <div class="mt-auto text-center">
-                                <span class="text-muted">Survolez pour les détails techniques</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <div class="card-body">
-                            <h4 class="fade-in">Observabilité & DataOps</h4>
-                            <p class="fade-in">Déploiement de la stack ELK (Elasticsearch, Logstash, Kibana) et de dashboards Grafana pour la centralisation des logs et métriques. L'objectif : passer d'un monitoring réactif à une analyse proactive des performances système et applicatives.</p>
-                            <div class="mt-auto text-center">
-                                <a class="text-dark" href="https://github.com/Artillio7/ensim-devops-git-grp3/blob/main/how%20to%20integrate%20Github%20with%20Jenkins.pdf" target="_blank">
-                                    <button class="btn btn-danger" type="button">Voir la documentation</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card-container mb-4">
-                <div class="card-flip">
-                    <div class="card-front mb-4 shadow-sm depth-effect">
-                        <img alt="Scripting d'automatisation" class="card-img-top fade-in" data-aos="zoom-in" src="ressources/js.jpg" loading="lazy" width="480" height="240" srcset="ressources/js.jpg 1200w, ressources/js.jpg 800w, ressources/js.jpg 480w" sizes="(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw"/>
-                        <div class="card-body">
-                            <h4 class="fade-in">Scripting d'Automatisation</h4>
-                            <div class="mt-auto text-center">
-                                <span class="text-muted">Survolez pour les détails techniques</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <div class="card-body">
-                            <h4 class="fade-in">Scripting d'Automatisation</h4>
-                            <p class="fade-in">Création de scripts en Bash, Python et JavaScript pour automatiser des tâches d'administration : backups de bases de données, provisionnement d'environnements de test, rotation de logs et conduite de tests de charge pour garantir la robustesse des déploiements.</p>
-                            <div class="mt-auto text-center">
-                                <a class="text-dark" href="https://github.com/Artillio7?tab=repositories" target="_blank">
-                                    <button class="btn btn-danger" type="button">Parcourir mes scripts</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card-container mb-4">
-                <div class="card-flip">
-                    <div class="card-front mb-4 shadow-sm depth-effect">
-                        <img alt="Boutique en ligne moderne développée avec React" class="card-img-top fade-in" data-aos="zoom-in" src="ressources/ReactTwitch.png" loading="lazy" width="480" height="240" srcset="ressources/ReactTwitch.png 1200w, ressources/ReactTwitch.png 800w, ressources/ReactTwitch.png 480w" sizes="(min-width: 992px) 33vw, (min-width: 768px) 50vw, 100vw"/>
-                        <div class="card-body">
-                            <h4 class="fade-in">E-commerce From Scratch (React)</h4>
-                            <div class="mt-auto text-center">
-                                <span class="text-muted">Survolez pour les détails techniques</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-back">
-                        <div class="card-body">
-                            <h4 class="fade-in">Stack Technique & Architecture</h4>
-                            <p class="fade-in">
-                                Développement d'une interface dynamique avec <strong>React (Next.js)</strong> pour le SEO et la performance. Gestion de l'état global (panier, utilisateur) avec <strong>Redux Toolkit</strong>, et intégration d'une API <strong>GraphQL</strong> pour les données produits.
-                            </p>
-                            <div class="mt-auto text-center">
-                                <a class="text-dark" href="https://github.com/saleor/saleor-storefront.git" target="_blank">
-                                    <button class="btn btn-danger" type="button">Explorer le code</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        <section class="py-5" id="services">
-            <div class="container">
-                <h2 class="text-center mb-5 text-uppercase fade-in" data-aos="fade-up">Mon Offre de Services</h2>
-                <div class="row">
-                    <div class="col-lg-4 mb-4">
-                        <div class="service-card">
-                            <img class="circular-img" alt="Automatisation CI/CD" data-aos="zoom-in" height="120" src="ressources/Automation.png" width="120"/>
-                            <h2 class="text-center fade-in" data-aos="fade-up">Automatisation CI/CD</h2>
-                            <div class="framework-description depth-effect">
-                                <h6>Je conçois vos pipelines CI/CD (Jenkins, GitLab CI, GitHub Actions) pour accélérer vos cycles de livraison tout en renforçant la qualité et la sécurité de votre code.</h6>
-                            </div>
-                            <p>
-                                <a class="btn btn-secondary mb-2" href="#portfolio" role="button">Voir mes réalisations »</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="service-card">
-                            <img class="circular-img" alt="Infrastructure as Code" data-aos="zoom-in" height="140" src="ressources/infrastructure_as_code.jpg" width="140"/>
-                            <h2 class="text-center fade-in" data-aos="fade-up">Infrastructure as Code</h2>
-                            <div class="framework-description depth-effect">
-                                <h6>Je traduis vos infrastructures cloud (AWS, GCP) en code avec Terraform et Ansible pour des déploiements rapides, cohérents et une maîtrise optimisée des coûts.</h6>
-                            </div>
-                            <p>
-                                <a class="btn btn-secondary mb-2" href="#portfolio" role="button">Voir mes réalisations »</a>
-                            </p>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    <div class="col-lg-4 mb-4">
-                        <div class="service-card">
-                            <img class="circular-img" alt="Observabilité et Monitoring" data-aos="zoom-in" height="140" src="ressources/Monitoring.jpeg" width="140"/>
-                            <h2 class="text-center fade-in" data-aos="fade-up">Observabilité & Monitoring</h2>
-                            <div class="framework-description depth-effect">
-                                <h6>Je mets en place des plateformes d'observabilité (Prometheus, Grafana, ELK) pour une détection proactive des anomalies et une analyse fine des performances de vos systèmes.</h6>
-                            </div>
-                            <p>
-                                <a class="btn btn-secondary mb-2" href="#portfolio" role="button">Voir mes réalisations »</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div id="intro-video-wrap">
+    <video id="intro-vid" playsinline muted>
+        <source src="intro-love.mp4" type="video/mp4">
+    </video>
+</div>
 
-        <section class="py-5" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                        <div class="about-content depth-effect">
-                            <h2 class="text-center text-uppercase text-white pb-4 mb-5 fade-in" data-aos="fade-up">À Propos</h2>
-                
-                            <div class="row">
-                                <div class="col-lg-5 ml-auto">
-                                    <h3 class="fade-in mb-3" data-aos="fade-up">MA VISION</h3>
-                                    <p class="lead" data-aos="fade-in">Je conçois et déploie des plateformes cloud-native résilientes et automatisées. Mon expertise couvre le <strong>Platform Engineering</strong>, le <strong>CI/CD</strong> (GitHub Actions, GitLab CI, Jenkins), l'<strong>Infrastructure as Code</strong> (Terraform, Ansible) et l'<strong>orchestration Kubernetes</strong>. Côté développement, je maîtrise <strong>C#/.NET</strong>, <strong>Java/Spring Boot</strong> et les frameworks front modernes (React, Angular). J'accompagne les équipes vers des pratiques GitOps, FinOps et une observabilité proactive.</p>
-                                </div>
+<button id="mute-btn">🎵</button>
 
-                                <div class="col-lg-1 d-none d-lg-flex align-items-center justify-content-center">
-                                    <hr class="my-4" style="background-color: white; height: 200px; width: 2px;">
-                                </div>
-
-                                <div class="col-12 d-lg-none my-4">
-                                    <hr style="background-color: white; height: 2px;">
-                                </div>
-
-                                <div class="col-lg-5 mr-auto">
-                                    <h3 class="fade-in mb-3" data-aos="fade-up">MON PARCOURS</h3>
-                                    <p class="lead" data-aos="fade-in">Diplômé de l'<strong>ENSIM</strong> (École Nationale Supérieure d'Ingénieurs du Mans, réseau Polytech) en 2025, spécialisation Interaction Personnes-Systèmes. Expérience concrète chez <strong>Orange</strong> sur des projets Full-Stack et DevOps critiques. Certifié et passionné par les pratiques SRE, l'automatisation AI-driven et l'optimisation des coûts cloud (FinOps).</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        
-        </div>
-        </section>
-        <section class="text-white py-5 stellar-visible" id="contact">
-            <div class="container">
-                <h2 class="text-center mb-5 text-uppercase fade-in" data-aos="fade-up">Contact</h2>
-                
-                <div class="row justify-content-center mb-5">
-                    <div class="col-lg-8">
-                        <div class="contact-info">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="contact-item mb-4" data-aos="fade-up">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <h4>Localisation</h4>
-                                        <p>4 Rue Jean-Jacques Rousseau, 94200 Ivry-sur-Seine</p>
-                                    </div>
-                                    
-                                    <div class="contact-item mb-4" data-aos="fade-up">
-                                        <i class="fas fa-phone"></i>
-                                        <h4>Téléphone</h4>
-                                        <p><a href="tel:+33767094784" class="text-white">+33 7 67 09 47 84</a></p>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="contact-item mb-4" data-aos="fade-up">
-                                        <i class="fab fa-linkedin"></i>
-                                        <h4>LinkedIn</h4>
-                                        <p><a href="https://www.linkedin.com/in/artillio-yepmo-201220184/" target="_blank" class="text-white">Artillio YEPMO</a></p>
-                                    </div>
-                                    
-                                    <div class="contact-item mb-4" data-aos="fade-up">
-                                        <i class="fas fa-car"></i>
-                                        <h4>Mobilité</h4>
-                                        <p>Permis B – Mobile en Île-de-France et dans toute la France</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center" style="margin-top: 0; margin-bottom: 150px;">
-                    <a class="btn btn-xl btn-outline-light" href="#form_message" onclick="document.getElementById('form_message').focus();">
-                       Discutons de votre projet
-                    </a>
-                </div>
-
-                <div class="row justify-content-center mt-4">
-                    <div class="col-lg-8">
-                        <form id="contact-form" action="https://formspree.io/f/meoezzlo" method="POST" role="form">
-                            <div class="messages"></div>
-                            <div class="controls">
-                                <div class="form-group mb-4">
-                                    <label for="form_name">Prénom *</label>
-                                    <input class="form-control" data-error="Le prénom est requis." id="form_name" name="name" required="required" type="text"/>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="form_lastname">Nom *</label>
-                                    <input class="form-control" data-error="Le nom est requis." id="form_lastname" name="surname" required="required" type="text"/>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="form_email">Email *</label>
-                                    <input class="form-control" data-error="Une adresse email valide est requise." id="form_email" name="_replyto" required="required" type="email"/>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="form_message">Message *</label>
-                                    <textarea class="form-control" data-error="Veuillez laisser un message." id="form_message" name="message" required="required" rows="4"></textarea>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                                <div class="text-left">
-                                    <button type="submit" class="btn btn-success btn-send px-5">
-                                        Envoyer
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </section>
-        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="projectDescriptionModal" role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title fade-in" id="exampleModalLabel">Description du projet</h5>
-        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-        <span aria-hidden="true">×</span>
-        </button>
-        </div>
-        <div class="modal-body">
-        </div>
-        <div class="modal-footer">
-        <button class="btn btn-secondary" data-dismiss="modal" type="button">Fermer</button>
-        </div>
-        </div>
-        </div>
-        </div>
-        <footer class="footer text-white">
-        <p class="text-center m-0" data-aos="fade-in">
-                © 2025 - Tous Droits Réservés - Artillio Yepmo
-            </p>
-        </footer>
-
-        <!-- Bouton retour en haut -->
-        <button id="back-to-top" class="back-to-top" aria-label="Retour en haut de page" title="Retour en haut">
-            <i class="fas fa-chevron-up"></i>
-        </button>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        
-        <script type="module">
-            import { AdvancedAnimations } from './modules/advanced-animations.js?v=4';
-
-            document.addEventListener('DOMContentLoaded', () => {
-                // Initialisation du moteur stellaire avancé
-                const animations = new AdvancedAnimations();
-
-                // API disponible: window.stellarEngine
-                // - stellarEngine.triggerShootingStar() : déclenche une étoile filante
-                // - stellarEngine.setMouseInfluence(radius) : ajuste le rayon d'interaction
-                // - Double-clic n'importe où pour une étoile filante surprise!
-            });
-        </script>
-        <script src="modules/app.js"></script>
-        <script>
-            // Ajout de la logique de rotation pour les cartes de projet
-            const projectCards = document.querySelectorAll('.card');
-
-            projectCards.forEach((card) => {
-                card.addEventListener('mouseover', () => {
-                    card.classList.add('rotate');
-                });
-
-                card.addEventListener('mouseout', () => {
-                    card.classList.remove('rotate');
-                });
-            });
-        </script>
+<div id="p1" class="page active">
+    <div class="glass-card">
+        <div class="gif-container"><img src="intro.gif" alt="Intro"></div>
+        <h2 class="neon-text-pink">Hey Morni 💖</h2>
+        <p style="margin: 15px 0; line-height: 1.6; font-size: 17px;">I wanted to create something as special as the way you make me feel. Just a small window into my heart...</p>
+        <button class="btn">Open 💌</button>
     </div>
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
-    <div class="elfsight-app-7c4b7de4-84c5-42b4-b773-c1ce0e1b67c1" data-elfsight-app-lazy></div>
+</div>
+
+<div id="p2" class="page">
+    <h2 class="neon-text-blue" style="margin-bottom: 20px;">A Special Date...</h2>
+    <div class="glass-card" onclick="openCard(this)">
+        <div class="card-content">
+            <div class="gif-container"><img src="cute.gif" alt="Cute"></div>
+            <p class="neon-text-pink">Tap to reveal a memory...</p>
+        </div>
+        <div class="card-back">
+            “25 September was the day our eyes met for the first time… a simple eye contact that quietly stayed with my heart.”
+        </div>
+    </div>
+</div>
+
+<div id="p3" class="page">
+    <div class="scene-container">
+        <div class="character boy" id="boy-char">
+            <svg viewBox="0 0 100 200" width="60"><circle cx="50" cy="30" r="15" fill="#18ffff"/><line x1="50" y1="45" x2="50" y2="120" stroke="#18ffff" stroke-width="4"/><line x1="50" y1="60" x2="20" y2="100" stroke="#18ffff" stroke-width="4"/><line x1="50" y1="60" x2="80" y2="100" id="arm-r" stroke="#18ffff" stroke-width="4"/><line x1="50" y1="120" x2="30" y2="170" stroke="#18ffff" stroke-width="4"/><line x1="50" y1="120" x2="70" y2="170" stroke="#18ffff" stroke-width="4"/></svg>
+            <img src="rose.gif" class="rose-mini" id="rose-gift">
+        </div>
+        <div class="character girl">
+            <svg viewBox="0 0 100 200" width="60"><circle cx="50" cy="30" r="15" fill="#ff2d75"/><path d="M50 45 L20 120 L80 120 Z" fill="#ff2d75"/><line x1="50" y1="120" x2="35" y2="170" stroke="#ff2d75" stroke-width="4"/><line x1="50" y1="120" x2="65" y2="170" stroke="#ff2d75" stroke-width="4"/></svg>
+        </div>
+    </div>
+    <div id="scene-msg" style="margin-top: 30px; opacity:0; transition: opacity 1s;">
+        <h3 class="neon-text-pink">For you, Betuu ji...</h3>
+        <p style="margin: 10px 0;">Just a small gesture to say how much I admire you.</p>
+        <button class="btn" onclick="nextPage(3)">Next 💖</button>
+    </div>
+</div>
+
+<div id="p4" class="page">
+    <div class="glass-card" onclick="openCard(this)">
+        <div class="card-content">
+            <div class="gif-container"><img src="heart1.gif" alt="Hearts"></div>
+            <h3 class="neon-text-blue">Dear Morni...</h3>
+            <p>Tap to read my heart.</p>
+        </div>
+        <div class="card-back">
+            Every time I see you, my world gets a little brighter. It's not about big promises, it's about how real and beautiful you are, Betuu ji.
+        </div>
+    </div>
+</div>
+
+<div id="p5" class="page">
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide"><img src="photo1.jpg" onerror="this.src='https://via.placeholder.com/240x320/ff2d75/ffffff?text=Dear+Morni'"></div>
+            <div class="slide"><img src="photo2.jpg" onerror="this.src='https://via.placeholder.com/240x320/18ffff/ffffff?text=Betuu+Ji'"></div>
+            <div class="slide"><img src="photo3.jpg" onerror="this.src='https://via.placeholder.com/240x320/ff2d75/ffffff?text=Always+Smiling'"></div>
+            <div class="slide"><img src="photo4.jpg" onerror="this.src='https://via.placeholder.com/240x320/18ffff/ffffff?text=Our+Memory'"></div>
+        </div>
+    </div>
+    <p class="neon-text-pink" style="margin-top: 20px;">Every memory of you is a treasure.</p>
+    <button class="btn" onclick="nextPage(5)">Continue 💌</button>
+</div>
+
+<div id="p6" class="page">
+    <div class="glass-card" onclick="openCard(this)">
+        <div class="card-content">
+            <div class="gif-container"><img src="promise.gif" alt="Promise"></div>
+            <p>One more thing...</p>
+        </div>
+        <div class="card-back">
+            I don't know where the path leads, but I know I want to keep respecting and admiring you every step of the way, Betuu ji.
+        </div>
+    </div>
+</div>
+
+<div id="p7" class="page">
+    <div class="gif-container" style="width: 150px; height: 150px; border-radius: 50%;"><img src="endlove.gif" alt="End"></div>
+    <div class="glass-card" style="margin-top: 20px; border-color: var(--neon-pink); pointer-events: none;">
+        <p style="font-size: 18px; line-height: 1.6;">“Sometimes feelings don’t need big words… just honesty, respect, and a little courage.”</p>
+        <p style="margin-top: 15px; color: var(--neon-blue);">You are truly special to me, Morni. 💖</p>
+    </div>
+</div>
+
+<audio id="bg-music" loop>
+    <source src="Darling-Hold-My-Hand.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let bgMusic = document.getElementById('bg-music');
+let introVid = document.getElementById('intro-vid');
+let introWrap = document.getElementById('intro-video-wrap');
+let muteBtn = document.getElementById('mute-btn');
+let canvas = document.getElementById('canvas-bg');
+let ctx = canvas.getContext('2d');
+let initialized = false;
+let currentP = 1;
+
+function initCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', initCanvas);
+initCanvas();
+
+class Particle {
+    constructor() { this.reset(); }
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+        this.color = Math.random() > 0.5 ? '#ff2d75' : '#18ffff';
+    }
+    update() {
+        this.x += this.speedX; this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+    }
+    draw() {
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+const particles = Array.from({length: 60}, () => new Particle());
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+}
+animate();
+
+function handleInteraction() {
+    if (!initialized) {
+        bgMusic.volume = 0.35;
+        playIntroVideo();
+        initialized = true;
+    }
+    if(event.target.tagName !== 'BUTTON' && event.target.closest('.glass-card') === null) {
+        createHeart(event.clientX, event.clientY);
+    }
+    if(currentP === 1) nextPage(1);
+}
+
+function playIntroVideo() {
+    introWrap.style.display = 'block';
+    bgMusic.pause();
+    introVid.play().catch(e => console.log("Video wait"));
+    introVid.onended = () => {
+        introWrap.style.opacity = '0';
+        setTimeout(() => {
+            introWrap.style.display = 'none';
+            bgMusic.play();
+        }, 1000);
+    };
+}
+
+muteBtn.onclick = (e) => {
+    e.stopPropagation();
+    if (bgMusic.paused) { bgMusic.play(); muteBtn.innerText = '🎵'; }
+    else { bgMusic.pause(); muteBtn.innerText = '🔇'; }
+};
+
+function nextPage(num) {
+    if(num !== currentP) return;
+    document.getElementById(`p${num}`).classList.remove('active');
+    currentP = num + 1;
+    let next = document.getElementById(`p${currentP}`);
+    if(next) {
+        next.classList.add('active');
+        if(currentP === 3) startScene();
+        if(currentP === 7) endHearts();
+    }
+}
+
+function openCard(el) {
+    if(!el.classList.contains('card-open')) {
+        el.classList.add('card-open');
+        for(let i=0; i<15; i++) {
+            setTimeout(() => createHeart(Math.random()*window.innerWidth, Math.random()*window.innerHeight), i*100);
+        }
+    } else {
+        nextPage(currentP);
+    }
+}
+
+function startScene() {
+    setTimeout(() => {
+        document.getElementById('boy-char').style.left = '60px';
+        document.getElementById('rose-gift').style.opacity = '1';
+        setTimeout(() => {
+            document.getElementById('scene-msg').style.opacity = '1';
+        }, 3500);
+    }, 500);
+}
+
+function createHeart(x, y) {
+    const heart = document.createElement('div');
+    heart.className = 'heart-burst';
+    heart.innerHTML = '💖';
+    heart.style.left = x + 'px';
+    heart.style.top = y + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1200);
+}
+
+function endHearts() {
+    setInterval(() => {
+        createHeart(Math.random()*window.innerWidth, Math.random()*window.innerHeight);
+    }, 300);
+}
+</script>
 </body>
-    </html>
+</html>
