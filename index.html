@@ -2,358 +2,207 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For My Dear Morni 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Republic Day 🇮🇳 | Personalized</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
-
         :root {
-            --pink: #ff007f;
-            --blue: #00d4ff;
-            --glass: rgba(15, 15, 15, 0.8);
-            --neon-shadow: 0 0 20px var(--pink), 0 0 40px var(--pink);
+            --saffron: #FF9933;
+            --white: #FFFFFF;
+            --green: #138808;
+            --navy: #000080;
+            --glass: rgba(255, 255, 255, 0.25);
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
-        
-        body, html {
-            width: 100%; height: 100%; overflow: hidden;
-            background: #000; font-family: 'Poppins', sans-serif; color: white;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffffff 50%, #e6ffeb 100%);
+            overflow-x: hidden;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
         }
 
-        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-        /* Scannable Hierarchy */
-        .page {
-            position: absolute; width: 100%; height: 100%;
-            display: none; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; padding: 20px; z-index: 10;
+        .header {
+            position: fixed; top: 0; width: 100%; text-align: center; padding: 15px;
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--saffron); z-index: 1000;
         }
-        .active { display: flex; animation: zoomIn 0.6s ease-out; }
 
-        @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-
-        /* Premium Header */
-        header {
-            position: fixed; top: 15px; width: 100%; z-index: 100;
-            text-align: center;
+        section {
+            min-height: 100vh; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; padding: 100px 20px;
         }
-        .header-text { font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: var(--pink); text-shadow: 0 0 10px var(--pink); }
-        .insta-profile { display: flex; flex-direction: column; align-items: center; margin-top: 5px; }
-        .insta-thumb { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--blue); box-shadow: 0 0 10px var(--blue); }
-        .insta-handle { font-size: 0.75rem; color: #ccc; letter-spacing: 1px; margin-top: 4px; }
 
-        /* Glassmorphism Card */
         .glass-card {
             background: var(--glass); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 0, 127, 0.3); border-radius: 30px;
-            padding: 25px; width: 92%; max-width: 380px;
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.15);
-            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 25px;
+            padding: 30px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 450px; width: 100%; transition: 0.4s; margin-bottom: 20px;
         }
 
-        .neon-title { font-family: 'Dancing Script', cursive; font-size: 2.8rem; color: #fff; text-shadow: var(--neon-shadow); margin-bottom: 15px; }
-        .romantic-text { font-size: 1.05rem; line-height: 1.6; color: #efefef; margin-bottom: 20px; font-weight: 300; }
-
-        /* Specialized Rose CSS */
-        .rose-box { width: 80px; height: 80px; margin: 0 auto 15px; position: relative; }
-        .rose-petal { 
-            position: absolute; width: 40px; height: 40px; background: radial-gradient(circle, #ff004f, #8b0000); 
-            border-radius: 50% 50% 10% 50%; filter: drop-shadow(0 0 5px #ff004f);
+        .input-box {
+            width: 100%; padding: 12px; border-radius: 10px; border: 2px solid var(--saffron);
+            margin: 15px 0; outline: none; font-size: 1rem; text-align: center;
         }
 
-        /* Buttons */
-        .btn-glow {
-            background: none; border: 2px solid var(--pink); color: white;
-            padding: 12px 40px; border-radius: 50px; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 2px;
-            box-shadow: 0 0 15px var(--pink); cursor: pointer; transition: 0.4s;
+        .btn {
+            background: var(--navy); color: white; padding: 12px 25px;
+            border-radius: 50px; border: none; font-weight: bold; cursor: pointer;
+            width: 100%; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,128,0.3);
         }
 
-        /* Video Logic */
-        #video-container video { width: 100%; height: 100%; object-fit: cover; }
+        .whatsapp-btn { background: #25D366; margin-top: 10px; text-decoration: none; display: block; color: white; line-height: 40px; border-radius: 50px; font-weight: bold;}
 
-        /* Proposal Section */
-        .proposal-container { position: relative; width: 100%; height: 200px; margin-bottom: 20px; }
-        .neon-character { position: absolute; bottom: 10px; transition: all 3s ease-in-out; }
-        .boy-character { left: -60px; filter: drop-shadow(0 0 10px var(--blue)); }
-        .girl-character { right: 20px; filter: drop-shadow(0 0 10px var(--pink)); }
-
-        /* High Quality Auto Photo Slider */
-        .slider-wrapper {
-            width: 220px; height: 300px; margin: 0 auto;
-            position: relative; perspective: 1000px;
+        /* Lyrics Styling */
+        #lyrics-container {
+            position: fixed; bottom: 100px; width: 100%; text-align: center;
+            pointer-events: none; z-index: 999;
         }
-        .slide-img {
-            position: absolute; width: 100%; height: 100%;
-            border-radius: 15px; object-fit: cover; border: 2px solid var(--pink);
-            box-shadow: 0 0 20px var(--pink); opacity: 0; transition: 1s ease-in-out;
-            transform: scale(0.8) rotateY(10deg);
+        #lyrics-text {
+            background: rgba(0, 0, 128, 0.8); color: white; padding: 8px 20px;
+            border-radius: 10px; font-size: 1.2rem; display: none;
+            box-shadow: 0 0 20px var(--saffron); animation: glow 2s infinite;
         }
-        .slide-img.active-slide { opacity: 1; transform: scale(1) rotateY(0deg); }
 
-        /* GIF Styling */
-        .gif-main { width: 100%; border-radius: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); }
-        .tap-reveal { font-size: 1.2rem; font-weight: 600; color: var(--blue); text-shadow: 0 0 10px var(--blue); display: none; margin-top: 10px; }
+        @keyframes glow { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; transform: scale(1.05); } }
 
-        /* Heart Animation */
-        .floating-heart {
-            position: fixed; color: var(--pink); pointer-events: none;
-            z-index: 1000; animation: floatUp 4s linear forwards;
+        .chakra {
+            width: 100px; animation: rotate 10s linear infinite; margin: 20px;
         }
-        @keyframes floatUp {
-            0% { transform: translateY(0) scale(1); opacity: 1; }
-            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .music-toggle {
+            position: fixed; bottom: 30px; left: 30px; width: 50px; height: 50px;
+            background: white; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; cursor: pointer; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
 
-<canvas id="bg-canvas"></canvas>
-<audio id="bg-audio" src="tere-liye.mp3" loop></audio>
+    <canvas id="bg-canvas"></canvas>
+    <header class="header">
+        <h1 id="userDisplay">Happy Republic Day 🇮🇳</h1>
+        <p>26 January 2026 | Proud Moment</p>
+    </header>
 
-<header>
-    <div class="header-text">Made by Sivasingh 💖</div>
-    <div class="insta-profile">
-        <img src="https://unavatar.io/instagram/smss1708" class="insta-thumb">
-        <span class="insta-handle">@smss1708</span>
-    </div>
-</header>
+    <div class="music-toggle" onclick="toggleMusic()">🎵</div>
+    <audio id="anthem" loop>
+        <source src="jan-gan-man.mp3" type="audio/mpeg">
+    </audio>
 
-<div id="p1" class="page active">
-    <div class="glass-card">
-        <img src="intro.gif" class="gif-main">
-        <h1 class="neon-title">Hey Morni 💖</h1>
-        <p class="romantic-text">I've built this little world just for you. Every pixel here carries a piece of my heart.</p>
-        <button class="btn-glow" onclick="startJourney()">Open 💌</button>
-    </div>
-</div>
+    <div id="lyrics-container"><span id="lyrics-text"></span></div>
 
-<div id="p-video" class="page">
-    <video id="love-video" src="intro-love.mp4" playsinline></video>
-</div>
-
-<div id="p2" class="page">
-    <div class="glass-card">
-        <div class="rose-box">
-            <div class="rose-petal" style="transform: rotate(0deg)"></div>
-            <div class="rose-petal" style="transform: rotate(72deg)"></div>
-            <div class="rose-petal" style="transform: rotate(144deg)"></div>
-            <div class="rose-petal" style="transform: rotate(216deg)"></div>
-            <div class="rose-petal" style="transform: rotate(288deg)"></div>
+    <section>
+        <div class="glass-card">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png" style="width: 80px; margin-bottom: 10px;">
+            <h2>Apna Naam Likhein</h2>
+            <input type="text" id="userName" class="input-box" placeholder="Yahan naam likhein...">
+            <button class="btn" onclick="updateName()">Apply My Name 🇮🇳</button>
+            <a href="#" id="shareBtn" class="whatsapp-btn" onclick="shareWhatsApp()">Share on WhatsApp 📲</a>
         </div>
-        <p class="romantic-text">“25 September was the day our eyes met for the first time — a silent eye contact that slowly became my favorite memory.”</p>
-        <img src="rose.gif" class="gif-main" onclick="handleTap(this, 'You are as beautiful as a blooming rose, Betuu ji.')">
-        <div class="tap-reveal">Click again to continue...</div>
-    </div>
-</div>
+    </section>
 
-<div id="p3" class="page">
-    <div class="glass-card">
-        <img src="heart1.gif" class="gif-main" onclick="handleTap(this, 'My heart beats only for you, Dear Morni.')">
-        <div class="tap-reveal"></div>
-    </div>
-</div>
-
-<div id="p4" class="page">
-    <div class="glass-card">
-        <img src="heart2.gif" class="gif-main" onclick="handleTap(this, 'You are the rhythm to my soul.')">
-        <div class="tap-reveal"></div>
-    </div>
-</div>
-
-<div id="p5" class="page">
-    <div class="glass-card">
-        <div class="proposal-container">
-            <div id="boy" class="neon-character boy-character">
-                <svg width="50" height="80" viewBox="0 0 50 80">
-                    <circle cx="25" cy="15" r="8" fill="none" stroke="#00d4ff" stroke-width="2"/>
-                    <path d="M25 23 v30 m-10 15 l10 -15 l10 15 m-20 -20 h20" stroke="#00d4ff" stroke-width="2" fill="none"/>
-                    <text x="32" y="45" font-size="15">🌹</text>
-                </svg>
-            </div>
-            <div class="neon-character girl-character">
-                <svg width="50" height="80" viewBox="0 0 50 80">
-                    <circle cx="25" cy="15" r="8" fill="none" stroke="#ff007f" stroke-width="2"/>
-                    <path d="M25 23 v25 l-15 20 m15 -20 l15 20 m-25 -15 h20" stroke="#ff007f" stroke-width="2" fill="none"/>
-                </svg>
-            </div>
+    <section id="anthem-section">
+        <div class="glass-card">
+            <svg class="chakra" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#000080" stroke-width="2"/>
+                <circle cx="50" cy="50" r="5" fill="#000080"/>
+                <path d="M50 5 L50 95 M5 50 L95 50 M18 18 L82 82 M18 82 L82 18" stroke="#000080" stroke-width="1"/>
+            </svg>
+            <p class="quote-text">"Jana Gana Mana Adhinayaka Jaya He..."</p>
+            <button class="btn" style="margin-top: 20px;" onclick="startNationalAnthem()">Play National Anthem 🇮🇳</button>
         </div>
-        <p class="romantic-text" id="prop-msg">Betuu ji, every step I take is towards you...</p>
-        <button class="btn-glow" id="prop-btn" style="display:none;" onclick="nextPage()">Accept Forever 💖</button>
-    </div>
-</div>
+    </section>
 
-<div id="p6" class="page">
-    <div class="glass-card">
-        <img src="hug.gif" class="gif-main" onclick="handleTap(this, 'I want to hold you and never let go.')">
-        <div class="tap-reveal"></div>
-    </div>
-</div>
-
-<div id="p7" class="page">
-    <div class="glass-card">
-        <img src="kiss.gif" class="gif-main" onclick="handleTap(this, 'A thousand kisses for my Morni.')">
-        <div class="tap-reveal"></div>
-    </div>
-</div>
-
-<div id="p8" class="page">
-    <div class="glass-card">
-        <div class="slider-wrapper" id="photo-slider">
-            <img src="photo1.jpg" class="slide-img active-slide">
-            <img src="photo2.jpg" class="slide-img">
-            <img src="photo3.jpg" class="slide-img">
-            <img src="photo4.jpg" class="slide-img">
+    <section>
+        <div class="glass-card">
+            <h3>"Freedom in the mind, strength in the words, pureness in our blood, pride in our souls."</h3>
+            <h1 style="color: var(--navy); margin-top: 20px;">JAI HIND!</h1>
         </div>
-        <p class="romantic-text" style="margin-top:20px;">Every photo is a treasure of us.</p>
-        <button class="btn-glow" onclick="nextPage()">More Love ✨</button>
-    </div>
-</div>
+    </section>
 
-<div id="p9" class="page">
-    <div class="glass-card">
-        <img src="cute.gif" class="gif-main" onclick="handleTap(this, 'You are the cutest person alive!')">
-        <div class="tap-reveal"></div>
-    </div>
-</div>
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        const audio = document.getElementById('anthem');
+        const lyricsText = document.getElementById('lyrics-text');
 
-<div id="p10" class="page">
-    <div class="glass-card">
-        <img src="promise.gif" class="gif-main" onclick="handleTap(this, 'I promise to stay, no matter what.')">
-        <div class="tap-reveal"></div>
-    </div>
-</div>
+        const lyrics = [
+            { t: 0, text: "Jana Gana Mana Adhinayaka Jaya He" },
+            { t: 5, text: "Bharata Bhagya Vidhata" },
+            { t: 10, text: "Punjab Sindhu Gujarata Maratha" },
+            { t: 15, text: "Dravida Utkala Banga" },
+            { t: 20, text: "Vindhya Himachala Yamuna Ganga" },
+            { t: 25, text: "Uchchala Jaladhi Taranga" },
+            { t: 30, text: "Tava Subha Name Jage" },
+            { t: 35, text: "Tava Subha Asisa Mage" },
+            { t: 40, text: "Gahe Tava Jaya Gatha" },
+            { t: 45, text: "Jana Gana Mangala Dayaka Jaya He" },
+            { t: 50, text: "Bharata Bhagya Vidhata" },
+            { t: 52, text: "Jaya He, Jaya He, Jaya He" },
+            { t: 55, text: "Jaya Jaya Jaya Jaya He! 🇮🇳" }
+        ];
 
-<div id="p11" class="page">
-    <div class="glass-card">
-        <img src="endlove.gif" class="gif-main">
-        <h2 class="neon-title" style="font-size:2.2rem;">Forever Yours</h2>
-        <p class="romantic-text">“Dear Morni, this is not just a moment — it’s the beginning of everything I feel for you.”</p>
-        <div class="header-text" style="font-size:2rem; color:var(--blue);">I Love You!</div>
-    </div>
-</div>
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.onresize = resize; resize();
 
-<script>
-    let currentStep = 1;
-    const audio = document.getElementById('bg-audio');
-    const video = document.getElementById('love-video');
-
-    // Particles Background
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    window.onresize = resize; resize();
-
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 1;
-            this.speedX = Math.random() * 1 - 0.5;
-            this.speedY = Math.random() * 1 - 0.5;
-            this.color = Math.random() > 0.5 ? '#ff007f' : '#00d4ff';
+        const particles = [];
+        for(let i=0; i<60; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                s: Math.random() * 3 + 1,
+                v: Math.random() * 1 + 0.5,
+                c: ['#FF9933', '#FFFFFF', '#138808'][Math.floor(Math.random()*3)]
+            });
         }
-        update() {
-            this.x += this.speedX; this.y += this.speedY;
-            if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-            if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.y -= p.v;
+                if(p.y < 0) p.y = canvas.height;
+                ctx.fillStyle = p.c;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.s, 0, Math.PI*2);
+                ctx.fill();
+            });
+            requestAnimationFrame(draw);
         }
-        draw() {
-            ctx.fillStyle = this.color;
-            ctx.shadowBlur = 10; ctx.shadowColor = this.color;
-            ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
+        draw();
+
+        function updateName() {
+            const name = document.getElementById('userName').value;
+            if(name) {
+                document.getElementById('userDisplay').innerText = "Happy Republic Day from " + name + " 🇮🇳";
+                alert("Naam update ho gaya! Ab share karein.");
+            }
         }
-    }
 
-    for(let i=0; i<70; i++) particles.push(new Particle());
+        function toggleMusic() {
+            if(audio.paused) audio.play(); else audio.pause();
+        }
 
-    function animate() {
-        ctx.clearRect(0,0,canvas.width, canvas.height);
-        particles.forEach(p => { p.update(); p.draw(); });
-        requestAnimationFrame(animate);
-    }
-    animate();
-
-    function spawnHeart() {
-        const h = document.createElement('div');
-        h.innerHTML = '💖';
-        h.className = 'floating-heart';
-        h.style.left = Math.random() * 100 + 'vw';
-        h.style.top = '105vh';
-        h.style.fontSize = (Math.random() * 20 + 15) + 'px';
-        document.body.appendChild(h);
-        setTimeout(() => h.remove(), 4000);
-    }
-    setInterval(spawnHeart, 400);
-
-    // Navigation & Logic
-    function startJourney() {
-        audio.volume = 0.35;
-        audio.play();
-        showPage('p-video');
-        audio.pause();
-        video.play();
-        video.onended = () => {
+        function startNationalAnthem() {
+            audio.currentTime = 0;
             audio.play();
-            nextPage();
-        };
-    }
-
-    function nextPage() {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        currentStep++;
-        const target = document.getElementById('p' + currentStep);
-        if(target) target.classList.add('active');
-        
-        if(currentStep === 5) runProposal();
-        if(currentStep === 8) startAutoSlider();
-    }
-
-    function showPage(id) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-    }
-
-    function handleTap(el, msg) {
-        const reveal = el.nextElementSibling;
-        if(reveal.style.display === 'block') {
-            nextPage();
-        } else {
-            reveal.innerText = msg;
-            reveal.style.display = 'block';
-            for(let i=0; i<10; i++) spawnHeart();
+            lyricsText.style.display = "inline-block";
         }
-    }
 
-    function runProposal() {
-        const boy = document.getElementById('boy');
-        setTimeout(() => {
-            boy.style.left = 'calc(50% - 60px)';
-            setTimeout(() => {
-                document.getElementById('prop-msg').innerText = "Betuu ji, will you hold my hand forever?";
-                document.getElementById('prop-btn').style.display = 'inline-block';
-                for(let i=0; i<20; i++) spawnHeart();
-            }, 3200);
-        }, 500);
-    }
+        audio.ontimeupdate = () => {
+            const current = audio.currentTime;
+            const active = lyrics.filter(l => current >= l.t).pop();
+            if(active) lyricsText.innerText = active.text;
+        };
 
-    function startAutoSlider() {
-        let slides = document.querySelectorAll('.slide-img');
-        let index = 0;
-        setInterval(() => {
-            slides[index].classList.remove('active-slide');
-            index = (index + 1) % slides.length;
-            slides[index].classList.add('active-slide');
-            spawnHeart();
-        }, 2500);
-    }
-</script>
-
+        function shareWhatsApp() {
+            const name = document.getElementById('userName').value || "Sivasingh";
+            const text = `*${name}* ne aapko Republic Day wish bheja hai! 🇮🇳 Is premium link ko dekhein: ${window.location.href}`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`);
+        }
+    </script>
 </body>
 </html>
