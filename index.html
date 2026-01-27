@@ -1,187 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Lyrics Terminal – @smss1708</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Lyrics Code Player - sivasingh</title>
 <style>
-body{
-    margin:0;
-    background:radial-gradient(circle at top, #0f2027, #000);
-    font-family:"Courier New", monospace;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#00ffb3;
+body {
+  margin: 0;
+  background: black;
+  color: #00ff9c;
+  font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-/* Laptop body */
-.laptop{
-    width:95%;
-    max-width:1000px;
-    background:#0b0f14;
-    border-radius:14px;
-    box-shadow:0 0 60px rgba(0,255,179,0.35);
-    overflow:hidden;
-    position:relative;
+/* TOP CODE AREA */
+#codeArea {
+  height: 50%;
+  padding: 15px;
+  background: #050505;
+  overflow-y: auto;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: inset 0 0 20px #00ff9c;
 }
 
-/* Header */
-.header{
-    background:#1a1f25;
-    padding:10px 14px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.keyword { color: #ff4da6; }
+.string { color: #00ffaa; }
+.comment { color: gray; }
+
+/* VIDEO AREA */
+#videoArea {
+  height: 50%;
+  background: black;
 }
 
-/* Mac dots */
-.dots{
-    display:flex;
-    gap:8px;
-}
-.dot{width:12px;height:12px;border-radius:50%;}
-.red{background:#ff5f56}
-.yellow{background:#ffbd2e}
-.green{background:#27c93f}
-
-/* Insta */
-.insta{
-    font-size:14px;
-    color:#00ffb3;
-    opacity:0.9;
-}
-
-/* Screen */
-.screen{
-    padding:22px;
-    height:420px;
-    overflow-y:auto;
-    font-size:16px;
-    line-height:1.65;
-    white-space:pre-wrap;
-}
-
-/* Cursor */
-.cursor{
-    display:inline-block;
-    width:10px;
-    background:#00ffb3;
-    margin-left:2px;
-    animation:blink 1s infinite;
-}
-@keyframes blink{
-    0%,50%,100%{opacity:1}
-    25%,75%{opacity:0}
-}
-
-/* Music button */
-.music-btn{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#00ffb3;
-    color:#000;
-    border:none;
-    padding:12px 14px;
-    border-radius:50%;
-    font-size:18px;
-    box-shadow:0 0 20px rgba(0,255,179,0.6);
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top: 2px solid #00ff9c;
 }
 </style>
 </head>
 
 <body>
 
-<div class="laptop">
-    <div class="header">
-        <div class="dots">
-            <div class="dot red"></div>
-            <div class="dot yellow"></div>
-            <div class="dot green"></div>
-        </div>
-        <div class="insta">Instagram • @smss1708</div>
-    </div>
+<div id="codeArea">
+<span class="comment">// Made by sivasingh</span><br>
+<span class="comment">// Instagram: @smss1708</span><br><br>
 
-    <div class="screen" id="screen"></div>
+<span class="keyword">def</span> <span class="string">lyrics()</span>:<br>
 </div>
 
-<button class="music-btn" onclick="toggleMusic()">🎵</button>
-
-<audio id="bgm" loop>
-    <source src="song.mp3" type="audio/mpeg">
-</audio>
+<div id="videoArea">
+<video autoplay muted loop playsinline>
+  <source src="video.mp4" type="video/mp4">
+</video>
+</div>
 
 <script>
 const lyrics = [
-"Humne wahi lagaya dil",
-"Jahan dil lagana mana tha",
+"ऐसे तन्हा तो ना द तन्हा छोड़े हैं",
 "",
-"Aakhir wahi kiye sajde",
-"Jahan sar jhukana mana tha",
+"ना दिल से वो यादें जाएं",
+"ना रातों को नींदें आएं",
+"आते हैं फिर ख्वाब क्यू",
+"आते हैं क्यू खाब",
 "",
-"Kyun zindagi bita di wahan",
-"Jahan ek pal bitana mana tha",
+"जो थी तेरे इश्क में डूबी",
+"उन आँखों में तुम ले आये",
+"आसु बेहिसाब क्यू",
+"आसू बेहिसाब",
 "",
-"Kyun us gali me rehte hain wo gungunate",
-"Jahan roz jaana mana tha",
+"खैर है यारों कम से कम",
+"जान से जा ना पाये हम",
 "",
-"Zamane ki tarah",
-"Hum bhi toote hain",
+"हमने वहीं लगाया दिल",
+"जहां दिल लगाना मना था",
+"आख़िर वहीं किये सजदे जहां",
+"सारा झुकना मना था",
 "",
-"Aise tanha to na the",
-"Par tanha chhod diye gaye",
-"",
-"Jo duaein unhe dete hain",
-"Haan usi ke hothon se",
-"",
-"Aise waise lafz bhi",
-"Humse bole gaye"
+"ज़माने की तरह",
+"हम भी तोड़े हैं",
+"ऐसे तन्हा तो ना द तन्हा छोड़े हैं"
 ];
 
-const screen = document.getElementById("screen");
-let line = 0;
-let char = 0;
+let area = document.getElementById("codeArea");
+let lineIndex = 0;
+let charIndex = 0;
 
-function typeLyrics(){
-    if(line < lyrics.length){
-        if(char < lyrics[line].length){
-            screen.innerHTML += lyrics[line].charAt(char);
-            char++;
-            screen.scrollTop = screen.scrollHeight;
-            setTimeout(typeLyrics, 45);
-        } else {
-            screen.innerHTML += "\n";
-            line++;
-            char = 0;
-            setTimeout(typeLyrics, 350);
-        }
+function typeLyrics() {
+  if (lineIndex < lyrics.length) {
+    if (charIndex < lyrics[lineIndex].length) {
+      area.innerHTML += lyrics[lineIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeLyrics, 40); 
+    } else {
+      area.innerHTML += "<br>";
+      lineIndex++;
+      charIndex = 0;
+      setTimeout(typeLyrics, 400);
     }
+    area.scrollTop = area.scrollHeight;
+  }
 }
 
-typeLyrics();
-
-/* Music logic */
-const music = document.getElementById("bgm");
-let started = false;
-
-document.body.addEventListener("click",()=>{
-    if(!started){
-        music.volume = 0.6;
-        music.play();
-        started = true;
-    }
-},{once:true});
-
-function toggleMusic(){
-    if(music.paused){
-        music.play();
-    }else{
-        music.pause();
-    }
-}
+setTimeout(typeLyrics, 1000);
 </script>
 
 </body>
