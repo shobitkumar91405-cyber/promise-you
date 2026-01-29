@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Rose Day Cutie</title>
+    <title>Rose Day Special - Sivasingh</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap');
 
@@ -16,41 +16,91 @@
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
 
-        /* Container for Pages */
+        /* --- Header Section --- */
+        .header {
+            text-align: center;
+            padding: 15px;
+            z-index: 10;
+            width: 100%;
+            background: rgba(255, 77, 109, 0.05);
+            border-bottom: 1px solid rgba(255, 77, 109, 0.2);
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #ff8fa3;
+        }
+
+        .insta-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 77, 109, 0.3);
+        }
+
+        .insta-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        /* --- Slideshow Content --- */
+        .content-area {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
         .page {
-            display: none; /* Hidden by default */
+            display: none;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 100%;
+            width: 90%;
+            max-width: 400px;
             animation: fadeIn 0.8s ease-in-out;
         }
 
-        .page.active {
-            display: flex;
-        }
+        .page.active { display: flex; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .glow-text {
             font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
+            font-size: 2.8rem;
             color: #ff4d6d;
             text-shadow: 0 0 15px rgba(255, 77, 109, 0.7);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .card-photo {
-            width: 220px;
-            height: 220px;
-            border-radius: 20px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50% 50% 10% 10%;
             border: 3px solid #ff4d6d;
             object-fit: cover;
             box-shadow: 0 0 25px rgba(255, 77, 109, 0.5);
@@ -60,13 +110,13 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
         }
 
         .card-container {
             position: relative;
-            width: 280px;
-            height: 140px;
+            width: 300px;
+            height: 160px;
             perspective: 1000px;
             cursor: pointer;
         }
@@ -79,59 +129,50 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
             font-weight: bold;
             z-index: 2;
-            position: relative;
             transition: transform 0.6s;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        .card-container.open .envelope {
-            transform: rotateX(-110deg);
-            transform-origin: top;
-        }
+        .card-container.open .envelope { transform: rotateX(-110deg); transform-origin: top; }
 
         .message-inside {
             position: absolute;
-            top: 0;
-            left: 5%;
-            width: 90%;
-            height: 100%;
+            top: 0; left: 5%; width: 90%; height: 100%;
             background: #fff;
-            color: #ff0040;
-            padding: 10px;
+            color: #333;
+            padding: 15px;
             border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             z-index: 1;
-            font-weight: bold;
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.4;
             box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
         }
 
-        /* Navigation Buttons */
         .btn-next {
-            margin-top: 30px;
-            padding: 10px 25px;
-            background: #ff4d6d;
-            border: none;
-            color: white;
-            border-radius: 25px;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid #ff4d6d;
+            color: #ff4d6d;
+            border-radius: 30px;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
-            display: none; /* Show only after card is opened */
+            display: none;
+            transition: 0.3s;
         }
 
-        /* Heart Animation */
+        .btn-next:hover { background: #ff4d6d; color: white; }
+
         .heart {
-            position: fixed;
-            pointer-events: none;
-            z-index: 999;
-            font-size: 25px;
-            animation: burst 2s ease-out forwards;
+            position: fixed; pointer-events: none; z-index: 999;
+            font-size: 25px; animation: burst 2s ease-out forwards;
         }
 
         @keyframes burst {
@@ -146,54 +187,64 @@
         <source src="tere-liye.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="page active" id="page1">
-        <h1 class="glow-text">Happy Rose Day ❤️</h1>
-        <img src="rose.gif" class="card-photo" alt="Rose">
-        <div class="card-container" onclick="openCard(this, 1)">
-            <div class="envelope">Open Message 1 💌</div>
-            <div class="message-inside">You're the most beautiful rose in my life! 🌹</div>
-        </div>
-        <button class="btn-next" onclick="nextPage(2)">Next Page →</button>
+    <div class="header">
+        <p>Made with Love by Sivasingh ❤️</p>
+        <a href="https://instagram.com/smss1708" class="insta-box" target="_blank">
+            <div class="insta-thumb">📸</div>
+            <span>@smss1708</span>
+        </a>
     </div>
 
-    <div class="page" id="page2">
-        <h1 class="glow-text">For You...</h1>
-        <img src="photo1.jpg" class="card-photo" alt="Us">
-        <div class="card-container" onclick="openCard(this, 2)">
-            <div class="envelope">Open Message 2 💌</div>
-            <div class="message-inside">Tere liye hi toh mera har lamha hai. ❤️</div>
+    <div class="content-area">
+        <div class="page active" id="page1">
+            <h1 class="glow-text">The First Petal...</h1>
+            <img src="rose.gif" class="card-photo" alt="Rose">
+            <div class="card-container" onclick="openCard(this, 1)">
+                <div class="envelope">Tap to Reveal 💌</div>
+                <div class="message-inside">Like a rose, you brought fragrance to my dull life. You are the most beautiful part of my reality. Happy Rose Day, My Queen! 🌹</div>
+            </div>
+            <button class="btn-next" onclick="nextPage(2)">Continue the Journey →</button>
         </div>
-        <button class="btn-next" onclick="nextPage(3)">Next Page →</button>
-    </div>
 
-    <div class="page" id="page3">
-        <h1 class="glow-text">A Big Hug</h1>
-        <img src="hug.gif" class="card-photo" alt="Hug">
-        <div class="card-container" onclick="openCard(this, 3)">
-            <div class="envelope">Open Message 3 💌</div>
-            <div class="message-inside">Sending you a big warm hug! 🤗</div>
+        <div class="page" id="page2">
+            <h1 class="glow-text">Soul Connection</h1>
+            <img src="photo1.jpg" class="card-photo" alt="Us">
+            <div class="card-container" onclick="openCard(this, 2)">
+                <div class="envelope">Tap to Reveal 💌</div>
+                <div class="message-inside">"Tere liye hi toh mera har lamha hai." Every beat of my heart whispers your name. You're the home I've been looking for. ❤️</div>
+            </div>
+            <button class="btn-next" onclick="nextPage(3)">A Little Closer →</button>
         </div>
-        <button class="btn-next" onclick="nextPage(4)">Next Page →</button>
-    </div>
 
-    <div class="page" id="page4">
-        <h1 class="glow-text">Special Kiss</h1>
-        <img src="kiss.gif" class="card-photo" alt="Kiss">
-        <div class="card-container" onclick="openCard(this, 4)">
-            <div class="envelope">Open Message 4 💌</div>
-            <div class="message-inside">I Love You more than words can say. 💋</div>
+        <div class="page" id="page3">
+            <h1 class="glow-text">Safe Haven</h1>
+            <img src="hug.gif" class="card-photo" alt="Hug">
+            <div class="card-container" onclick="openCard(this, 3)">
+                <div class="envelope">Tap to Reveal 💌</div>
+                <div class="message-inside">In your arms, the world's chaos disappears. This hug is a promise that I'll never let you go, no matter what. 🤗</div>
+            </div>
+            <button class="btn-next" onclick="nextPage(4)">One More Thing →</button>
         </div>
-        <button class="btn-next" onclick="nextPage(5)">Final Surprise →</button>
-    </div>
 
-    <div class="page" id="page5">
-        <h1 class="glow-text">Forever?</h1>
-        <img src="endlove.gif" class="card-photo" alt="End">
-        <div class="card-container" onclick="openCard(this, 5)">
-            <div class="envelope">Final Message 💌</div>
-            <div class="message-inside">Will you be my Valentine forever? 💍</div>
+        <div class="page" id="page4">
+            <h1 class="glow-text">Pure Emotion</h1>
+            <img src="kiss.gif" class="card-photo" alt="Kiss">
+            <div class="card-container" onclick="openCard(this, 4)">
+                <div class="envelope">Tap to Reveal 💌</div>
+                <div class="message-inside">I love you more than words can ever capture. You are my today, my tomorrow, and my forever. Always and eternally yours. 💋</div>
+            </div>
+            <button class="btn-next" onclick="nextPage(5)">The Big Question →</button>
         </div>
-        <p style="margin-top: 20px; color: #ff8fa3;">Happy Rose Day, Cutie! 🌹✨</p>
+
+        <div class="page" id="page5">
+            <h1 class="glow-text">My Everything</h1>
+            <img src="endlove.gif" class="card-photo" alt="End">
+            <div class="card-container" onclick="openCard(this, 5)">
+                <div class="envelope">The Final Note 💌</div>
+                <div class="message-inside">From being my best friend to my soulmate, life has been a dream with you. Will you be my Valentine and hold my hand forever? 💍</div>
+            </div>
+            <p style="margin-top: 15px; color: #ff8fa3; font-size: 0.8rem;">I'm waiting for your 'Yes' ❤️</p>
+        </div>
     </div>
 
     <script>
@@ -202,46 +253,35 @@
         function openCard(element, pageNum) {
             if (!musicStarted) {
                 const music = document.getElementById('bgMusic');
-                music.play().catch(e => console.log("Music play blocked by browser"));
+                music.play().catch(() => {});
                 musicStarted = true;
             }
 
             element.classList.add('open');
-
-            // Show the next button for this page
             const currentPage = document.getElementById('page' + pageNum);
             const nextBtn = currentPage.querySelector('.btn-next');
             if (nextBtn) {
-                setTimeout(() => {
-                    nextBtn.style.display = 'block';
-                }, 1000);
+                setTimeout(() => { nextBtn.style.display = 'block'; }, 1000);
             }
 
-            // Heart Burst Logic
             const rect = element.getBoundingClientRect();
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 20; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart';
                 heart.innerHTML = '❤️';
                 heart.style.left = (rect.left + rect.width / 2) + 'px';
                 heart.style.top = (rect.top + rect.height / 2) + 'px';
-                
-                const x = (Math.random() - 0.5) * 400 + 'px';
-                const y = (Math.random() - 0.5) * 400 + 'px';
+                const x = (Math.random() - 0.5) * 500 + 'px';
+                const y = (Math.random() - 0.5) * 500 + 'px';
                 heart.style.setProperty('--x', x);
                 heart.style.setProperty('--y', y);
-
                 document.body.appendChild(heart);
                 setTimeout(() => heart.remove(), 2000);
             }
         }
 
         function nextPage(nextPageNum) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            // Show requested page
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById('page' + nextPageNum).classList.add('active');
         }
     </script>
