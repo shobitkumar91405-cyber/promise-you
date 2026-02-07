@@ -1,441 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>For Ritika Didu</title>
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
--webkit-tap-highlight-color: transparent;
-}
-    body {
-        background: radial-gradient(circle at top, #2c0221, #120112, #000000);
-        color: white;
-        overflow-x: hidden;
-        height: 100vh;
-        width: 100vw;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- General Settings --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    #app-container {
-        height: 100vh;
-        width: 100vw;
-        position: relative;
-        overflow: hidden;
-    }
+        body {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            background-color: #ffdde1; /* Fallback */
+            background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
 
-    .header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 15px;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        z-index: 100;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        /* --- Floating Hearts Background --- */
+        .bg-heart {
+            position: absolute;
+            top: -10%;
+            color: rgba(255, 255, 255, 0.5);
+            animation: floatUp linear infinite;
+            z-index: 0;
+            font-size: 20px;
+        }
 
-    .header h1 {
-        font-size: 14px;
-        font-weight: 400;
-        letter-spacing: 1px;
-    }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
 
-    .header span {
-        font-size: 11px;
-        opacity: 0.6;
-        display: block;
-    }
+        /* --- Header Credit --- */
+        .credit-header {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            font-size: 14px;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .credit-header a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
 
-    .section {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        opacity: 0;
-        transform: scale(0.9);
-        pointer-events: none;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 10;
-    }
+        /* --- Main Card Container --- */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            z-index: 10;
+            transition: transform 0.3s ease;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
 
-    .section.active {
-        opacity: 1;
-        transform: scale(1);
-        pointer-events: auto;
-    }
+        /* --- Typography --- */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #d63384;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.1);
+        }
 
-    .glass-card {
-        background: rgba(255, 255, 255, 0.07);
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 24px;
-        padding: 25px;
-        width: 100%;
-        max-width: 340px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 105, 180, 0.1);
-    }
+        p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
 
-    .gif-container {
-        width: 100%;
-        border-radius: 15px;
-        overflow: hidden;
-        margin-bottom: 20px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
+        /* --- Images --- */
+        .polaroid {
+            background: white;
+            padding: 15px;
+            padding-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: rotate(-3deg);
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 250px;
+            border-radius: 5px;
+        }
+        .polaroid img {
+            width: 100%;
+            border-radius: 3px;
+            display: block;
+        }
 
-    .gif-container img {
-        width: 100%;
-        display: block;
-    }
+        /* --- Buttons --- */
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
 
-    .text-content {
-        font-size: 18px;
-        line-height: 1.6;
-        margin-bottom: 25px;
-        font-weight: 300;
-        color: rgba(255,255,255,0.9);
-    }
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            position: relative; /* For absolute positioning of No button */
+            width: 100%;
+            height: 60px; /* Space for moving button */
+        }
 
-    .btn {
-        background: linear-gradient(45deg, #ff4d94, #ff71ce);
-        color: white;
-        border: none;
-        padding: 12px 30px;
-        border-radius: 50px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
-        box-shadow: 0 4px 15px rgba(255, 77, 148, 0.4);
-    }
+        /* --- Sections / Steps --- */
+        .step {
+            display: none; /* Hidden by default */
+            width: 100%;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .step.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    .btn:active {
-        transform: scale(0.95);
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .side-by-side {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
+        /* Canvas for Confetti */
+        #confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99;
+        }
 
-    .side-by-side .gif-container {
-        margin-bottom: 0;
-    }
+        /* Instagram Icon Style */
+        .insta-icon {
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
 
-    .little-things-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-    }
-
-    .sub-btn {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: white;
-        padding: 15px;
-        border-radius: 15px;
-        text-align: left;
-        font-size: 15px;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
-
-    .sub-btn:hover {
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    /* Overlay Styles */
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(10px);
-        z-index: 200;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-
-    .overlay.active {
-        display: flex;
-        animation: fadeIn 0.4s ease forwards;
-    }
-
-    .overlay-card {
-        background: rgba(30, 0, 30, 0.8);
-        border: 1px solid rgba(255, 113, 206, 0.3);
-        border-radius: 24px;
-        padding: 30px;
-        max-width: 340px;
-        text-align: center;
-        position: relative;
-        transform: scale(0.8);
-        opacity: 0;
-    }
-
-    .overlay.active .overlay-card {
-        animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-
-    .close-overlay {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
-        opacity: 0.7;
-    }
-
-    /* Music Button */
-    .music-btn {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 45px;
-        height: 45px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 150;
-        cursor: pointer;
-        box-shadow: 0 0 15px rgba(255, 113, 206, 0.3);
-    }
-
-    .music-btn.playing {
-        animation: pulse 2s infinite;
-    }
-
-    /* Floating Hearts */
-    .heart {
-        position: fixed;
-        color: rgba(255, 105, 180, 0.3);
-        font-size: 10px;
-        user-select: none;
-        pointer-events: none;
-        z-index: 1;
-        animation: float linear forwards;
-    }
-
-    @keyframes float {
-        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    @keyframes scaleIn {
-        from { opacity: 0; transform: scale(0.8); }
-        to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(255, 113, 206, 0.4); }
-        70% { box-shadow: 0 0 0 15px rgba(255, 113, 206, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(255, 113, 206, 0); }
-    }
-</style>
-
+    </style>
 </head>
 <body>
-<header class="header">
-    <h1>Made by Ansh 💖</h1>
-    <span>@smss1708</span>
-</header>
 
-<div id="app-container">
-    <div class="section active" id="sec-1">
-        <div class="glass-card">
-            <div class="gif-container">
-                <img src="intro.gif" alt="Intro">
-            </div>
-            <div class="text-content">
-                Hey Cutiepie 🌹<br>
-                Can we talk for a moment?<br>
-                There’s something important I want to tell you…
-            </div>
-            <button class="btn" onclick="nextSection(2)">Continue ❤️</button>
-        </div>
+    <div class="credit-header">
+        Made by sivasingh | <a href="https://instagram.com/sms1708" target="_blank">📷 @sms1708</a>
     </div>
 
-    <div class="section" id="sec-2">
-        <div class="glass-card">
-            <div class="gif-container">
-                <img src="sorry1.gif" alt="Sorry">
-            </div>
-            <div class="text-content">
-                Ritika didu…<br>
-                I know I hurt you…<br>
-                and I’ve been feeling really bad about it.
-            </div>
-            <button class="btn" onclick="nextSection(3)">Next →</button>
-        </div>
-    </div>
+    <audio id="bgMusic" loop>
+        <source src="valentine day.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
-    <div class="section" id="sec-3">
-        <div class="glass-card">
-            <h2 style="margin-bottom: 15px; font-weight: 300;">From my heart…</h2>
-            <div class="side-by-side">
-                <div class="gif-container"><img src="heart1.gif"></div>
-                <div class="gif-container"><img src="heart2.gif"></div>
-            </div>
-            <div class="text-content">Tap to see the message ↓</div>
-            <button class="btn" onclick="nextSection(4)">Continue ❤️</button>
-        </div>
-    </div>
+    <canvas id="confetti"></canvas>
 
-    <div class="section" id="sec-4">
-        <div class="glass-card">
-            <h2 style="margin-bottom: 5px; font-weight: 400;">Little things…</h2>
-            <p style="margin-bottom: 20px; opacity: 0.7;">Things I want you to know</p>
-            <div class="little-things-grid">
-                <button class="sub-btn" onclick="openMessage('regret')">💖 My Regret</button>
-                <button class="sub-btn" onclick="openMessage('care')">💖 My Care</button>
-                <button class="sub-btn" onclick="openMessage('promise')">💖 My Promise</button>
-            </div>
-            <button class="btn" style="margin-top: 25px; background: none; border: 1px solid rgba(255,255,255,0.3); box-shadow: none;" onclick="nextSection(5)">Next →</button>
+    <div class="card">
+        
+        <div class="step active" id="step1">
+            <h1>Hey Beautiful</h1>
+            <p>I have created a small world just for you.<br>Put on your headphones.</p>
+            <button class="btn" onclick="startExperience()">Start Experience ❤️</button>
         </div>
-    </div>
 
-    <div class="section" id="sec-5">
-        <div class="glass-card">
-            <div class="gif-container">
-                <img src="promise.gif" alt="Promise">
-            </div>
-            <div class="text-content" style="font-size: 15px; text-align: left;">
-                I’m sorry Ritika didu, for hurting you and making you feel upset. 
-                I never wanted to be the reason behind your tears or your silence.<br><br>
-                You matter to me more than I ever show. 
-                I promise to listen, to grow, and to be better every single day.<br><br>
-                I’m really trying… and I hope you can forgive me.
-            </div>
-            <button class="btn" onclick="nextSection(6)">Forgive Me? ❤️</button>
+        <div class="step" id="step2">
+            <h1>A Secret...</h1>
+            <p>Before I met you, life was just... ordinary.<br>But you walked in, and suddenly everything became magical.</p>
+            <button class="btn" onclick="nextStep(3)">See Magic ✨</button>
         </div>
-    </div>
 
-    <div class="section" id="sec-6">
-        <div class="glass-card">
-            <div class="gif-container">
-                <img src="endlove.gif" alt="End">
+        <div class="step" id="step3">
+            <div class="polaroid">
+                <img src="photo1.jpg" alt="Us">
             </div>
-            <div class="text-content">
-                I promise to listen more,<br>
-                understand better,<br>
-                and never let you walk alone through pain again.
+            <h1 style="font-size: 2.5rem;">My Favorite View</h1>
+            <p>In a world full of chaos, looking at you is my only peace.</p>
+            <button class="btn" onclick="nextStep(4)">Next 🌹</button>
+        </div>
+
+        <div class="step" id="step4">
+            <h1>My Promise</h1>
+            <p>I don't promise that it will be easy.<br>But I promise that I will always hold your hand, through the storms and the sunshine.</p>
+            <button class="btn" onclick="nextStep(5)">One Last Thing...</button>
+        </div>
+
+        <div class="step" id="step5">
+            <h1 style="font-size: 3rem;">Will You Be Mine?</h1>
+            <p>Be my Valentine, my partner, my everything?</p>
+            <div class="btn-group">
+                <button class="btn" onclick="sheSaidYes()">YES! 💍</button>
+                <button class="btn" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No 🙈</button>
             </div>
         </div>
+
+        <div class="step" id="step6">
+            <h1 style="font-size: 4rem;">She Said YES! 💖</h1>
+            <p>You just made me the happiest person alive.<br>I love you infinitely.</p>
+            <p style="font-size: 0.9rem; margin-top: 20px;">(Screenshot this and send it to me!)</p>
+        </div>
+
     </div>
-</div>
 
-<div class="overlay" id="message-overlay">
-    <div class="overlay-card">
-        <span class="close-overlay" onclick="closeMessage()">✖</span>
-        <div id="overlay-text" class="text-content" style="margin-bottom: 0;"></div>
-    </div>
-</div>
-
-<audio id="bg-music" loop>
-    <source src="tere-liye.mp3" type="audio/mpeg">
-</audio>
-
-<div class="music-btn" id="music-toggle" onclick="toggleMusic()">
-    <span id="music-icon">🎵</span>
-</div>
-
-<script>
-    const music = document.getElementById('bg-music');
-    const musicToggle = document.getElementById('music-toggle');
-    const musicIcon = document.getElementById('music-icon');
-    let musicStarted = false;
-
-    function startMusic() {
-        if (!musicStarted) {
-            music.volume = 0.35;
-            music.play().catch(e => console.log("Autoplay blocked"));
-            musicStarted = true;
-            musicToggle.classList.add('playing');
+    <script>
+        // --- Logic ---
+        
+        // Music Function
+        function startExperience() {
+            var music = document.getElementById('bgMusic');
+            music.play().catch(error => {
+                console.log("Autoplay prevented. User interaction required.");
+            });
+            nextStep(2);
         }
-    }
 
-    function toggleMusic() {
-        if (music.paused) {
-            music.play();
-            musicIcon.innerText = "🎵";
-            musicToggle.classList.add('playing');
-        } else {
-            music.pause();
-            musicIcon.innerText = "🔇";
-            musicToggle.classList.remove('playing');
+        // Navigation
+        function nextStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            // Show requested step
+            document.getElementById('step' + stepNumber).classList.add('active');
         }
-    }
 
-    function nextSection(num) {
-        startMusic();
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.getElementById('sec-' + num).classList.add('active');
-    }
+        // The "No" Button Prank
+        function moveButton() {
+            var btn = document.getElementById('noBtn');
+            var card = document.querySelector('.card');
+            
+            // Get boundaries of the card to keep button inside
+            var cardRect = card.getBoundingClientRect();
+            var btnRect = btn.getBoundingClientRect();
+            
+            // Calculate random position within the card safely
+            var maxX = cardRect.width - btnRect.width - 40; 
+            var maxY = cardRect.height - btnRect.height - 40;
+            
+            var randomX = Math.floor(Math.random() * maxX) - (cardRect.width / 2) + 50;
+            var randomY = Math.floor(Math.random() * maxY) - (cardRect.height / 2) + 50;
 
-    const messages = {
-        regret: "I regret hurting you Ritika didu… I never meant to cause pain or silence in your heart… Seeing you upset because of me is the hardest thing to handle.",
-        care: "You matter to me Ritika didu more than words can explain… Your smile, your peace, your feelings matter more than anything else in my world.",
-        promise: "I promise to listen more, understand better, and never let you walk alone through pain again… I'll be the person you deserve to have by your side."
-    };
+            btn.style.position = 'absolute';
+            btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
 
-    function openMessage(type) {
-        startMusic();
-        document.getElementById('overlay-text').innerText = messages[type];
-        document.getElementById('message-overlay').classList.add('active');
-    }
+        // The "Yes" Action
+        function sheSaidYes() {
+            nextStep(6);
+            startConfetti();
+        }
 
-    function closeMessage() {
-        document.getElementById('message-overlay').classList.remove('active');
-    }
+        // --- Visual Effects ---
 
-    // Floating Hearts Logic
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.innerHTML = '❤️';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        heart.style.opacity = Math.random() * 0.5 + 0.2;
-        document.body.appendChild(heart);
+        // 1. Generate Floating Hearts Background
+        function createFloatingHearts() {
+            const body = document.querySelector('body');
+            const heartCount = 20; // Number of background hearts
 
-        setTimeout(() => {
-            heart.remove();
-        }, 6000);
-    }
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 4 + 's'; // 4-7s speed
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                body.appendChild(heart);
+            }
+        }
+        createFloatingHearts();
 
-    setInterval(createHeart, 400);
 
-    // Interaction listener for music start
-    document.body.addEventListener('click', startMusic, { once: true });
-</script>
+        // 2. Confetti Effect (Simple JS implementation)
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
+        let particles = [];
+
+        function startConfetti() {
+            for (let i = 0; i < 300; i++) {
+                particles.push({
+                    x: window.innerWidth / 2,
+                    y: window.innerHeight / 2,
+                    color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                    velocity: {
+                        x: (Math.random() - 0.5) * 10,
+                        y: (Math.random() - 0.5) * 10
+                    },
+                    size: Math.random() * 5 + 2,
+                    alpha: 1
+                });
+            }
+            requestAnimationFrame(updateConfetti);
+        }
+
+        function updateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, index) => {
+                p.x += p.velocity.x;
+                p.y += p.velocity.y;
+                p.velocity.y += 0.05; // Gravity
+                p.alpha -= 0.005; // Fade out
+
+                ctx.globalAlpha = p.alpha;
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                if (p.alpha <= 0) particles.splice(index, 1);
+            });
+
+            if (particles.length > 0) requestAnimationFrame(updateConfetti);
+        }
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+    </script>
 </body>
 </html>
