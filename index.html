@@ -2,277 +2,269 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Forever Promises | Sivasingh</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Promise Day</title>
     <style>
-        :root {
-            --primary: #ff2d75;
-            --secondary: #00f2fe;
-            --bg-dark: #0a0a0a;
-            --text-main: #ffffff;
-        }
+        /* CSS STYLING */
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-        body, html {
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6e6;
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
-            width: 100vw;
             overflow: hidden;
-            background: var(--bg-dark);
-            font-family: 'Montserrat', sans-serif; /* Clear Text Font */
-            color: var(--text-main);
-            transition: background 3s ease; /* Smooth color change */
+            flex-direction: column;
         }
 
-        /* --- ONE CLICK COPY UTILITY --- */
-        #copyBtn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            border: 2px solid #fff;
-            padding: 12px 20px;
-            border-radius: 8px;
-            color: #fff;
+        /* Top Header */
+        .top-header {
+            position: absolute;
+            top: 10px;
+            font-size: 14px;
             font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
-        }
-        #copyBtn:hover { background: #fff; color: #000; }
-
-        /* --- DYNAMIC LIGHTING BACKGROUND --- */
-        .lighting-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
-            background-size: 400% 400%;
-            animation: moveGradient 10s ease infinite;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 5px 15px;
+            border-radius: 20px;
+            z-index: 1000;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        @keyframes moveGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Lighting Effect Animation */
+        @keyframes rgbGlow {
+            0% { box-shadow: 0 0 20px #ff0000, 0 0 10px #ff0000 inset; border-color: #ff0000; }
+            20% { box-shadow: 0 0 20px #ff8800, 0 0 10px #ff8800 inset; border-color: #ff8800; }
+            40% { box-shadow: 0 0 20px #ffff00, 0 0 10px #ffff00 inset; border-color: #ffff00; }
+            60% { box-shadow: 0 0 20px #00ff00, 0 0 10px #00ff00 inset; border-color: #00ff00; }
+            80% { box-shadow: 0 0 20px #0000ff, 0 0 10px #0000ff inset; border-color: #0000ff; }
+            100% { box-shadow: 0 0 20px #ff00ff, 0 0 10px #ff00ff inset; border-color: #ff00ff; }
         }
 
-        /* --- AMBIENT GLOW ORBS --- */
-        .glow-orb {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.5;
-            z-index: 0;
-            animation: drift 15s infinite alternate;
-        }
-        .orb-1 { background: #ff2d75; top: -50px; left: -50px; }
-        .orb-2 { background: #4facfe; bottom: -50px; right: -50px; animation-delay: -5s; }
-
-        @keyframes drift {
-            from { transform: translate(0, 0); }
-            to { transform: translate(100px, 100px); }
-        }
-
-        /* --- CONTENT CARDS --- */
-        .page-wrapper { position: relative; z-index: 10; height: 100vh; }
-
-        .page {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; justify-content: center; align-items: center;
-            padding: 20px; opacity: 0; visibility: hidden;
-            transition: 0.8s; text-align: center;
-        }
-
-        .page.active { opacity: 1; visibility: visible; }
-
-        .glass-card {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 50px 30px;
-            max-width: 500px;
-            box-shadow: 0 0 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.05);
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 350px;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            /* Applying the Lighting Effect */
+            border: 4px solid transparent;
+            animation: rgbGlow 3s infinite alternate; 
+            transition: transform 0.3s;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            font-family: 'Fredoka One', cursive;
+            color: #ff4d79;
+            font-size: 26px;
+            margin-bottom: 10px;
         }
 
         p {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #e0e0e0;
-            margin-bottom: 35px;
-            font-weight: 300;
+            color: #555;
+            font-size: 16px;
+            margin: 15px 0;
         }
 
-        /* --- BUTTONS --- */
-        .btn-action {
-            background: #fff;
-            color: #000;
+        .img-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #fff0f5;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn {
+            background: #ff4d79;
+            color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 12px 25px;
             border-radius: 50px;
-            font-weight: 700;
+            font-size: 16px;
             cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.4s;
-            box-shadow: 0 5px 15px rgba(255,255,255,0.2);
-        }
-        .btn-action:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px var(--secondary);
+            margin-top: 15px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(255, 77, 121, 0.4);
+            transition: transform 0.2s;
         }
 
-        /* --- MUSIC & SIGNATURE --- */
-        .music-btn {
-            position: fixed; bottom: 20px; left: 20px; z-index: 100;
-            background: rgba(255,255,255,0.1); border-radius: 50%;
-            width: 50px; height: 50px; display: flex; justify-content: center;
-            align-items: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.3);
+        .btn:active {
+            transform: scale(0.95);
         }
 
-        .signature {
-            position: fixed; bottom: 20px; width: 100%; text-align: center;
-            font-size: 0.8rem; letter-spacing: 2px; opacity: 0.7; z-index: 5;
+        .hidden {
+            display: none;
         }
 
-        /* --- LIGHTING EFFECTS (DYNAMIC) --- */
-        .light-burst {
-            position: absolute; pointer-events: none;
-            background: radial-gradient(circle, #fff, transparent);
-            border-radius: 50%; animation: explode 1s ease-out forwards;
+        /* Floating Hearts Background */
+        .heart-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
         }
-        @keyframes explode {
-            0% { width: 0; height: 0; opacity: 1; }
-            100% { width: 200px; height: 200px; opacity: 0; }
+        
+        .heart {
+            position: absolute;
+            color: #ff99bb;
+            opacity: 0.5;
+            animation: float 6s linear infinite;
         }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        /* Yes/No Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        #noBtn {
+            background: #ccc;
+            color: #555;
+        }
+
     </style>
 </head>
 <body>
 
-    <button id="copyBtn">CLICK TO COPY FULL CODE</button>
-
-    <div class="lighting-bg" id="mainBg"></div>
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
+    <div class="top-header">Follow 📷 - @smss1708</div>
 
     <audio id="bgMusic" loop>
-        <source src="tere-liye.mp3" type="audio/mp3">
+        <source src="tere-liyr.mp3" type="audio/mp3">
     </audio>
 
-    <div class="music-btn" onclick="toggleMusic()">
-        <span id="musicIcon">🎵</span>
+    <div class="heart-bg" id="hearts"></div>
+
+    <div class="card" id="screen1">
+        <h1>Happy Promise Day ❤️</h1>
+        <div class="img-container">
+            <img src="https://media.giphy.com/media/l0HlO3BJ8LALPW4sE/giphy.gif" alt="Hold Hands">
+        </div>
+        <p>Click anywhere to begin with music...</p>
+        <button class="btn" onclick="startJourney()">Start Journey 💌</button>
     </div>
 
-    <div class="signature">Made by Sivasingh 🌹 @smss1708</div>
+    <div class="card hidden" id="screen2">
+        <h1>My First Promise 💖</h1>
+        <div class="img-container">
+            <img src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif" alt="Promise">
+        </div>
+        <p>I promise... No matter how far we are, distance will never separate my heart from yours.</p>
+        <button class="btn" onclick="nextScreen(3)">Next Promise 👉</button>
+    </div>
 
-    <div class="page-wrapper">
-        <section class="page active" id="page1">
-            <div class="glass-card">
-                <h1>My Heart...</h1>
-                <p>Before this day ends, I have a few promises to whisper to your soul. Are you ready to hear them?</p>
-                <button class="btn-action" onclick="nextPage(2)">Open My Soul</button>
-            </div>
-        </section>
+    <div class="card hidden" id="screen3">
+        <h1>My Second Promise 🌸</h1>
+        <div class="img-container">
+            <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Care">
+        </div>
+        <p>I promise... I will always take care of you, in your highs and your lows.</p>
+        <button class="btn" onclick="nextScreen(4)">Final Promise 👉</button>
+    </div>
 
-        <section class="page" id="page2">
-            <div class="glass-card">
-                <h1>I Promise...</h1>
-                <p>"To be the anchor in your storm and the sunshine in your morning. I will love you when you are happy and even more when you are sad."</p>
-                <button class="btn-action" onclick="nextPage(3)">Next Promise</button>
-            </div>
-        </section>
+    <div class="card hidden" id="screen4">
+        <h1>One Last Question 💍</h1>
+        <div class="img-container">
+            <img src="https://media.giphy.com/media/3o7TKoWXm3okO1kgHC/giphy.gif" alt="Ask">
+        </div>
+        <p>Will you stay with me forever?</p>
+        <div class="btn-group">
+            <button class="btn" onclick="finalSuccess()">YES 💖</button>
+            <button class="btn" id="noBtn" onmouseover="moveButton()">NO 🙈</button>
+        </div>
+    </div>
 
-        <section class="page" id="page3">
-            <div class="glass-card">
-                <h1>I Promise...</h1>
-                <p>"To respect your journey, support your wildest dreams, and never let go of your hand, no matter how crowded the world gets."</p>
-                <button class="btn-action" onclick="nextPage(4)">One More</button>
-            </div>
-        </section>
-
-        <section class="page" id="page4">
-            <div class="glass-card">
-                <h1>Always.</h1>
-                <p>I promise to stay with you until the stars go out. Happy Promise Day, my love. Forever is just the start.</p>
-                <div style="font-size: 3rem; margin-bottom: 20px;">❤️</div>
-                <button class="btn-action" onclick="nextPage(1)">Back to Start</button>
-            </div>
-        </section>
+    <div class="card hidden" id="screen5">
+        <h1>Yayyy! I Love You! 🥳</h1>
+        <div class="img-container">
+            <img src="https://media.giphy.com/media/10UeeqP1IyKUqu65c/giphy.gif" alt="Happy">
+        </div>
+        <p>You are my forever and always. Happy Promise Day! ✨</p>
+        <p style="font-size: 12px; margin-top: 20px;">Created for @smss1708</p>
     </div>
 
     <script>
-        // --- 1 CLICK COPY SCRIPT ---
-        document.getElementById('copyBtn').addEventListener('click', function() {
-            const fullCode = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-            const tempInput = document.createElement("textarea");
-            tempInput.value = fullCode;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
+        // Logic to switch screens and play music
+
+        function startJourney() {
+            // Try to play music
+            var audio = document.getElementById("bgMusic");
+            audio.play().catch(error => {
+                console.log("Audio play failed (browser policy): ", error);
+            });
             
-            this.innerText = "COPIED! ✅";
-            this.style.background = "#4CAF50";
-            setTimeout(() => {
-                this.innerText = "CLICK TO COPY FULL CODE";
-                this.style.background = "rgba(255, 255, 255, 0.2)";
-            }, 2000);
-        });
-
-        // --- THEME COLOR CHANGER ---
-        const colors = [
-            'linear-gradient(45deg, #0f0c29, #302b63, #24243e)', // Dark Blue
-            'linear-gradient(45deg, #2d0f1a, #4a1228, #1a0f2d)', // Deep Red/Purple
-            'linear-gradient(45deg, #0f2027, #203a43, #2c5364)', // Dark Teal
-            'linear-gradient(45deg, #130f40, #000000, #30336b)'  // Midnight
-        ];
-        let colorIndex = 0;
-        setInterval(() => {
-            colorIndex = (colorIndex + 1) % colors.length;
-            document.getElementById('mainBg').style.background = colors[colorIndex];
-            document.getElementById('mainBg').style.backgroundSize = "400% 400%";
-        }, 5000);
-
-        // --- NAVIGATION & LIGHTING EFFECT ---
-        function nextPage(id) {
-            // Lighting Burst Effect
-            const burst = document.createElement('div');
-            burst.className = 'light-burst';
-            burst.style.left = '50%';
-            burst.style.top = '50%';
-            burst.style.transform = 'translate(-50%, -50%)';
-            document.body.appendChild(burst);
-            setTimeout(() => burst.remove(), 1000);
-
-            // Page Switch
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page' + id).classList.add('active');
-
-            // Play music on first click
-            const music = document.getElementById('bgMusic');
-            if(music.paused) { music.play(); document.getElementById('musicIcon').innerText = '⏸️'; }
+            // Go to next screen
+            nextScreen(2);
         }
 
-        function toggleMusic() {
-            const music = document.getElementById('bgMusic');
-            const icon = document.getElementById('musicIcon');
-            if(music.paused) { music.play(); icon.innerText = '⏸️'; }
-            else { music.pause(); icon.innerText = '🎵'; }
+        function nextScreen(screenNumber) {
+            // Hide all screens
+            document.getElementById('screen1').classList.add('hidden');
+            document.getElementById('screen2').classList.add('hidden');
+            document.getElementById('screen3').classList.add('hidden');
+            document.getElementById('screen4').classList.add('hidden');
+            document.getElementById('screen5').classList.add('hidden');
+
+            // Show requested screen
+            document.getElementById('screen' + screenNumber).classList.remove('hidden');
+        }
+
+        function finalSuccess() {
+            nextScreen(5);
+            // Optional: Confetti effect or alert
+            confettiEffect();
+        }
+
+        // Funny logic: Move the 'NO' button when hovered
+        function moveButton() {
+            var x = Math.random() * (window.innerWidth - 100); // Random X
+            var y = Math.random() * (window.innerHeight - 100); // Random Y
+            var btn = document.getElementById('noBtn');
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // Creating floating hearts
+        function createHearts() {
+            const heartContainer = document.getElementById('hearts');
+            for (let i = 0; i < 20; i++) {
+                let div = document.createElement('div');
+                div.className = 'heart';
+                div.innerHTML = '❤';
+                div.style.left = Math.random() * 100 + 'vw';
+                div.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                div.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                heartContainer.appendChild(div);
+            }
+        }
+        createHearts();
+
+        // Optional simple confetti effect function
+        function confettiEffect() {
+            // Makes the border flash faster
+            document.querySelector('.card').style.animationDuration = "0.5s";
         }
     </script>
 </body>
