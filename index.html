@@ -53,15 +53,15 @@
     }
 
     .glass {
-      background: rgba(30, 10, 50, 0.35);
+      background: rgba(30, 10, 50, 0.38);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 105, 180, 0.18);
+      border: 1px solid rgba(255, 105, 180, 0.22);
       border-radius: 1.8rem;
-      padding: 2.2rem 1.8rem;
-      max-width: 90%;
+      padding: 2rem 1.6rem;
+      max-width: 92%;
       width: 420px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.65);
     }
 
     .glow-text {
@@ -69,23 +69,21 @@
     }
 
     button.glow-btn {
-      background: rgba(255, 105, 180, 0.15);
+      background: rgba(255, 105, 180, 0.16);
       border: 1.5px solid var(--pink-glow);
       color: white;
       font-weight: bold;
       padding: 1rem 2.5rem;
       border-radius: 9999px;
-      font-size: 1.3rem;
-      margin-top: 2.5rem;
+      font-size: 1.25rem;
+      margin-top: 2.2rem;
       transition: all 0.4s ease;
-      box-shadow: 0 0 25px rgba(255,105,180,0.4);
+      box-shadow: 0 0 25px rgba(255,105,180,0.45);
     }
 
-    button.glow-btn:hover,
     button.glow-btn:active {
-      transform: scale(1.08);
+      transform: scale(0.96);
       box-shadow: 0 0 45px var(--pink-glow);
-      background: rgba(255, 105, 180, 0.28);
     }
 
     #footer {
@@ -93,48 +91,79 @@
       top: 12px;
       right: 16px;
       z-index: 999;
-      font-size: 0.82rem;
-      opacity: 0.75;
+      font-size: 0.8rem;
+      opacity: 0.8;
       text-align: right;
       pointer-events: auto;
     }
 
-    #footer a:hover {
-      color: var(--pink-glow);
-    }
+    #footer a:hover { color: var(--pink-glow); }
 
-    canvas#particles {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
+    canvas#particles { 
+      position: fixed; inset: 0; pointer-events: none; z-index: 1; 
     }
 
     .black-rose-3d {
-      width: 260px;
-      height: 260px;
-      position: relative;
-      transform-style: preserve-3d;
-      filter: drop-shadow(0 0 40px rgba(255,105,180,0.5));
+      width: 240px; height: 240px; position: relative; transform-style: preserve-3d;
+      filter: drop-shadow(0 0 40px rgba(255,105,180,0.55));
     }
 
     .petal {
-      position: absolute;
-      width: 140px;
-      height: 180px;
-      background: #000;
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      left: 50%;
-      top: 50%;
+      position: absolute; width: 130px; height: 170px; background: #000;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; left: 50%; top: 50%;
       transform-origin: bottom center;
-      box-shadow: inset 0 10px 30px rgba(255,255,255,0.12),
-                  0 0 35px rgba(255,105,180,0.45);
+      box-shadow: inset 0 8px 25px rgba(255,255,255,0.15), 0 0 30px rgba(255,105,180,0.5);
     }
 
     .cake-layer {
-      border-radius: 50% 50% 40% 40%;
-      border: 10px solid #c71585;
+      border-radius: 50% 50% 40% 40%; border: 10px solid #c71585;
       box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    #wish-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.78);
+      display: none; align-items: center; justify-content: center;
+      z-index: 1000; backdrop-filter: blur(8px); cursor: pointer;
+    }
+
+    #wish-card {
+      background: linear-gradient(135deg, #140028, #22003f);
+      border: 2px solid var(--pink-glow);
+      border-radius: 2rem;
+      padding: 2.8rem 2rem;
+      max-width: 90%;
+      width: 500px;
+      box-shadow: 0 0 70px rgba(255,105,180,0.6);
+      transform: scale(0.65);
+      opacity: 0;
+      transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      text-align: center;
+    }
+
+    #wish-card.open {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    #wish-card h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      color: var(--pink-glow);
+      margin-bottom: 1.4rem;
+      text-shadow: 0 0 30px var(--pink-glow);
+    }
+
+    #wish-card p {
+      font-size: 1.38rem;
+      line-height: 1.75;
+      color: #ffe4f0;
+    }
+
+    #close-hint {
+      margin-top: 2.2rem;
+      font-size: 1.1rem;
+      opacity: 0.75;
     }
   </style>
 </head>
@@ -151,7 +180,7 @@
   <a href="https://instagram.com/smss1708" target="_blank">follow instagram 📷 @smss1708</a>
 </div>
 
-<!-- ────────────── PAGE 1 ────────────── -->
+<!-- page 1 -->
 <div id="p1" class="page active">
   <div class="glass">
     <div class="text-8xl mb-6 animate-bounce">🥰</div>
@@ -161,7 +190,7 @@
   <button class="glow-btn" onclick="next(1)">click to continue 💖</button>
 </div>
 
-<!-- ────────────── PAGE 2 ────────────── -->
+<!-- page 2 -->
 <div id="p2" class="page">
   <div class="glass">
     <p class="text-3xl mb-8">measuring your cuteness...</p>
@@ -174,7 +203,7 @@
   <button id="btn2" class="glow-btn opacity-40 pointer-events-none" onclick="next(2)">continue 💗</button>
 </div>
 
-<!-- ────────────── PAGE 3 ────────────── -->
+<!-- page 3 -->
 <div id="p3" class="page">
   <div class="relative w-80 sm:w-96 h-96 touch-none">
     <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-80 h-14 bg-zinc-900 rounded-full shadow-2xl"></div>
@@ -191,14 +220,14 @@
   <button class="glow-btn" onclick="next(3)">next surprise 🎁</button>
 </div>
 
-<!-- ────────────── PAGE 4 ────────────── -->
+<!-- page 4 -->
 <div id="p4" class="page">
   <div class="black-rose-3d" id="rose3d"></div>
   <p class="text-3xl glow-text mt-8">for the girl who loves black roses 🖤🌹</p>
   <button class="glow-btn" onclick="next(4)">final surprise 💝</button>
 </div>
 
-<!-- ────────────── PAGE 5 ────────────── -->
+<!-- page 5 -->
 <div id="p5" class="page">
   <div id="balloons" class="absolute inset-0 pointer-events-none z-0"></div>
   
@@ -209,11 +238,37 @@
     <p id="tomorrow" class="text-2xl text-pink-200 mt-4"></p>
   </div>
 
-  <button class="glow-btn mt-10">make a wish ✨</button>
+  <button class="glow-btn mt-10 px-10 py-5 text-2xl" onclick="openWishCard()">
+    open your birthday card 💌
+  </button>
+</div>
+
+<!-- wish card -->
+<div id="wish-overlay" onclick="closeWishCard()">
+  <div id="wish-card" onclick="event.stopPropagation()">
+    <h2>my dearest anshika</h2>
+    <p>
+      today is all about you — the girl who makes every moment magical,<br>
+      who turns ordinary days into poetry, and who somehow makes my heart<br>
+      feel both calm and crazy at the same time.<br><br>
+      
+      you deserve the softest love, the brightest dreams,<br>
+      endless black roses, midnight talks, and every happiness this world can give.<br><br>
+      
+      happy birthday, my irreplaceable favorite person.<br>
+      may this year wrap you in love, glow, and all the things that make you smile the way you make me smile 🖤💕<br><br>
+      
+      forever your biggest fan,<br>
+      <span class="text-xl">sivasingh ❤️</span>
+    </p>
+    <div id="close-hint">tap anywhere to close</div>
+  </div>
 </div>
 
 <script>
-// ────────────── GLOBAL ──────────────
+// ────────────────────────────────────────────────
+// GLOBAL
+// ────────────────────────────────────────────────
 const pages = [1,2,3,4,5];
 let current = 1;
 const music = document.getElementById('music');
@@ -227,11 +282,12 @@ function resize() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
-
 window.addEventListener('resize', resize);
 resize();
 
-// ────────────── PARTICLES (hearts + black petals) ──────────────
+// ────────────────────────────────────────────────
+// PARTICLES (hearts + black petals)
+// ────────────────────────────────────────────────
 class Particle {
   constructor(type) {
     this.type = type;
@@ -247,7 +303,7 @@ class Particle {
       this.vy = -1.8 - Math.random()*2.4;
       this.vx = (Math.random()-0.5)*1.4;
       this.swayPhase = Math.random()*Math.PI*2;
-    } else { // petal
+    } else {
       this.y = -60;
       this.vy = 2 + Math.random()*4;
       this.vx = (Math.random()-0.5)*3;
@@ -292,13 +348,11 @@ class Particle {
       ctx.ellipse(0, 0, this.size*0.4, this.size*0.9, 0, 0, Math.PI*2);
       ctx.fill();
 
-      // shine
       ctx.fillStyle = 'rgba(255,255,255,0.25)';
       ctx.beginPath();
       ctx.ellipse(-this.size*0.15, -this.size*0.3, this.size*0.18, this.size*0.5, 0, 0, Math.PI*2);
       ctx.fill();
     }
-
     ctx.restore();
   }
 }
@@ -318,7 +372,9 @@ function animate() {
 initParticles();
 animate();
 
-// ────────────── PAGE NAVIGATION ──────────────
+// ────────────────────────────────────────────────
+// PAGE NAVIGATION
+// ────────────────────────────────────────────────
 function showPage(n) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(`p${n}`).classList.add('active');
@@ -332,7 +388,7 @@ function showPage(n) {
 
 function next(from) {
   if (from === 1 && !musicPlayed) {
-    music.play().catch(()=>console.log("autoplay blocked - waiting for interaction"));
+    music.play().catch(e => console.log("autoplay blocked - ok on mobile"));
     musicPlayed = true;
   }
 
@@ -346,7 +402,9 @@ function next(from) {
   });
 }
 
-// ────────────── PAGE 2 ──────────────
+// ────────────────────────────────────────────────
+// PAGE 2 - CUTENESS
+// ────────────────────────────────────────────────
 function runCuteness() {
   const bar = document.getElementById('bar');
   const txt = document.getElementById('percent');
@@ -371,7 +429,9 @@ function runCuteness() {
   }, 70);
 }
 
-// ────────────── PAGE 3 Cake ──────────────
+// ────────────────────────────────────────────────
+// PAGE 3 - CAKE (touch friendly)
+// ────────────────────────────────────────────────
 let dragging = false;
 
 function initCake() {
@@ -397,7 +457,7 @@ function initCake() {
     knife.style.top  = y + 'px';
   }
 
-  function onEnd(e) {
+  function onEnd() {
     if (!dragging) return;
     dragging = false;
 
@@ -410,7 +470,6 @@ function initCake() {
 
       gsap.to(['#layer1','#layer2','#layer3'], {x:'+=10', duration:0.06, repeat:6, yoyo:true});
 
-      // sparkles on cut
       for(let i=0;i<80;i++){
         setTimeout(()=> {
           const px = parent.left + parent.width/2 + (Math.random()-0.5)*140;
@@ -422,52 +481,53 @@ function initCake() {
   }
 
   knife.addEventListener('pointerdown', onStart);
-  knife.addEventListener('touchstart', onStart);
+  knife.addEventListener('touchstart', onStart, {passive:false});
   document.addEventListener('pointermove', onMove);
   document.addEventListener('touchmove', onMove, {passive:false});
   document.addEventListener('pointerup', onEnd);
   document.addEventListener('touchend', onEnd);
 }
 
-// ────────────── PAGE 4 Rose ──────────────
+// ────────────────────────────────────────────────
+// PAGE 4 - ROSE
+// ────────────────────────────────────────────────
 function initRose() {
   const rose = document.getElementById('rose3d');
   rose.innerHTML = '';
 
-  // center
   const center = document.createElement('div');
   center.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;';
-  center.innerHTML = '<div style="width:70px;height:70px;background:#000;border-radius:50%;box-shadow:inset 0 0 40px #fff, 0 0 50px #ff69b4;"></div>';
+  center.innerHTML = '<div style="width:65px;height:65px;background:#000;border-radius:50%;box-shadow:inset 0 0 40px #fff, 0 0 50px #ff69b4;"></div>';
   rose.appendChild(center);
 
-  // petals
   for(let i=0; i<9; i++){
     const p = document.createElement('div');
     p.className = 'petal';
-    p.style.transform = `rotate(${i*40}deg) translateY(-60px)`;
+    p.style.transform = `rotate(${i*40}deg) translateY(-55px)`;
     rose.appendChild(p);
   }
 
   gsap.to(rose, {rotationY:360, duration:24, repeat:-1, ease:"none"});
 }
 
-// ────────────── PAGE 5 Celebration ──────────────
+// ────────────────────────────────────────────────
+// PAGE 5 - CELEBRATION + CARD
+// ────────────────────────────────────────────────
 function initCelebration() {
   const date = new Date();
   date.setDate(date.getDate() + 1);
   document.getElementById('tomorrow').textContent = 
     `celebrating on: ${date.toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'}).toLowerCase()}`;
 
-  // balloons
   const cont = document.getElementById('balloons');
   for(let i=0; i<22; i++){
     setTimeout(()=>spawnBalloon(cont), i*180);
   }
 
-  // confetti loop
   setInterval(()=>{
-    if (current !== 5) return;
-    burst(Math.random()*canvas.width, canvas.height*0.3, 60);
+    if (document.getElementById('p5').classList.contains('active')) {
+      burst(Math.random()*canvas.width, canvas.height*0.3, 60);
+    }
   }, 1800);
 }
 
@@ -514,15 +574,40 @@ function burst(x, y, count = 40) {
   }
 }
 
-// Start
+// ────────────────────────────────────────────────
+// WISH CARD
+// ────────────────────────────────────────────────
+function openWishCard() {
+  const overlay = document.getElementById('wish-overlay');
+  const card = document.getElementById('wish-card');
+  overlay.style.display = 'flex';
+  gsap.to(card, {scale:1, opacity:1, duration:0.7, ease:"back.out(1.4)"});
+}
+
+function closeWishCard() {
+  const overlay = document.getElementById('wish-overlay');
+  const card = document.getElementById('wish-card');
+  gsap.to(card, {
+    scale:0.65, opacity:0, duration:0.5, ease:"power2.in",
+    onComplete: () => { overlay.style.display = 'none'; }
+  });
+}
+
+// START
 showPage(1);
 
-// Prevent unwanted scroll / zoom on mobile
+// Prevent pinch zoom on mobile
 document.addEventListener('touchmove', e => {
   if (e.touches.length > 1) e.preventDefault();
 }, {passive: false});
 
 document.body.addEventListener('gesturestart', e => e.preventDefault());
 </script>
+
+<style>
+  @keyframes float {
+    to { transform: translateY(-120vh) rotate(15deg); }
+  }
+</style>
 </body>
-</html>
+        </html>
