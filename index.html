@@ -3,297 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>My Forever Bestie, Pallavi ❤️</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>For My Khushi ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&family=Cinzel+Decorative:wght@700&display=swap');
-        
-        body, html {
-            margin: 0; padding: 0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1a1a2e;
+            color: #fff;
             overflow: hidden;
-            background: linear-gradient(135deg, #fffdf8, #fff1f6, #f2e9ff);
-            font-family: 'Playfair Display', serif;
-            touch-action: manipulation;
-            color: #333;
-            height: 100%;
-        }
-        
-        .premium-font { font-family: 'Dancing Script', cursive; font-weight: 700; }
-        
-        .section {
-            position: absolute; inset: 0;
-            display: none; opacity: 0;
-            align-items: center; justify-content: center; flex-direction: column;
-            padding: 20px; width: 100vw; height: 100vh;
-            will-change: opacity, transform;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .section.active { display: flex; opacity: 1; }
-
-        .glass-premium {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(168, 10, 86, 0.1);
-            box-shadow: 0 8px 32px rgba(168, 10, 86, 0.08);
-            border-radius: 24px;
-        }
-        
-        .ultra-glow {
-            color: #9d174d;
-            text-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
-        }
-
-        .bg-particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
-        .particle {
-            position: absolute; top: -10%; 
-            animation: fallPremium linear infinite;
-            will-change: transform;
-        }
-
-        @keyframes fallPremium {
-            0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
-            20% { opacity: 1; }
-            100% { transform: translate3d(0, 110vh, 0) rotate(360deg); opacity: 0; }
-        }
-
-        .balloon {
-            width: 70px; height: 90px;
-            background: radial-gradient(circle at 35% 25%, #ffffff60, #ffffff00 70%), var(--balloon-color);
-            border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+        /* Optimized Background */
+        .bg-gradient {
             position: absolute;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            animation: floatPremium 4s ease-in-out infinite alternate;
-            cursor: pointer;
-            will-change: transform;
+            inset: 0;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            opacity: 0.3;
+            z-index: -2;
         }
 
-        @keyframes floatPremium {
-            0% { transform: translate3d(0, 0, 0) rotate(-3deg); }
-            100% { transform: translate3d(0, -20px, 0) rotate(3deg); }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* Catch My Heart Game Styles */
-        #game-canvas {
-            background: rgba(255, 255, 255, 0.3);
+        .app-container {
+            width: 100%;
+            max-width: 400px;
+            height: 90vh;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Hearts Performance Fix */
+        .hearts-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            background: #ff69b4;
+            transform: rotate(-45deg);
+            animation: float linear forwards;
+        }
+
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: 50%;
+        }
+        .heart::before { top: -50%; left: 0; }
+        .heart::after { top: 0; left: 50%; }
+
+        @keyframes float {
+            to { transform: translateY(-110vh) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Sections */
+        .section {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s ease;
+            z-index: 10;
+        }
+
+        .section.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
             border-radius: 20px;
-            border: 2px dashed #f472b6;
-            cursor: crosshair;
-            touch-action: none;
+            text-align: center;
+            width: 100%;
+        }
+
+        h2 { font-family: 'Dancing Script', cursive; font-size: 2rem; color: #ff9ec1; margin-bottom: 15px; }
+        p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+
+        .btn {
+            background: #ff4b8a;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn:active { transform: scale(0.95); }
+
+        .gif-container {
+            width: 100%;
+            height: 180px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .gif-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Modal Fix */
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            padding: 20px;
+        }
+        .modal-content {
+            background: #2a1b3d;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid #ff69b4;
+            text-align: center;
+            position: relative;
+        }
+        .close-btn { position: absolute; top: 10px; right: 15px; cursor: pointer; color: #ff69b4; font-size: 20px; }
+
+        .music-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 75, 138, 0.5);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <div class="fixed top-4 left-0 w-full text-center z-[100] text-gray-400 text-[10px] tracking-widest pointer-events-none uppercase">
-        For Pallavi • From Sivasingh ❤️
+    <audio id="bgMusic" loop>
+        <source src="tere-liye.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="app-container">
+        <div class="bg-gradient"></div>
+        <div class="hearts-container" id="heartsContainer"></div>
+
+        <div class="section active" id="section1">
+            <div class="glass-card">
+                <div class="gif-container">
+                    <img src="https://media.giphy.com/media/3o7TKtd3XVOUhp1JRK/giphy.gif" alt="Hi">
+                </div>
+                <h2>Hey My Khushi 🌸</h2>
+                <p>Please give me a moment... I have something to say from my heart. 🥺</p>
+                <button class="btn" onclick="nextSection(2)">Go ahead, tell me ❤️</button>
+            </div>
+        </div>
+
+        <div class="section" id="section2">
+            <div class="glass-card">
+                <div class="gif-container">
+                    <img src="https://media.giphy.com/media/3o6Zt6KHxJTbXCnSvu/giphy.gif" alt="Sorry">
+                </div>
+                <h2>Please Forgive Me... 🥹</h2>
+                <p>I feel terrible about what happened. I know I made a mistake, and I am truly sorry. 💔</p>
+                <button class="btn" onclick="nextSection(3)">Listen more... →</button>
+            </div>
+        </div>
+
+        <div class="section" id="section3">
+            <div class="glass-card">
+                <h2>Heart to Heart...</h2>
+                <p>Seeing you upset because of me hurts more than anything else. 😔</p>
+                <button class="btn" onclick="nextSection(4)">I still love you ❤️</button>
+            </div>
+        </div>
+
+        <div class="section" id="section4">
+            <div class="glass-card">
+                <h2>Just for You...</h2>
+                <button class="btn" style="margin:5px;" onclick="openModal('regret')">My Regret 💔</button>
+                <button class="btn" style="margin:5px;" onclick="openModal('care')">Your Importance ✨</button>
+                <button class="btn" style="margin:5px;" onclick="openModal('promise')">My Promise 🤍</button>
+                <button class="btn" onclick="nextSection(5)" style="margin-top:20px; background: none; border: 1px solid white;">Continue →</button>
+            </div>
+        </div>
+
+        <div class="section" id="section5">
+            <div class="glass-card">
+                <div class="gif-container">
+                    <img src="https://media.giphy.com/media/3o7TKsQ8J2y5kQJq4w/giphy.gif" alt="Promise">
+                </div>
+                <p>Khushi, you are my world. Your happiness is my priority. 💖</p>
+                <p>I will listen more and understand better. Just give me one chance? 🥺</p>
+                <button class="btn" onclick="nextSection(6)">Will you forgive me? 🌹</button>
+            </div>
+        </div>
+
+        <div class="section" id="section6">
+            <div class="glass-card">
+                <h2>Forever & Always... ❤️</h2>
+                <p>I promise to cherish you, listen to you, and never let you down again. 💞</p>
+                <p style="font-weight: bold; font-size: 1.2rem;">Yours Forever.</p>
+            </div>
+        </div>
+
+        <div class="music-btn" onclick="toggleMusic()">🎵</div>
+
+        <div class="modal-overlay" id="messageModal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">×</span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalText"></p>
+            </div>
+        </div>
     </div>
 
-    <audio id="bgmusic" loop><source src="tere-liye.mp3" type="audio/mpeg"></audio>
-
-    <div class="bg-particles" id="particles-container"></div>
-
-    <section id="intro" class="section active">
-        <div class="text-center z-20">
-            <h1 class="text-6xl md:text-8xl premium-font ultra-glow mb-4">Hey Pallavi ❤️</h1>
-            <p class="text-2xl premium-font text-rose-800 mb-10">Your best friend made something special for you...</p>
-            <button onclick="startExperience()" class="bg-gradient-to-br from-rose-500 to-pink-500 px-10 py-4 rounded-full text-xl font-bold text-white shadow-xl hover:scale-105 transition-transform">
-                Unlock My Heart 💞
-            </button>
-        </div>
-    </section>
-
-    <section id="wishes" class="section">
-        <h2 class="text-5xl premium-font ultra-glow mb-8 text-center">Messages from my heart 💌</h2>
-        <div class="grid grid-cols-2 gap-4 z-20 w-full max-w-md px-4">
-            <div class="wish-card glass-premium p-6 text-center cursor-pointer" onclick="openWish('You smile a little more because of me... and I live a little more because of you 🌸')">
-                <i class="fa-solid fa-heart text-3xl text-rose-600 mb-2"></i>
-                <p class="font-bold text-sm">Heart 1</p>
-            </div>
-            <div class="wish-card glass-premium p-6 text-center cursor-pointer" onclick="openWish('You are my best friend, but sometimes I feel you are my favorite feeling... stay like this forever ✨')">
-                <i class="fa-solid fa-star text-3xl text-amber-500 mb-2"></i>
-                <p class="font-bold text-sm">Heart 2</p>
-            </div>
-            <div class="wish-card glass-premium p-6 text-center cursor-pointer" onclick="openWish('The world may change, people may change... but my promise of friendship will never change 💗')">
-                <i class="fa-solid fa-hand-holding-heart text-3xl text-pink-500 mb-2"></i>
-                <p class="font-bold text-sm">Heart 3</p>
-            </div>
-            <div class="wish-card glass-premium p-6 text-center cursor-pointer" onclick="openWish('With you, every moment feels a little romantic, a little crazy, and full of love. Thank you for being mine ❤️‍🔥')">
-                <i class="fa-solid fa-infinity text-3xl text-rose-500 mb-2"></i>
-                <p class="font-bold text-sm">Heart 4</p>
-            </div>
-        </div>
-        <button id="btn-after-wishes" onclick="nextPage('balloons')" class="mt-8 bg-pink-500 px-8 py-3 rounded-full text-white font-bold hidden shadow-lg">
-            See some magic? ✨
-        </button>
-
-        <div id="wish-modal" class="fixed inset-0 bg-white/95 hidden items-center justify-center z-50 px-6">
-            <div class="glass-premium p-8 text-center max-w-sm w-full">
-                <p id="wish-text" class="text-2xl premium-font text-rose-900"></p>
-                <button onclick="closeWish()" class="mt-6 text-rose-500 font-bold">Close ✕</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="balloons" class="section">
-        <div class="text-center z-20 mb-6">
-            <h1 class="text-5xl premium-font ultra-glow">Pop the Balloons! 🎈</h1>
-            <p class="text-rose-900 text-sm">Tap to see what's inside</p>
-        </div>
-        <div id="balloon-container" class="relative w-full h-[50vh] max-w-md"></div>
-        <button id="btn-after-balloons" onclick="nextPage('final-page')" class="mt-4 bg-rose-500 px-10 py-4 rounded-full text-white font-bold hidden shadow-xl">
-            The Final Surprise 💗
-        </button>
-    </section>
-
-    <section id="final-page" class="section">
-        <div id="final-content" class="text-center px-6">
-            <h1 class="text-6xl premium-font ultra-glow mb-4">Pallavi...</h1>
-            <p class="text-2xl premium-font text-rose-800 mb-8">
-                You are my best friend, my favorite reason to smile,<br>
-                and maybe... a little more than that. 💞<br><br>
-                Forever yours, <b>Sivasingh</b>
-            </p>
-            
-            <div class="mt-6 p-4 glass-premium">
-                <h3 class="premium-font text-2xl text-pink-600 mb-2">Game: Catch My Heart 💖</h3>
-                <p class="text-xs mb-4 text-gray-600">Move your finger/mouse to catch the falling hearts!</p>
-                <canvas id="game-canvas"></canvas>
-                <p class="mt-2 font-bold text-rose-600">Score: <span id="score">0</span></p>
-            </div>
-        </div>
-    </section>
-
     <script>
-        let music = document.getElementById('bgmusic');
-        let wishesRead = 0;
-        let balloonsPopped = 0;
-        let score = 0;
+        const music = document.getElementById('bgMusic');
+        let isPlaying = false;
 
-        // Start App
-        function startExperience() {
-            music.volume = 0.3;
-            music.play().catch(() => {});
-            nextPage('wishes');
+        function toggleMusic() {
+            if (isPlaying) { music.pause(); } 
+            else { music.play().catch(e => console.log("Audio play blocked")); }
+            isPlaying = !isPlaying;
         }
 
-        function nextPage(nextId) {
-            const current = document.querySelector('.section.active');
-            const next = document.getElementById(nextId);
+        function nextSection(n) {
+            if (!isPlaying) toggleMusic();
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById('section' + n).classList.add('active');
+        }
+
+        const messages = {
+            regret: { title: "My Regret 💔", text: "I am deeply sorry for hurting you. Seeing tears in your eyes breaks my heart. I'm so sorry, Khushi." },
+            care: { title: "You Are My Life ✨", text: "Every little thing about you—your smile, your laugh—means the world to me. My day is incomplete without you." },
+            promise: { title: "I Promise 🤍", text: "From now on, your feelings come first. I will be the person you deserve. Just smile for me once? 🥰" }
+        };
+
+        function openModal(type) {
+            document.getElementById('modalTitle').innerText = messages[type].title;
+            document.getElementById('modalText').innerText = messages[type].text;
+            document.getElementById('messageModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('messageModal').style.display = 'none';
+        }
+
+        function createHeart() {
+            const container = document.getElementById('heartsContainer');
+            if (container.children.length > 15) return; // Limit for performance
+
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            const size = Math.random() * 15 + 10 + 'px';
+            heart.style.width = size;
+            heart.style.height = size;
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            heart.style.opacity = Math.random();
             
-            gsap.to(current, {opacity:0, duration:0.4, onComplete:()=>{
-                current.classList.remove('active');
-                next.classList.add('active');
-                gsap.fromTo(next, {opacity:0, y:20}, {opacity:1, y:0, duration:0.5});
-                if(nextId === 'balloons') initBalloons();
-                if(nextId === 'final-page') initGame();
-            }});
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
         }
 
-        // Wishes Logic
-        function openWish(text) {
-            document.getElementById('wish-text').innerText = text;
-            const modal = document.getElementById('wish-modal');
-            modal.style.display = 'flex';
-            wishesRead++;
-            if(wishesRead >= 1) document.getElementById('btn-after-wishes').classList.remove('hidden');
-        }
-
-        function closeWish() {
-            document.getElementById('wish-modal').style.display = 'none';
-        }
-
-        // Balloons Logic
-        function initBalloons() {
-            const container = document.getElementById('balloon-container');
-            container.innerHTML = '';
-            const colors = ['#ff4d6d', '#ff758f', '#c9184a', '#ff8fa3', '#ffb3c1', '#a4133c'];
-            
-            for(let i=0; i<8; i++) {
-                let b = document.createElement('div');
-                b.className = 'balloon';
-                b.style.setProperty('--balloon-color', colors[i % colors.length]);
-                b.style.left = (10 + Math.random() * 70) + '%';
-                b.style.top = (10 + Math.random() * 60) + '%';
-                
-                b.onclick = (e) => {
-                    confetti({particleCount: 40, spread: 50, origin: {x: e.clientX/innerWidth, y: e.clientY/innerHeight}});
-                    b.remove();
-                    balloonsPopped++;
-                    if(balloonsPopped >= 6) document.getElementById('btn-after-balloons').classList.remove('hidden');
-                };
-                container.appendChild(b);
-            }
-        }
-
-        // Game Logic: Catch My Heart
-        function initGame() {
-            const canvas = document.getElementById('game-canvas');
-            const ctx = canvas.getContext('2d');
-            const scoreEl = document.getElementById('score');
-            
-            canvas.width = 300;
-            canvas.height = 200;
-
-            let basket = { x: 130, y: 170, w: 40, h: 20 };
-            let hearts = [];
-            
-            // Input Handlers
-            const moveBasket = (e) => {
-                const rect = canvas.getBoundingClientRect();
-                const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-                basket.x = Math.max(0, Math.min(canvas.width - basket.w, x - basket.w/2));
-            };
-            canvas.addEventListener('mousemove', moveBasket);
-            canvas.addEventListener('touchmove', moveBasket);
-
-            function spawnHeart() {
-                hearts.push({ x: Math.random() * (canvas.width-20), y: -20, speed: 2 + Math.random() * 2 });
-            }
-
-            function update() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Draw Basket
-                ctx.fillStyle = '#be185d';
-                ctx.fillRect(basket.x, basket.y, basket.w, basket.h);
-                
-                // Draw Hearts
-                hearts.forEach((h, i) => {
-                    h.y += h.speed;
-                    ctx.font = '20px serif';
-                    ctx.fillText('💖', h.x, h.y);
-
-                    // Catch detection
-                    if(h.y > basket.y && h.y < basket.y + basket.h && h.x > basket.x - 10 && h.x < basket.x + basket.w) {
-                        hearts.splice(i, 1);
-                        score++;
-                        scoreEl.innerText = score;
-                    } else if (h.y > canvas.height) {
-                        hearts.splice(i, 1);
-                    }
-                });
-
-                if(Math.random() < 0.03) spawnHeart();
-                requestAnimationFrame(update);
-            }
-            update();
-        }
-
-        // Background Particles (Optimized)
-        const pContainer = document.getElementById('particles-container');
-        for(let i=0; i<10; i++) { 
-            let p = document.createElement('div');
-            p.className = 'particle';
-            p.innerHTML = '❤️';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDuration = (6 + Math.random() * 4) + 's';
-            p.style.opacity = Math.random();
-            pContainer.appendChild(p);
-        }
+        setInterval(createHeart, 400);
     </script>
 </body>
 </html>
