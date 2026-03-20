@@ -2,156 +2,142 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For My Favorite Person 💗</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap');
         
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+
         body {
-            background: radial-gradient(circle at center, #1a001f 0%, #030005 100%);
+            background: radial-gradient(circle at center, #1a001f 0%, #000000 100%);
             font-family: 'Poppins', sans-serif;
-            overflow: hidden; 
-            margin: 0; 
-            color: #ffffff; 
-            user-select: none;
+            overflow: hidden; height: 100vh; width: 100vw;
+            color: #ffffff; user-select: none;
+        }
+
+        /* Fixed Background for Stars - Performance Optimized */
+        #stars-container {
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background: transparent;
         }
 
         .header-tag {
             position: fixed; top: 15px; width: 100%; text-align: center;
             z-index: 100; font-family: 'Dancing Script', cursive;
-            color: #ffb3d9; font-size: 1.6rem; letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(255,179,217,0.8);
+            color: #ffb3d9; font-size: 1.5rem; letter-spacing: 1px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,1), 0 0 10px rgba(255,179,217,0.6);
         }
 
+        /* Ultra-Smooth Transitions */
         .slide {
-            display: none; position: fixed; inset: 0; width: 100%; height: 100vh;
+            display: none; position: fixed; inset: 0; width: 100%; height: 100%;
             align-items: center; justify-content: center; flex-direction: column;
-            transition: opacity 0.8s ease-in-out; opacity: 0; z-index: 20; 
-            padding: 20px; text-align: center;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-out;
+            opacity: 0; z-index: 20; padding: 25px; text-align: center;
         }
         .slide.active { display: flex; opacity: 1; }
 
-        /* Improved Text Clarity */
+        /* Crystal Clear Bold Text */
         .cute-msg { 
             font-family: 'Dancing Script', cursive; 
             color: #ffffff; 
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.9), 0 0 15px #ff00cc, 0 0 30px #ff00cc; 
-            font-size: 3rem; 
-            margin-top: 20px; 
-            font-weight: 700; 
-            line-height: 1.2;
+            text-shadow: 0 0 15px #ff00cc, 0 0 30px #ff00cc, 3px 3px 6px rgba(0,0,0,1); 
+            font-size: clamp(2.2rem, 8vw, 3.2rem); 
+            margin-top: 15px; font-weight: 700; line-height: 1.2;
         }
         .sub-text { 
-            color: #f8f8f8; 
-            font-weight: 500; 
-            font-size: 1.15rem; 
-            letter-spacing: 0.5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5); 
-            max-width: 90%;
-            margin: 10px auto;
+            color: #ffffff; font-weight: 600; font-size: 1.15rem; 
+            text-shadow: 2px 2px 8px rgba(0,0,0,1);
+            margin-top: 10px; max-width: 320px;
         }
         
         .gif-frame { 
-            width: 260px; height: 260px; border-radius: 20px; 
-            border: 3px solid #ff00cc; 
-            box-shadow: 0 0 30px rgba(255, 0, 204, 0.6), inset 0 0 20px rgba(255,255,255,0.2); 
-            object-fit: cover; 
-            background-color: #000; /* Fallback for transparency */
+            width: 260px; height: 260px; border-radius: 30px; 
+            border: 4px solid #ff00cc; 
+            box-shadow: 0 0 40px rgba(255, 0, 204, 0.6); 
+            object-fit: cover; background: #000;
         }
 
         .glow-btn { 
             background: linear-gradient(45deg, #ff00cc, #ff69b4); 
-            padding: 15px 40px; border-radius: 50px; font-weight: 600; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4), 0 0 20px rgba(255, 0, 204, 0.5); 
-            cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-            margin: 10px; color: white; border: none; font-size: 1.15rem;
-            letter-spacing: 1px; text-transform: uppercase;
+            padding: 15px 40px; border-radius: 50px; font-weight: 700; 
+            box-shadow: 0 0 25px rgba(255, 0, 204, 0.5); 
+            cursor: pointer; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            margin: 12px; color: white; border: none; font-size: 1.1rem;
+            z-index: 30;
         }
-        .glow-btn:hover { 
-            transform: translateY(-3px) scale(1.05); 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 35px #ff00cc; 
-        }
+        .glow-btn:hover { transform: scale(1.1); box-shadow: 0 0 40px #ff00cc; }
+        .glow-btn:active { transform: scale(0.9); }
         
-        .no-btn { 
-            background: #2a2a2a; color: #cccccc; padding: 12px 30px; 
-            border-radius: 50px; cursor: pointer; transition: 0.2s; 
-            border: 1px solid #444; font-size: 1.1rem;
-        }
+        .no-btn { background: #333; color: #bbb; padding: 12px 30px; border-radius: 50px; cursor: pointer; border: 1px solid #555; }
 
-        /* Solar System */
-        .solar-system { position: relative; width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; }
-        .orbit { position: absolute; border: 2px dashed rgba(255,105,180,0.3); border-radius: 50%; animation: spin linear infinite; }
-        .orbit-1 { width: 170px; height: 170px; animation-duration: 6s; }
-        .orbit-2 { width: 250px; height: 250px; animation-duration: 10s; animation-direction: reverse; }
-        .planet { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 28px; text-shadow: 0 0 10px rgba(255,255,255,0.8); }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        /* Realistic Twinkling Stars */
+        /* Real Twinkling Stars Logic */
         .star { 
-            position: absolute; 
-            border-radius: 50%; 
-            animation: twinkle var(--duration) ease-in-out var(--delay) infinite alternate; 
+            position: absolute; background: white; border-radius: 50%; 
+            animation: realTwinkle var(--dur) infinite ease-in-out;
+            will-change: opacity, transform;
         }
-        @keyframes twinkle { 
-            0% { opacity: 0.05; transform: scale(0.5); box-shadow: 0 0 2px currentColor; } 
-            100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px currentColor, 0 0 20px currentColor; } 
-        }
-
-        /* Hold Button Container */
-        .hold-container { 
-            width: 280px; height: 18px; background: rgba(0,0,0,0.5); 
-            border-radius: 10px; margin-top: 25px; overflow: hidden; 
-            position: relative; border: 2px solid rgba(255,255,255,0.3); 
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
-        }
-        #holdProgress { 
-            position: absolute; left: 0; top: 0; height: 100%; 
-            background: linear-gradient(90deg, #ff69b4, #ff00cc); 
-            width: 0%; box-shadow: 0 0 15px #ff00cc; transition: width 0.1s linear;
+        @keyframes realTwinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.7); filter: blur(0px); }
+            50% { opacity: 1; transform: scale(1.3); filter: blur(0.5px) drop-shadow(0 0 4px #fff); }
         }
 
+        /* Solar System (Checking all planets) */
+        .solar-system { position: relative; width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; }
+        .orbit { position: absolute; border: 2px solid rgba(255,105,180,0.35); border-radius: 50%; animation: spin linear infinite; }
+        .orbit-1 { width: 180px; height: 180px; animation-duration: 6s; }
+        .orbit-2 { width: 260px; height: 260px; animation-duration: 10s; animation-direction: reverse; }
+        .planet { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 26px; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Hold Progress Logic */
+        .hold-container { width: 280px; height: 18px; background: rgba(255,255,255,0.15); border-radius: 10px; margin-top: 25px; overflow: hidden; position: relative; border: 2px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+        #holdProgress { position: absolute; left: 0; top: 0; height: 100%; background: linear-gradient(90deg, #ff00cc, #ff69b4); width: 0%; box-shadow: 0 0 20px #ff00cc; transition: width 0.1s linear; }
+
+        /* Video Layer */
         #videoLayer { display: none; position: fixed; inset: 0; background: black; z-index: 1000; align-items: center; justify-content: center; }
         video { width: 100%; height: 100%; object-fit: contain; }
     </style>
 </head>
 <body>
 
-    <div class="header-tag">Follow Instagram - @smss1708 💗</div>
+    <div class="header-tag">Follow on insta - @smss1708💗</div>
 
     <audio id="bgMusic" loop src="tere-liye.mp3"></audio>
-    <div id="stars-container" class="fixed inset-0 pointer-events-none z-0"></div>
+    <div id="stars-container"></div>
 
     <div id="slide1" class="slide active">
-        <img src="gif1.gif" class="gif-frame" alt="Cute GIF">
+        <img src="gif1.gif" class="gif-frame">
         <h1 class="cute-msg">Hey Gorgeous! ✨</h1>
         <p class="sub-text">We just met, but my heart already knew it was you!</p>
         <button onclick="startApp()" class="glow-btn">Touch My Heart 🥺</button>
     </div>
 
     <div id="slide2" class="slide">
-        <img src="gif2.gif" class="gif-frame" alt="Cute GIF">
+        <img src="gif2.gif" class="gif-frame">
         <h1 class="cute-msg">How are you so cute?</h1>
         <p class="sub-text">Seriously, your smile is the highlight of my day!</p>
         <button onclick="next()" class="glow-btn">See More 💕</button>
     </div>
 
     <div id="slide3" class="slide">
-        <img src="gif3.gif" class="gif-frame" alt="Cute GIF">
+        <img src="gif3.gif" class="gif-frame">
         <h1 class="cute-msg">Our Vibe is Rare! 😌</h1>
         <p class="sub-text">Talking to you feels like time has completely stopped.</p>
         <button onclick="next()" class="glow-btn">Next Step ✨</button>
     </div>
 
     <div id="slide4" class="slide">
-        <div class="text-9xl mb-6 transition-all duration-500 drop-shadow-2xl" id="pulseHeart">💖</div>
-        <h1 class="text-3xl font-bold mt-4" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.8);">How much do I adore you?</h1>
+        <div class="text-9xl mb-6 transition-all duration-500" id="pulseHeart">💖</div>
+        <h1 class="text-2xl font-bold drop-shadow-lg">How much do I adore you?</h1>
         <div class="hold-container"><div id="holdProgress"></div></div>
         <button id="holdBtn" class="glow-btn mt-6 select-none">PRESS & HOLD TO FEEL</button>
     </div>
 
     <div id="slide5" class="slide">
-        <img src="gif4.gif" class="gif-frame" alt="Cute GIF">
+        <img src="gif4.gif" class="gif-frame">
         <h1 class="cute-msg">You're One in a Billion! 💎</h1>
         <p class="sub-text">It's only been a short time, but the feeling is magical.</p>
         <button onclick="next()" class="glow-btn">Continue...</button>
@@ -161,7 +147,7 @@
         <div class="solar-system">
             <div class="orbit orbit-1"><span class="planet">💗</span></div>
             <div class="orbit orbit-2"><span class="planet">⭐</span></div>
-            <div class="text-7xl drop-shadow-2xl">🌍</div>
+            <div class="text-6xl drop-shadow-2xl">🌍</div>
         </div>
         <h1 class="cute-msg mt-10">My Whole Universe!</h1>
         <p class="sub-text">Everything seems better when you're around.</p>
@@ -169,7 +155,7 @@
     </div>
 
     <div id="slide7" class="slide">
-        <img src="gif5.gif" class="gif-frame" alt="Cute GIF">
+        <img src="gif5.gif" class="gif-frame">
         <h1 class="cute-msg">Don't ever leave! 🥺</h1>
         <p class="sub-text">I've never met anyone as sweet and special as you.</p>
         <button onclick="next()" class="glow-btn">Wait for it...</button>
@@ -177,25 +163,25 @@
 
     <div id="slide8" class="slide">
         <h1 class="cute-msg">You're my Brightest Star! ⭐</h1>
-        <p class="sub-text max-w-sm">In a sky full of stars, my eyes only search for you.</p>
+        <p class="sub-text max-w-xs">In a sky full of stars, my eyes only search for you.</p>
         <button onclick="next()" class="glow-btn">Just a bit more ✨</button>
     </div>
 
     <div id="slide9" class="slide">
-        <img src="gif6.gif" class="gif-frame" alt="Cute GIF">
-        <h1 class="cute-msg">Will You Be My (Besty) Bestest Friend? ❤️</h1>
+        <img src="gif6.gif" class="gif-frame">
+        <h1 class="cute-msg">Will You Be My (Besty) BestestFriend? ❤️</h1>
         <p class="sub-text">...and maybe something even more special? 💍</p>
-        <div id="btnContainer" class="flex flex-wrap justify-center mt-6 gap-4">
-            <button onclick="next()" class="glow-btn m-0">YES! 😍</button>
-            <button id="noBtn" onclick="trapNo()" class="no-btn m-0">No 🥺</button>
+        <div id="btnContainer" class="flex flex-wrap justify-center mt-4">
+            <button onclick="next()" class="glow-btn">YES! 😍</button>
+            <button id="noBtn" onclick="trapNo()" class="no-btn">No 🥺</button>
         </div>
     </div>
 
     <div id="slide10" class="slide">
-        <img src="gif7.gif" class="gif-frame" alt="Cute GIF">
+        <img src="gif7.gif" class="gif-frame">
         <h1 class="cute-msg">Yaaay! My Heart is Happy! 🥳</h1>
         <p class="sub-text">I promise to keep that beautiful smile on your face!</p>
-        <button onclick="playSurprise()" class="glow-btn animate-bounce mt-6">A FINAL SURPRISE 🎁</button>
+        <button onclick="playSurprise()" class="glow-btn animate-bounce">A FINAL SURPRISE 🎁</button>
     </div>
 
     <div id="videoLayer">
@@ -206,76 +192,55 @@
         let step = 1;
         const music = document.getElementById('bgMusic');
 
-        // Improved Realistic Background Stars
+        // Check: Star generation (Better randomization)
         const starContainer = document.getElementById('stars-container');
-        const starColors = ['#ffffff', '#ffe9c4', '#d4fbff', '#ffffff']; // Real star color tints
-        
-        for(let i=0; i<150; i++) { // Increased number of stars for depth
+        for(let i=0; i<150; i++) {
             const star = document.createElement('div');
             star.className = 'star';
-            
-            // Random sizes for depth perception
-            const size = (Math.random() * 2.5 + 0.5) + 'px';
-            star.style.width = size; 
-            star.style.height = size;
-            
-            // Random positions
+            const size = Math.random() * 2 + 1 + 'px';
+            star.style.width = size; star.style.height = size;
             star.style.left = Math.random() * 100 + 'vw';
             star.style.top = Math.random() * 100 + 'vh';
-            
-            // Random colors from the array
-            star.style.backgroundColor = starColors[Math.floor(Math.random() * starColors.length)];
-            star.style.color = star.style.backgroundColor; // for box-shadow
-            
-            // Staggered animations
-            star.style.setProperty('--duration', (Math.random() * 3 + 1.5) + 's');
-            star.style.setProperty('--delay', (Math.random() * 5) + 's');
-            
+            star.style.setProperty('--dur', (Math.random() * 2 + 1) + 's');
+            star.style.animationDelay = Math.random() * 3 + 's';
             starContainer.appendChild(star);
         }
 
         function startApp() { 
-            music.play().catch(() => { console.log("User interaction needed for audio"); }); 
+            music.play().catch(() => { console.log("Music waiting for interaction"); }); 
             next(); 
         }
 
         function next() {
-            document.querySelectorAll('.slide').forEach(s => { 
-                s.classList.remove('active'); 
-                setTimeout(() => { s.style.display='none'; }, 300); // Allow fade out
-            });
+            const current = document.getElementById('slide' + step);
+            if(current) {
+                current.classList.remove('active');
+                setTimeout(() => { current.style.display = 'none'; }, 600);
+            }
+            
             step++;
-            const current = document.getElementById('slide'+step);
-            if(current) { 
-                setTimeout(() => {
-                    current.style.display='flex'; 
-                    // Small delay to trigger CSS transition
-                    requestAnimationFrame(() => {
-                        current.classList.add('active');
-                    });
-                }, 300);
+            const nextS = document.getElementById('slide' + step);
+            if(nextS) { 
+                nextS.style.display = 'flex'; 
+                setTimeout(() => nextS.classList.add('active'), 50); 
             }
         }
 
-        // The No Button Trap (Kept exactly as requested)
+        // Check: No Button Trap (Adds multiple Yes buttons)
         function trapNo() {
             const container = document.getElementById('btnContainer');
             const noBtn = document.getElementById('noBtn');
-            noBtn.style.display = 'none'; // Remove the No button
-            
-            // Add 5 more YES buttons with slight delay for cool effect
-            for(let i=0; i<5; i++) {
-                setTimeout(() => {
-                    const newYes = document.createElement('button');
-                    newYes.innerHTML = "YES! 💖";
-                    newYes.className = "glow-btn m-2"; // Added margin class for spacing
-                    newYes.onclick = next;
-                    container.appendChild(newYes);
-                }, i * 150);
+            noBtn.style.display = 'none';
+            for(let i=0; i<6; i++) {
+                const newYes = document.createElement('button');
+                newYes.innerHTML = "YES! 💖";
+                newYes.className = "glow-btn";
+                newYes.onclick = next;
+                container.appendChild(newYes);
             }
         }
 
-        // Hold Logic (Kept exactly as requested)
+        // Check: Hold Logic (Improved with touch support)
         let hVal = 0, hInt;
         const hBtn = document.getElementById('holdBtn'), 
               hProg = document.getElementById('holdProgress'), 
@@ -283,8 +248,7 @@
         
         const startH = (e) => { 
             e.preventDefault(); 
-            pHeart.style.transform = 'scale(1.8)';
-            pHeart.style.textShadow = '0 0 50px rgba(255, 0, 204, 0.8)';
+            pHeart.style.transform = 'scale(1.6)';
             hInt = setInterval(() => { 
                 hVal += 2; 
                 hProg.style.width = hVal + '%'; 
@@ -296,19 +260,20 @@
             hVal = 0; 
             hProg.style.width = '0%'; 
             pHeart.style.transform = 'scale(1)'; 
-            pHeart.style.textShadow = 'none';
         };
         
-        hBtn.onmousedown = hBtn.ontouchstart = startH; 
-        window.onmouseup = window.ontouchend = endH;
+        hBtn.addEventListener('mousedown', startH);
+        hBtn.addEventListener('touchstart', startH);
+        window.addEventListener('mouseup', endH);
+        window.addEventListener('touchend', endH);
 
-        // Video Layer Logic (Kept exactly as requested)
+        // Check: Video Player
         function playSurprise() { 
             music.pause(); 
             const layer = document.getElementById('videoLayer');
             const video = document.getElementById('vPlayer');
             layer.style.display = 'flex';
-            video.play().catch(() => { console.log("Video play requires interaction"); });
+            video.play();
             video.onended = () => { location.reload(); };
         }
     </script>
