@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I'm Really Sorry... 💔→💗 - From Sivasingh</title>
+    <title>I'm Really Sorry, 🥲🥲... 💔→💗 - From SIVASINGH</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Great+Vibes&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -12,7 +12,7 @@
             --rose-gold: #e0b07e;
             --soft-pink: #ffe4e9;
             --berry: #c71585;
-            --text: #fff0f5;
+            --text: #ffffff;
         }
         body {
             background: radial-gradient(circle at top, #2a0b3d 0%, #000 70%);
@@ -20,47 +20,68 @@
             color: var(--text);
             overflow: hidden; margin: 0; user-select: none;
         }
-        h1, h2 { font-family: 'Playfair Display', serif; font-weight: 900; }
-        .signature { font-family: 'Great Vibes', cursive; color: var(--rose-gold); text-shadow: 0 0 20px rgba(224,176,126,0.6); }
+        h1, h2 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 3.2rem; line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
+        p { font-size: 1.4rem; line-height: 1.6; max-width: 700px; margin: 0 auto; text-shadow: 0 1px 6px rgba(0,0,0,0.8); }
+        .signature { font-family: 'Great Vibes', cursive; color: var(--rose-gold); text-shadow: 0 0 25px rgba(224,176,126,0.7); font-size: 4rem; }
         .slide {
             display: none; position: fixed; inset: 0;
             align-items: center; justify-content: center; flex-direction: column;
-            transition: opacity 1.3s ease; opacity: 0; z-index: 10;
-            padding: 1.5rem; text-align: center;
+            transition: opacity 1.4s ease; opacity: 0; z-index: 10;
+            padding: 2rem; text-align: center;
         }
         .slide.active { display: flex; opacity: 1; }
         .gif-frame {
-            width: 240px; height: 240px; border-radius: 50%;
-            border: 5px solid var(--rose-gold); box-shadow: 0 0 50px rgba(224,176,126,0.5);
-            object-fit: cover; margin-bottom: 1.5rem;
+            width: 260px; height: 260px; border-radius: 50%;
+            border: 6px solid var(--rose-gold); box-shadow: 0 0 60px rgba(224,176,126,0.6);
+            object-fit: cover; margin-bottom: 2rem;
         }
         .lux-btn {
             background: linear-gradient(135deg, var(--rose-gold), #d4a373);
-            color: #1a001f; padding: 0.9rem 2.5rem;
-            border-radius: 999px; font-weight: bold; letter-spacing: 1px;
-            box-shadow: 0 8px 30px rgba(224,176,126,0.4);
+            color: #1a001f; padding: 1.2rem 3rem;
+            border-radius: 999px; font-weight: bold; font-size: 1.3rem; letter-spacing: 1px;
+            box-shadow: 0 10px 40px rgba(224,176,126,0.5);
             transition: all 0.4s;
         }
-        .lux-btn:hover { transform: scale(1.08) translateY(-3px); box-shadow: 0 15px 50px rgba(224,176,126,0.6); }
-        .particle { position: absolute; background: var(--soft-pink); border-radius: 50%; opacity: 0; animation: sparkle 7s infinite; pointer-events: none; }
-        @keyframes sparkle { 0%,100% { opacity:0; transform:scale(0.3) translateY(0); } 50% { opacity:0.8; transform:scale(1) translateY(-120vh); } }
+        .lux-btn:hover { transform: scale(1.1) translateY(-4px); box-shadow: 0 20px 60px rgba(224,176,126,0.7); }
+
+        /* Animations */
+        .particle { position: absolute; background: var(--soft-pink); border-radius: 50%; opacity: 0; pointer-events: none; animation: sparkle 8s infinite; }
+        @keyframes sparkle { 0%,100% { opacity:0; transform:scale(0.3) translateY(0) rotate(0deg); } 50% { opacity:0.8; transform:scale(1) translateY(-140vh) rotate(360deg); } }
+
+        .rose-petal { position: absolute; font-size: 2.5rem; opacity: 0; pointer-events: none; animation: fall 12s linear infinite; }
+        @keyframes fall { 0% { transform: translateY(-100vh) rotate(0deg); opacity: 0.9; } 100% { transform: translateY(120vh) rotate(720deg); opacity: 0; } }
+
+        .heart-bubble { position: absolute; font-size: 2rem; opacity: 0; pointer-events: none; animation: bubble 10s ease-in-out infinite; }
+        @keyframes bubble { 0% { transform: translateY(0) scale(0.5); opacity: 0; } 50% { opacity: 0.9; } 100% { transform: translateY(-120vh) scale(1.3); opacity: 0; } }
+
+        .shooting-star { position: absolute; font-size: 3.5rem; opacity: 0; pointer-events: none; animation: shoot 6s linear infinite; }
+        @keyframes shoot { 0% { transform: translate(-50vw, -50vh) rotate(-45deg); opacity: 1; } 100% { transform: translate(150vw, 150vh) rotate(-45deg); opacity: 0; } }
+
+        .orbit { position: absolute; border: 2px dashed rgba(224,176,126,0.5); border-radius: 50%; animation: spin linear infinite; }
+        .planet { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 2.5rem; }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes beat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
         .envelope {
-            width: 220px; height: 140px; background: linear-gradient(#ff99cc, #ff6699);
-            border-radius: 15px 15px 0 0; position: relative; cursor: pointer;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5); animation: float 5s ease-in-out infinite;
+            width: 260px; height: 160px; background: linear-gradient(#ff99cc, #ff6699);
+            border-radius: 18px 18px 0 0; position: relative; cursor: pointer;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6); animation: float 5s ease-in-out infinite;
         }
         .envelope::before {
-            content: ''; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
-            width: 0; height: 0; border-left: 110px solid transparent;
-            border-right: 110px solid transparent; border-top: 40px solid #ff99cc;
+            content: ''; position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%);
+            width: 0; height: 0; border-left: 130px solid transparent;
+            border-right: 130px solid transparent; border-top: 50px solid #ff99cc;
         }
-        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-        .big-heart { font-size: 180px; animation: beat 1.8s infinite; text-shadow: 0 0 60px #ff69b4; }
-        @keyframes beat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+
+        .big-heart { font-size: 200px; animation: beat 1.8s infinite; text-shadow: 0 0 70px #ff69b4; }
+
         #videoLayer { display: none; position: fixed; inset: 0; background: black; z-index: 100; align-items: center; justify-content: center; }
-        video { max-width: 90%; border-radius: 20px; border: 4px solid var(--rose-gold); }
-        #follow { position: fixed; top: 15px; left: 50%; transform: translateX(-50%);
-            font-size: 2rem; color: var(--rose-gold); z-index: 999; pointer-events: none; text-shadow: 0 0 15px #ff69b4; }
+        video { max-width: 92%; border-radius: 24px; border: 5px solid var(--rose-gold); }
+
+        #follow { position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            font-size: 2.5rem; color: var(--rose-gold); z-index: 999; pointer-events: none; text-shadow: 0 0 20px #ff69b4; }
     </style>
 </head>
 <body>
@@ -70,79 +91,111 @@
     <audio id="bgMusic" loop src="tere-liye.mp3"></audio>
 
     <div id="particles" class="fixed inset-0 pointer-events-none"></div>
+    <div id="rose-petals" class="fixed inset-0 pointer-events-none"></div>
+    <div id="hearts" class="fixed inset-0 pointer-events-none"></div>
+    <div id="stars" class="fixed inset-0 pointer-events-none"></div>
 
     <!-- Slide 1 -->
     <div id="slide1" class="slide active">
         <img src="gif1.gif" class="gif-frame">
-        <h1 class="text-6xl signature mb-4">Hey... I'm really sorry 🥺</h1>
-        <p class="text-xl mb-8 max-w-md opacity-90">I feel awful for what I said... it was stupid and I didn't mean to hurt you 💔</p>
-        <button onclick="startApp()" class="lux-btn text-lg">Can we talk? 💗</button>
+        <h1 class="signature mb-6">Hey Cutie😻... I'm So Sorry 🥺</h1>
+        <p>I feel really bad for what I said/did. It was stupid and thoughtless. I never wanted to hurt you or make you feel bad.</p>
+        <button onclick="startApp()" class="lux-btn mt-8">Can we talk about it? 💗</button>
     </div>
 
     <!-- Slide 2 -->
     <div id="slide2" class="slide">
         <img src="gif2.gif" class="gif-frame">
-        <h1 class="text-5xl signature mb-6">You mean everything to me</h1>
-        <p class="text-lg max-w-lg opacity-90">Even if we fight, my heart still races when I think of you... I hate that I made you upset today 😔</p>
-        <button onclick="next()" class="lux-btn mt-6">Keep going...</button>
+        <h1 class="signature mb-6">You're my favorite person</h1>
+        <p>Even when we fight, you're still the one I want to talk to the most. I'm truly sorry for messing up and hurting your feelings today 😔</p>
+        <button onclick="next()" class="lux-btn mt-8">Keep going...</button>
     </div>
 
-    <!-- Slide 3 -->
+    <!-- Slide 3 - Solar System -->
     <div id="slide3" class="slide">
-        <img src="gif3.gif" class="gif-frame">
-        <h1 class="text-5xl signature mb-6">Your smile is my favorite thing</h1>
-        <p class="text-lg max-w-lg opacity-90">And knowing I took it away even for a moment... breaks me. Please forgive me? 🥹</p>
-        <button onclick="next()" class="lux-btn mt-6">More for you</button>
+        <div class="relative w-80 h-80 flex items-center justify-center mb-8">
+            <div class="orbit" style="width:200px;height:200px;animation-duration:16s;"></div>
+            <div class="orbit" style="width:280px;height:280px;animation-duration:24s;animation-direction:reverse;"></div>
+            <div class="orbit" style="width:360px;height:360px;animation-duration:32s;"></div>
+            <span class="planet">💗</span><span class="planet" style="top:-25px;">🌟</span><span class="planet" style="top:-30px;">💞</span>
+            <div class="text-9xl animate-pulse">💫</div>
+        </div>
+        <h1 class="signature mb-6">You're my whole world, bestie</h1>
+        <p>Our friendship means everything to me. I'm so sorry I made you upset... I hate that I did that to you 🌌❤️</p>
+        <button onclick="next()" class="lux-btn mt-8">More for you...</button>
     </div>
 
-    <!-- Slide 4 - Hold to reveal -->
+    <!-- Slide 4 - Rose Petals -->
     <div id="slide4" class="slide">
+        <div class="big-heart mb-6">🌹💗</div>
+        <h1 class="signature mb-6">Petals full of sorry</h1>
+        <p>Each petal is a sorry from my heart. I promise to be more careful with your feelings from now on. You're too special to me 🥀</p>
+        <button onclick="next()" class="lux-btn mt-8">Next...</button>
+    </div>
+
+    <!-- Slide 5 - Shooting Stars -->
+    <div id="slide5" class="slide">
+        <h1 class="signature mb-6">I wished on every star</h1>
+        <p>That you'll forgive me soon. Your friendship is one of the best things in my life... please don't stay mad 😢✨</p>
+        <button onclick="next()" class="lux-btn mt-8">Hold to see...</button>
+    </div>
+
+    <!-- Slide 6 - Hold -->
+    <div id="slide6" class="slide">
         <div class="big-heart mb-8">💗</div>
-        <h1 class="text-5xl signature mb-6">How sorry am I?</h1>
-        <p class="text-lg mb-6">Hold this button to see... ❤️</p>
-        <button id="holdBtn" class="lux-btn relative w-72 overflow-hidden shadow-2xl">
+        <h1 class="signature mb-6">How sorry am I?</h1>
+        <p>Hold this button to feel how much I regret hurting you... ❤️</p>
+        <button id="holdBtn" class="lux-btn relative w-80 overflow-hidden shadow-2xl mt-4">
             <div id="holdProgress" class="absolute inset-0 bg-gradient-to-r from-pink-400 to-rose-500 w-0 transition-all"></div>
-            <span class="relative z-10">Hold me tight...</span>
+            <span class="relative z-10">Hold tight, bestie...</span>
         </button>
     </div>
 
-    <!-- Slide 5 -->
-    <div id="slide5" class="slide">
-        <img src="gif4.gif" class="gif-frame">
-        <h1 class="text-5xl signature mb-6">I promise to be better</h1>
-        <p class="text-lg max-w-lg opacity-90">No more silly jokes that hurt... only love and care from now on 🥰</p>
-        <button onclick="next()" class="lux-btn mt-6">Almost there</button>
-    </div>
-
-    <!-- Slide 6 - Envelope -->
-    <div id="slide6" class="slide">
-        <img src="gif5.gif" class="gif-frame">
-        <h1 class="text-5xl signature mb-6">A little note just for you</h1>
-        <div onclick="next()" class="envelope flex items-center justify-center text-6xl">💌</div>
-        <p class="mt-6 text-lg">Tap the envelope to open... 💕</p>
-    </div>
-
-    <!-- Slide 7 - Final message + Proposal vibe -->
+    <!-- Slide 7 -->
     <div id="slide7" class="slide">
-        <div class="big-heart">💞</div>
-        <h1 class="text-5xl signature mt-6 mb-4">Will you forgive me?</h1>
-        <p class="text-xl mb-8">I can't imagine a day without talking to you... please say yes 🥺</p>
-        <div class="flex flex-col gap-6">
-            <button onclick="accept()" class="lux-btn text-2xl">Yes, I forgive you! 💗</button>
-            <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()" class="bg-purple-900/50 backdrop-blur p-4 rounded-full text-pink-200 border border-rose-gold/50">Hmm... not yet 😤</button>
+        <img src="gif3.gif" class="gif-frame">
+        <h1 class="signature mb-6">I promise to do better</h1>
+        <p>No more dumb jokes or words that hurt. I'll listen more and be the friend you deserve 🥰</p>
+        <button onclick="next()" class="lux-btn mt-8">A note for you</button>
+    </div>
+
+    <!-- Slide 8 - Envelope -->
+    <div id="slide8" class="slide">
+        <img src="gif4.gif" class="gif-frame">
+        <h1 class="signature mb-6">A small note just for my bestie</h1>
+        <div onclick="next()" class="envelope flex items-center justify-center text-8xl">💌</div>
+        <p class="mt-6 text-xl">Tap the envelope to open... 💕</p>
+    </div>
+
+    <!-- Slide 9 -->
+    <div id="slide9" class="slide">
+        <img src="gif5.gif" class="gif-frame">
+        <h1 class="signature mb-6">I miss my best friend already</h1>
+        <p>Please forgive me soon? Life feels off without our silly talks and laughs 🥹</p>
+        <button onclick="next()" class="lux-btn mt-8">Final sorry...</button>
+    </div>
+
+    <!-- Slide 10 - Floating Hearts -->
+    <div id="slide10" class="slide">
+        <div class="big-heart mb-6">💞</div>
+        <h1 class="signature mb-6">Will you forgive your silly friend?</h1>
+        <p>I can't stay happy if you're upset with me. Please say yes... I value our friendship so much 🥺💗</p>
+        <div class="flex flex-col gap-8 mt-8">
+            <button onclick="accept()" class="lux-btn text-2xl">Yes, I forgive you! 💕</button>
+            <button id="noBtn" onmouseover="moveNo()" onclick="moveNo()" class="bg-purple-900/60 backdrop-blur p-5 rounded-full text-pink-200 border border-rose-gold/60 text-xl">Still a bit mad 😤</button>
         </div>
     </div>
 
     <!-- Celebration -->
-    <div id="slide8" class="slide">
-        <h1 class="text-6xl signature text-rose-gold mb-6">Thank you... 🥹💕</h1>
-        <p class="text-2xl mb-8">You have no idea how happy this makes me</p>
-        <button onclick="playSurprise()" class="lux-btn text-xl animate-bounce">Open your surprise 🎁</button>
+    <div id="slide11" class="slide">
+        <h1 class="signature text-rose-gold mb-6 text-6xl">Thank you, bestie... 🥹✨</h1>
+        <p class="text-2xl">You have no idea how much this means. I promise to never hurt you again ❤️</p>
+        <button onclick="playSurprise()" class="lux-btn text-xl animate-bounce mt-10">Open your surprise 🎁</button>
     </div>
 
     <div id="videoLayer">
         <video id="vPlayer" controls playsinline src="video1.mp4"></video>
-        <button onclick="location.reload()" class="absolute top-6 right-6 lux-btn px-6 py-3">Watch Again</button>
+        <button onclick="location.reload()" class="absolute top-8 right-8 lux-btn px-8 py-4 text-lg">Watch Again</button>
     </div>
 
     <script>
@@ -151,15 +204,59 @@
 
         // Sparkles
         const pc = document.getElementById('particles');
-        for(let i=0; i<60; i++){
+        for(let i=0; i<80; i++){
             let p = document.createElement('div');
             p.className = 'particle';
-            p.style.width = p.style.height = (Math.random()*4 + 1.5)+'px';
+            p.style.width = p.style.height = (Math.random()*5 + 2)+'px';
             p.style.left = Math.random()*100 + 'vw';
             p.style.top = Math.random()*100 + 'vh';
-            p.style.animationDelay = Math.random()*6 + 's';
+            p.style.animationDelay = Math.random()*8 + 's';
             pc.appendChild(p);
         }
+
+        // Rose petals (slide 4)
+        const petalsContainer = document.getElementById('rose-petals');
+        const petals = ['🌸','🌹','🥀','💮','🌺'];
+        setInterval(() => {
+            if(document.querySelector('.slide.active')?.id === 'slide4'){
+                let petal = document.createElement('div');
+                petal.className = 'rose-petal';
+                petal.textContent = petals[Math.floor(Math.random()*petals.length)];
+                petal.style.left = Math.random()*100 + 'vw';
+                petal.style.animationDuration = (8 + Math.random()*10) + 's';
+                petalsContainer.appendChild(petal);
+                setTimeout(()=>petal.remove(), 15000);
+            }
+        }, 700);
+
+        // Floating hearts (slide 10)
+        const heartsContainer = document.getElementById('hearts');
+        setInterval(() => {
+            if(document.querySelector('.slide.active')?.id === 'slide10'){
+                let h = document.createElement('div');
+                h.className = 'heart-bubble';
+                h.textContent = '💗';
+                h.style.left = Math.random()*100 + 'vw';
+                h.style.animationDuration = (7 + Math.random()*8) + 's';
+                heartsContainer.appendChild(h);
+                setTimeout(()=>h.remove(), 15000);
+            }
+        }, 500);
+
+        // Shooting stars (slide 5)
+        const starsContainer = document.getElementById('stars');
+        setInterval(() => {
+            if(document.querySelector('.slide.active')?.id === 'slide5'){
+                let s = document.createElement('div');
+                s.className = 'shooting-star';
+                s.textContent = '✨';
+                s.style.left = Math.random()*60 + 'vw';
+                s.style.top = Math.random()*40 + 'vh';
+                s.style.animationDuration = (5 + Math.random()*4) + 's';
+                starsContainer.appendChild(s);
+                setTimeout(()=>s.remove(), 8000);
+            }
+        }, 1000);
 
         function startApp(){ music.play().catch(()=>{}); next(); }
 
@@ -169,11 +266,11 @@
             let curr = document.getElementById('slide'+step);
             if(curr){
                 curr.style.display='flex';
-                setTimeout(()=>curr.classList.add('active'),80);
+                setTimeout(()=>curr.classList.add('active'),100);
             }
         }
 
-        // Hold button
+        // Hold
         let hv=0, hi;
         const hb = document.getElementById('holdBtn');
         const hp = document.getElementById('holdProgress');
@@ -190,17 +287,17 @@
             nb.style.top = Math.random()*80 + 10 + 'vh';
         }
 
-        // Accept confetti
+        // Confetti
         function accept(){
-            for(let i=0;i<120;i++){
+            for(let i=0;i<150;i++){
                 let c=document.createElement('div');
-                c.style.cssText='position:fixed;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:'+(Math.random()>0.5?'#ff69b4':'#ffb6c1');
+                c.style.cssText=`position:fixed;left:50%;top:50%;width:\( {Math.random()*14+8}px;height: \){Math.random()*14+8}px;border-radius:50%;background:${Math.random()>0.5?'#ff69b4':'#ffb6c1'};`;
                 document.body.appendChild(c);
-                let ang=Math.random()*Math.PI*2, d=150+Math.random()*300;
-                c.animate([{transform:'translate(-50%,-50%) scale(1)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(ang)*d}px), calc(-50% + ${Math.sin(ang)*d}px)) scale(0)`,opacity:0}],1600);
-                setTimeout(()=>c.remove(),2000);
+                let ang=Math.random()*Math.PI*2, d=200+Math.random()*400;
+                c.animate([{transform:'translate(-50%,-50%) scale(1)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(ang)*d}px), calc(-50% + ${Math.sin(ang)*d}px)) scale(0)`,opacity:0}],2000);
+                setTimeout(()=>c.remove(),3000);
             }
-            setTimeout(next,1200);
+            setTimeout(next,1500);
         }
 
         function playSurprise(){
@@ -210,4 +307,4 @@
         }
     </script>
 </body>
-</html>
+                                                                                                              </html>
