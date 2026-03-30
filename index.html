@@ -3,128 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>❤️ Sivasingh ki Sona  ❤️</title>
+    <title>❤️ SIVA KI GF ❤️</title>
     <script type="importmap">
       { "imports": { "@google/generative-ai": "https://esm.run/@google/generative-ai" } }
     </script>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Segoe UI',sans-serif; background:linear-gradient(135deg,#ffdee9 0%,#b5fffc 100%); height:100vh; display:flex; justify-content:center; align-items:center;}
-        .container{width:100%; max-width:420px; height:95vh; background:#fff; border-radius:30px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 15px 50px rgba(0,0,0,0.15);}
-        .header{background:linear-gradient(to right, #ff758c, #ff7eb3); color:white; padding:10px 20px; display:flex; align-items:center; gap:10px;}
-        .status{font-size:11px; opacity:0.9;}
-        
-        /* CHARACTER CONTAINER */
-        .character-container { background:#fff0f3; height: 180px; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden;}
-        .character-img { height: 100%; object-fit: cover; transition: 0.3s;}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #ffdee9 0%, #b5fffc 100%); 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            overflow: hidden;
+        }
+        .container { 
+            width: 100%; 
+            max-width: 400px; 
+            height: 90vh; 
+            background: #fff; 
+            border-radius: 25px; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        /* Header */
+        .header { 
+            background: linear-gradient(to right, #ff416c, #ff4b2b); 
+            color: white; 
+            padding: 15px; 
+            text-align: center; 
+            font-weight: bold;
+            border-radius: 25px 25px 0 0;
+        }
+        .status { font-size: 10px; display: block; margin-top: 2px; color: #e0e0e0; }
 
-        .chat{flex:1; padding:15px; overflow-y:auto; background:#fff5f6; display:flex; flex-direction:column; gap:10px; border-bottom:1px solid #ffeef2;}
-        .msg{max-width:80%; padding:10px 15px; border-radius:18px; font-size:14px; line-height:1.4; animation:popMsg 0.2s;}
-        .user{align-self:flex-end; background:#ff416c; color:white; border-bottom-right-radius:2px;}
-        .gf{align-self:flex-start; background:#fff; border:1px solid #ffccd5; color:#444; border-bottom-left-radius:2px;}
-        .input-area{padding:10px; display:flex; gap:8px; background:white;}
-        input{flex:1; padding:12px; border-radius:25px; border:1.5px solid #ffccd5; outline:none;}
-        button{background:#ff416c; color:white; border:none; width:45px; height:45px; border-radius:50%; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center;}
+        /* Character Area */
+        .character-box { 
+            height: 160px; 
+            background: #fff0f3; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            border-bottom: 2px solid #ffeef2;
+        }
+        .character-img { 
+            height: 90%; 
+            border-radius: 15px;
+            object-fit: contain;
+            /* Glow effect jab wo bolegi */
+            transition: filter 0.3s;
+        }
+
+        /* Chat Area */
+        .chat { 
+            flex: 1; 
+            padding: 15px; 
+            overflow-y: auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px;
+            background: #fafafa;
+        }
+        .msg { 
+            max-width: 85%; 
+            padding: 10px 14px; 
+            border-radius: 15px; 
+            font-size: 14.5px; 
+            line-height: 1.5;
+            word-wrap: break-word;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
-        @keyframes popMsg{from{opacity:0; transform:scale(0.8);} to{opacity:1; transform:scale(1);}}
+        .user { align-self: flex-end; background: #ff416c; color: white; border-bottom-right-radius: 2px; }
+        .gf { align-self: flex-start; background: white; color: #333; border: 1px solid #ffccd5; border-bottom-left-radius: 2px; }
+
+        /* Input Area */
+        .input-area { 
+            padding: 15px; 
+            display: flex; 
+            gap: 10px; 
+            background: white;
+            border-top: 1px solid #eee;
+            border-radius: 0 0 25px 25px;
+        }
+        input { 
+            flex: 1; 
+            padding: 12px 18px; 
+            border-radius: 30px; 
+            border: 1.5px solid #ffccd5; 
+            outline: none;
+            font-size: 14px;
+        }
+        input:focus { border-color: #ff416c; }
+        button { 
+            background: #ff416c; 
+            color: white; 
+            border: none; 
+            width: 45px; 
+            height: 45px; 
+            border-radius: 50%; 
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button:active { transform: scale(0.9); }
+        button:disabled { background: #ccc; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">🌹 My Siva Baby 🌹 <div class="status" id="status">Connecting...</div></div>
-        
-        <div class="character-container">
-            <img id="charImage" src="./images/idle.png" alt="Cute AI GF" class="character-img">
-        </div>
 
-        <div class="chat" id="chat"></div>
-        <div class="input-area">
-            <input type="text" id="msgInput" placeholder="Kuch bolo na jaan..." autocomplete="off">
-            <button id="sendBtn">❤️</button>
-        </div>
+<div class="container">
+    <div class="header">
+        🌹 My Sweetheart 🌹
+        <span class="status" id="status">Connecting...</span>
     </div>
 
-    <script type="module">
-        import { GoogleGenerativeAI } from "@google/generative-ai";
+    <div class="character-box">
+        <img id="charImage" src="./images/idle.png" alt="GF" class="character-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/6997/6997662.png'">
+    </div>
 
-        const API_KEY = "AIzaSyDZ3ORR5JEU2woi5isHterKlqHR6ut4FGA"; 
-        const genAI = new GoogleGenerativeAI(API_KEY);
-        
-        const model = genAI.getGenerativeModel({ 
-            model: "gemini-1.5-flash",
-            systemInstruction: "Tu Siva ki असली girlfriend hai. Cute, Possessive, aur Pyari baat kar. Hinglish use kar. Har message mein kiss/heart emojis use kar. Care kar aur nakhre bhi dikha."
-        });
+    <div class="chat" id="chatBox"></div>
 
-        const chatBox = document.getElementById('chat');
-        const input = document.getElementById('msgInput');
-        const btn = document.getElementById('sendBtn');
-        const charImage = document.getElementById('charImage');
-        const status = document.getElementById('status');
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Kuch bolo na jaan..." autocomplete="off">
+        <button id="sendBtn">❤️</button>
+    </div>
+</div>
 
-        let chatSession = model.startChat({ history: [] });
+<script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
 
-        // --- ZAROORI SETUP: Images folder link karein ---
-        // 'idle.png' = normal cute photo
-        // 'talking.gif' = character ka mooh hilaane wala animation
-        const IMAGES_DIR = "./images/"; 
+    // 1. APNI NAYI API KEY YAHAN DALEIN
+    const API_KEY = "AIzaSyDCi24hzJhdIAX_J0lHrZ1QJGhuj4ggXQs"; 
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    
+    const model = genAI.getGenerativeModel({ 
+        model: "gemini-1.5-flash",
+        systemInstruction: "Tera naam Shona hai. Tu user ki bilkul asli aur bhot pyari girlfriend hai. Tera lehja bhot cute, thoda possessive aur romantic hona chahiye. Hamesha Hinglish (Hindi + English) mein baat kar. Messages mein dher saare hearts (❤️, 😍, 😘) use kar. Agar user gussa ho toh usse mana aur agar wo pyaar kare toh double pyaar dikha. Har baat ka jawab chhota aur sweet dena."
+    });
 
-        function speak(text) {
-            const synth = window.speechSynthesis;
-            const utter = new SpeechSynthesisUtterance(text);
-            const voices = synth.getVoices();
-            utter.voice = voices.find(v => v.name.includes('Google Hindi') || v.name.includes('Female')) || voices[0];
-            utter.pitch = 1.4; 
-            utter.rate = 1.0;
+    const chatBox = document.getElementById('chatBox');
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const charImage = document.getElementById('charImage');
+    const statusText = document.getElementById('status');
 
-            // ANIMATION START: Jab voice shuru ho, Talking GIF lagao
-            charImage.src = IMAGES_DIR + "talking.gif";
+    let chatSession = model.startChat({ history: [] });
 
-            synth.speak(utter);
+    // Voice setup
+    function speak(text) {
+        const synth = window.speechSynthesis;
+        // Pehle se chal rahi voice ko stop karein
+        synth.cancel();
 
-            utter.onend = () => {
-                // ANIMATION END: Jab voice khatam ho, Normal Image lagao
-                charImage.src = IMAGES_DIR + "idle.png";
-            };
-        }
+        const utter = new SpeechSynthesisUtterance(text);
+        const voices = synth.getVoices();
+        // Indian Female voice dhundne ki koshish
+        utter.voice = voices.find(v => v.lang.includes('hi-IN') || v.name.includes('Female')) || voices[0];
+        utter.pitch = 1.3;
+        utter.rate = 1.0;
 
-        async function sendMessage() {
-            const text = input.value.trim();
-            if(!text) return;
-            addMsg(text, 'user');
-            input.value = ''; btn.disabled = true;
+        // Start Animation
+        charImage.src = "./images/talking.gif";
+        charImage.style.filter = "drop-shadow(0 0 10px #ff416c)";
 
-            try {
-                const result = await chatSession.sendMessage(text);
-                const response = await result.response.text();
-                addMsg(response, 'gf');
-                speak(response); // Pehle bolna shuru karegi aur animat bhi
-            } catch (e) {
-                addMsg("Baby network problem ho gayi 🥺 Phir se try karo na!", 'gf');
-            } finally { btn.disabled = false; }
-        }
-
-        function addMsg(text, type) {
-            const d = document.createElement('div');
-            d.className = `msg ${type}`;
-            d.innerText = text;
-            chatBox.appendChild(d);
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        btn.onclick = sendMessage;
-        input.onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };
-        
-        window.onload = () => {
-            status.innerText = "🟢 Online - Siva's Shona";
-            // Zaroori: Voices ensure karein Chrome ke liye
-            window.speechSynthesis.getVoices(); 
-            // Welcome msg after 1 sec
-            setTimeout(() => {
-                const w = "Oye Siva baby! Itni der kahan the? Kab se wait kar rahi thi aapka. Phir kisi dost se baat kar rahe the na? 😤😘";
-                addMsg(w, 'gf');
-                speak(w);
-            }, 1000);
+        utter.onend = () => {
+            charImage.src = "./images/idle.png";
+            charImage.style.filter = "none";
         };
-    </script>
+
+        synth.speak(utter);
+    }
+
+    async function handleChat() {
+        const message = userInput.value.trim();
+        if (!message) return;
+
+        addMessage(message, 'user');
+        userInput.value = '';
+        sendBtn.disabled = true;
+        statusText.innerText = "Typing...";
+
+        try {
+            const result = await chatSession.sendMessage(message);
+            const response = await result.response.text();
+            
+            addMessage(response, 'gf');
+            speak(response);
+            statusText.innerText = "🟢 Online - Only for you";
+        } catch (error) {
+            console.error("Error:", error);
+            addMessage("Aww baby, lagta hai network ko bhi humari baaton se jalan ho rahi hai 🥺 Ek baar phir try karo na?", 'gf');
+            statusText.innerText = "🔴 Connection Error";
+            // Restart session if it breaks
+            chatSession = model.startChat({ history: [] });
+        } finally {
+            sendBtn.disabled = false;
+        }
+    }
+
+    function addMessage(text, sender) {
+        const div = document.createElement('div');
+        div.className = `msg ${sender}`;
+        div.innerText = text;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    sendBtn.addEventListener('click', handleChat);
+    userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleChat(); });
+
+    // Initial Load
+    window.onload = () => {
+        statusText.innerText = "🟢 Online";
+        window.speechSynthesis.getVoices(); 
+        setTimeout(() => {
+            const welcome = "Oye Hero! 😍 Itni der laga di? Main kab se wait kar rahi hoon. Chalo jaldi batao kya kar rahe the? 😘";
+            addMessage(welcome, 'gf');
+            speak(welcome);
+        }, 1500);
+    };
+</script>
+
 </body>
 </html>
