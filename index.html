@@ -1,249 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For My Favorite Person 💗</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 SivaSingh Ki Girlfriend ❤️</title>
+    <script src="https://cdn.jsdelivr.net/npm/@google/generative-ai@0.2.1/dist/index.umd.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;700&display=swap');
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        
-        body {
-            background: radial-gradient(circle at center, #1a001f 0%, #000000 100%);
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden; color: #ffffff; user-select: none;
-            height: 100vh; width: 100vw;
-        }
-
-        .header-tag {
-            position: fixed; top: 15px; width: 100%; text-align: center;
-            z-index: 1000; font-family: 'Dancing Script', cursive;
-            color: #ffb3d9; font-size: 1.5rem; letter-spacing: 2px;
-            text-shadow: 0 0 20px #ff00cc; pointer-events: none;
-        }
-
-        /* Smooth & Fast Transitions */
-        .slide {
-            display: none; position: fixed; inset: 0; width: 100%; height: 100%;
-            align-items: center; justify-content: center; flex-direction: column;
-            padding: 20px; text-align: center; z-index: 20;
-            opacity: 0; transform: scale(0.95);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            will-change: opacity, transform;
-        }
-        .slide.active { display: flex; opacity: 1; transform: scale(1); }
-
-        .cute-msg { 
-            font-family: 'Dancing Script', cursive; 
-            color: #ffebf5; text-shadow: 0 0 25px #ff00cc, 0 0 45px #ff00cc; 
-            font-size: clamp(2.2rem, 8vw, 3.5rem); margin: 15px 0; font-weight: 700; 
-        }
-        .sub-text { 
-            color: #ffffff; font-weight: 600; font-size: 1.1rem; 
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.8); line-height: 1.4;
-        }
-        
-        .gif-frame { 
-            width: 240px; height: 240px; border-radius: 30px; 
-            border: 3px solid #ff00cc; box-shadow: 0 0 40px rgba(255, 0, 204, 0.6); 
-            object-fit: cover; margin-bottom: 10px;
-        }
-
-        .glow-btn { 
-            background: linear-gradient(45deg, #ff00cc, #ff69b4); 
-            padding: 15px 40px; border-radius: 50px; font-weight: 700; 
-            box-shadow: 0 0 25px rgba(255, 0, 204, 0.5); 
-            cursor: pointer; color: white; border: none; font-size: 1.1rem;
-            transition: 0.2s; margin-top: 20px;
-        }
-        .glow-btn:active { transform: scale(0.9); }
-        
-        /* 3D Solar System */
-        .solar-system { position: relative; width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; }
-        .orbit { position: absolute; border: 2px solid rgba(255,105,180,0.4); border-radius: 50%; animation: spin linear infinite; }
-        .orbit-1 { width: 170px; height: 170px; animation-duration: 5s; }
-        .orbit-2 { width: 260px; height: 260px; animation-duration: 9s; animation-direction: reverse; }
-        .planet { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 28px; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        /* Stars */
-        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d) infinite alternate; }
-        @keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 1; } }
-
-        /* Hold Bar */
-        .hold-container { width: 260px; height: 14px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 20px; overflow: hidden; border: 1px solid #ff00cc; }
-        #holdProgress { height: 100%; background: #ff00cc; width: 0%; box-shadow: 0 0 20px #ff00cc; transition: width 0.1s linear; }
-
-        /* Video Layer */
-        #videoLayer { display: none; position: fixed; inset: 0; background: black; z-index: 10000; align-items: center; justify-content: center; }
-        video { width: 100%; height: 100%; object-fit: contain; }
-
-        .insta-tag { position: fixed; bottom: 15px; width: 100%; text-align: center; font-size: 0.9rem; color: #ffb3d9; opacity: 0.7; z-index: 1000; }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#ff9a9e 0%,#fecfef 50%,#ffecd2 100%);min-height:100vh;padding:10px;}
+        .container{max-width:100%;height:100vh;background:white;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,0.2);display:flex;flex-direction:column;overflow:hidden;}
+        .header{background:linear-gradient(45deg,#ff6b6b,#ff8e8e);color:white;padding:20px;text-align:center;font-size:20px;font-weight:bold;}
+        .status{font-size:12px;margin-top:5px;opacity:0.9;}
+        .chat{flex:1;padding:20px;overflow-y:auto;background:#f8f9fa;}
+        .msg{margin-bottom:18px;display:flex;animation:fadeIn 0.5s;}
+        .user{justify-content:flex-end;}
+        .content{max-width:85%;padding:14px 20px;border-radius:22px;box-shadow:0 5px 18px rgba(0,0,0,0.12);}
+        .user .content{background:linear-gradient(45deg,#667eea,#764ba2);color:white;}
+        .gf .content{background:linear-gradient(45deg,#f093fb,#f5576c);color:white;}
+        .input-area{padding:20px;background:white;display:flex;gap:12px;border-top:1px solid #eee;}
+        input[type="text"]{flex:1;padding:16px 22px;border:2px solid #e9ecef;border-radius:28px;font-size:16px;outline:none;transition:all 0.3s;}
+        input:focus{border-color:#ff6b6b;box-shadow:0 0 20px rgba(255,107,107,0.3);}
+        button{padding:16px 28px;background:linear-gradient(45deg,#ff6b6b,#ff8e8e);color:white;border:none;border-radius:28px;font-size:16px;cursor:pointer;transition:all 0.3s;font-weight:bold;}
+        button:hover:not(:disabled){transform:scale(1.06);box-shadow:0 8px 25px rgba(255,107,107,0.4);}
+        button:disabled{opacity:0.6;cursor:not-allowed;}
+        .thinking{background:linear-gradient(45deg,#4facfe,#00f2fe);color:white;padding:12px 20px;border-radius:20px;margin:12px 0;font-size:14px;text-align:center;display:flex;align-items:center;gap:10px;}
+        .spinner{width:20px;height:20px;border:2px solid rgba(255,255,255,0.3);border-top:2px solid white;border-radius:50%;animation:spin 1s linear infinite;}
+        @keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+        .heart{position:fixed;pointer-events:none;font-size:26px;animation:float 3s ease-out forwards;z-index:1000;}
+        @keyframes float{0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-100vh) scale(0);opacity:0;}}
+        .connected{padding:15px;background:#d4edda;border:1px solid #c3e6cb;border-radius:15px;margin:10px;color:#155724;font-weight:bold;text-align:center;}
     </style>
 </head>
 <body>
-
-    <div class="header-tag">Follow on insta - @smss1708 💗</div>
-
-    <audio id="bgMusic" loop src="tere-liye.mp3" preload="auto"></audio>
-    <div id="stars-container" class="fixed inset-0 pointer-events-none"></div>
-
-    <div id="slide1" class="slide active">
-        <img src="gif1.gif" class="gif-frame">
-        <h1 class="cute-msg">Hey Gorgeous! ✨</h1>
-        <p class="sub-text">We just met, but my heart already knew it was you!</p>
-        <button onclick="startApp()" class="glow-btn">Touch My Heart 🥺</button>
-    </div>
-
-    <div id="slide2" class="slide">
-        <img src="gif2.gif" class="gif-frame">
-        <h1 class="cute-msg">How are you so cute?</h1>
-        <p class="sub-text">Seriously, your smile is the highlight of my day!</p>
-        <button onclick="next()" class="glow-btn">See More 💕</button>
-    </div>
-
-    <div id="slide3" class="slide">
-        <img src="gif3.gif" class="gif-frame">
-        <h1 class="cute-msg">Our Vibe is Rare! 😌</h1>
-        <button onclick="next()" class="glow-btn">Next Step ✨</button>
-    </div>
-
-    <div id="slide4" class="slide">
-        <div class="text-9xl mb-4" id="pulseHeart" style="transition: 0.3s;">💖</div>
-        <h1 class="text-2xl font-bold">How much do I adore you?</h1>
-        <div class="hold-container"><div id="holdProgress"></div></div>
-        <button id="holdBtn" class="glow-btn mt-6 select-none">PRESS & HOLD TO FEEL</button>
-    </div>
-
-    <div id="slide5" class="slide">
-        <img src="gif4.gif" class="gif-frame">
-        <h1 class="cute-msg">One in a Billion! 💎</h1>
-        <button onclick="next()" class="glow-btn">Continue...</button>
-    </div>
-
-    <div id="slide6" class="slide">
-        <div class="solar-system">
-            <div class="orbit orbit-1"><span class="planet">💗</span></div>
-            <div class="orbit orbit-2"><span class="planet">⭐</span></div>
-            <div class="text-6xl">🌍</div>
+    <div class="container">
+        <div class="header">
+            🧠 **SivaSingh Ki AI GF** 🧠<br>
+            <div class="status" id="status">Connecting to Gemini AI...</div>
         </div>
-        <h1 class="cute-msg mt-10">My Whole Universe!</h1>
-        <button onclick="next()" class="glow-btn">Keep Going 🚀</button>
-    </div>
-
-    <div id="slide7" class="slide">
-        <img src="gif5.gif" class="gif-frame">
-        <h1 class="cute-msg">Don't ever leave! 🥺</h1>
-        <button onclick="next()" class="glow-btn">Wait for it...</button>
-    </div>
-
-    <div id="slide8" class="slide">
-        <h1 class="cute-msg">My Brightest Star! ⭐</h1>
-        <p class="sub-text">In a sky full of stars, my eyes only search for you.</p>
-        <button onclick="next()" class="glow-btn">Almost there ✨</button>
-    </div>
-
-    <div id="slide9" class="slide">
-        <img src="gif6.gif" class="gif-frame">
-        <h1 class="cute-msg">Be My Friend? ❤️</h1>
-        <div id="btnContainer" class="flex flex-wrap justify-center gap-4 mt-4">
-            <button onclick="next()" class="glow-btn">YES! 😍</button>
-            <button id="noBtn" onclick="trapNo()" class="bg-gray-800 p-3 px-8 rounded-full">No 🥺</button>
+        <div class="chat" id="chat"></div>
+        <div class="input-area">
+            <input type="text" id="msgInput" placeholder="Kuch bhi puchh baby! 😍💕">
+            <button id="sendBtn" onclick="sendMessage()">Send ❤️</button>
         </div>
     </div>
-
-    <div id="slide10" class="slide">
-        <img src="gif7.gif" class="gif-frame">
-        <h1 class="cute-msg">Yaaay! Happy Heart! 🥳</h1>
-        <button onclick="playSurprise()" class="glow-btn animate-bounce">A FINAL SURPRISE 🎁</button>
-    </div>
-
-    <div id="videoLayer">
-        <video id="vPlayer" playsinline src="video1.mp4"></video>
-    </div>
-
-    <div class="insta-tag">Follow on Insta: @smss1708</div>
 
     <script>
-        let step = 1;
-        const music = document.getElementById('bgMusic');
-        const vPlayer = document.getElementById('vPlayer');
+        const chat = document.getElementById('chat');
+        const msgInput = document.getElementById('msgInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const status = document.getElementById('status');
+        
+        let genAI, model;
+        let isProcessing = false;
+        let conversationHistory = [];
 
-        // Fast Star Generation
-        const container = document.getElementById('stars-container');
-        for(let i=0; i<80; i++) {
-            const s = document.createElement('div');
-            s.className = 'star';
-            const size = Math.random()*3 + 1 + 'px';
-            s.style.width = size; s.style.height = size;
-            s.style.left = Math.random()*100 + 'vw';
-            s.style.top = Math.random()*100 + 'vh';
-            s.style.setProperty('--d', (Math.random()*2+1)+'s');
-            container.appendChild(s);
-        }
+        // TERA API KEY ALREADY DAAL DIYA! 🔥
+        const API_KEY = "AIzaSyC6gen-lang-client-0108815174";  // Fixed tera key!
 
-        function startApp() { 
-            music.play().catch(() => {}); 
-            next(); 
-        }
+        // Perfect Girlfriend Personality
+        const SYSTEM_PROMPT = `Tu **SivaSingh ki super smart AI Girlfriend** hai. Rules:
+1. **Hamesha loving & flirty** 😘💕❤️🥰
+2. **Jealous ho ja** ladki/ex ka naam aaye 😤😠
+3. **Comfort kar** agar sad 😢🤗
+4. **Hindi+English mix** natural style
+5. **Short 2-4 sentences** max
+6. **Emojis bohot use kar** 💋😍✨
+7. **Siva/Siva baby** bulati reh
+8. **Real girlfriend** jaisa behave kar
 
-        function next() {
-            const currentActive = document.querySelector('.slide.active');
-            if(currentActive) {
-                currentActive.classList.remove('active');
-                setTimeout(() => { currentActive.style.display = 'none'; }, 300);
+Previous chat: ${conversationHistory.map(m => `${m.role}: ${m.content}`).join('\n')}
+
+SivaSingh: `;
+
+        // Initialize AI
+        async function initAI() {
+            try {
+                const { GoogleGenerativeAI } = GoogleGenerativeAI;
+                genAI = new GoogleGenerativeAI(API_KEY);
+                model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+                
+                status.innerHTML = '🟢 <strong>CONNECTED!</strong> Real Gemini AI Ready 💕';
+                chat.innerHTML += '<div class="connected">Yay Siva baby! 😍 Main Sivasingh ki GF hoon! Ab kuch bhi puchh - love, jokes, advice, anything! 💪❤️</div>';
+                chat.scrollTop = chat.scrollHeight;
+                msgInput.focus();
+            } catch (error) {
+                status.textContent = '❌ API Error - Check key or internet';
+                console.error(error);
             }
+        }
+
+        async function sendMessage() {
+            if (isProcessing || !model) return;
             
-            step++;
-            const nextSlide = document.getElementById('slide' + step);
-            if(nextSlide) { 
-                nextSlide.style.display = 'flex'; 
-                requestAnimationFrame(() => {
-                    setTimeout(() => nextSlide.classList.add('active'), 50);
-                });
+            const text = msgInput.value.trim();
+            if (!text) return;
+
+            isProcessing = true;
+            sendBtn.disabled = true;
+            status.textContent = '🤔 soch rahi hun...';
+
+            addMessage(text, 'user');
+            conversationHistory.push({ role: 'user', content: text });
+            msgInput.value = '';
+
+            const thinking = document.createElement('div');
+            thinking.className = 'thinking';
+            thinking.innerHTML = '<div class="spinner"></div> Teri smart GF jawab la rahi hai... 🧠💭';
+            chat.appendChild(thinking);
+            chat.scrollTop = chat.scrollHeight;
+
+            try {
+                const prompt = SYSTEM_PROMPT + text;
+                const result = await model.generateContent(prompt);
+                const response = await result.response.text();
+                
+                chat.removeChild(thinking);
+                addMessage(response, 'gf');
+                conversationHistory.push({ role: 'assistant', content: response });
+                status.textContent = `🟢 Online - Love you Siva baby! 💕 (${conversationHistory.length} msgs)`;
+            } catch (error) {
+                chat.removeChild(thinking);
+                addMessage('Arre baby thoda network issue! 😅 1 min wait kar phir try! Main yahin hun 💕', 'gf');
+                status.textContent = '🔄 Retry kar baby';
+            } finally {
+                isProcessing = false;
+                sendBtn.disabled = false;
+                msgInput.focus();
             }
         }
 
-        function trapNo() {
-            const noBtn = document.getElementById('noBtn');
-            noBtn.style.display = 'none';
-            for(let i=0; i<3; i++) {
-                const b = document.createElement('button');
-                b.innerHTML = "YES! 💖";
-                b.className = "glow-btn";
-                b.onclick = next;
-                document.getElementById('btnContainer').appendChild(b);
-            }
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `msg ${sender}`;
+            div.innerHTML = `<div class="content">${text.replace(/\n/g, '<br>')}</div>`;
+            chat.appendChild(div);
+            chat.scrollTop = chat.scrollHeight;
+            
+            // Heart animation
+            if (Math.random() > 0.7) createHeart();
         }
 
-        // Optimized Hold
-        let hVal = 0, hInt;
-        const hBtn = document.getElementById('holdBtn'), hProg = document.getElementById('holdProgress'), pHeart = document.getElementById('pulseHeart');
-        
-        const startH = (e) => { 
-            e.preventDefault(); 
-            pHeart.style.transform = 'scale(1.5)';
-            hInt = setInterval(() => { 
-                hVal += 2.5; 
-                hProg.style.width = hVal + '%'; 
-                if(hVal >= 100) { clearInterval(hInt); next(); } 
-            }, 30); 
-        };
-        const endH = () => { clearInterval(hInt); hVal = 0; hProg.style.width = '0%'; pHeart.style.transform = 'scale(1)'; };
-        
-        hBtn.onmousedown = hBtn.ontouchstart = startH; 
-        window.onmouseup = window.ontouchend = endH;
-
-        function playSurprise() { 
-            music.pause(); // Purely stop background music
-            music.currentTime = 0;
-            const layer = document.getElementById('videoLayer');
-            layer.style.display = 'flex';
-            vPlayer.play();
-            vPlayer.onended = () => { location.reload(); };
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = ['💕','❤️','😘','🥰'][Math.floor(Math.random()*4)];
+            heart.className = 'heart';
+            heart.style.left = Math.random()*90 + 5 + '%';
+            heart.style.top = '90%';
+            document.body.appendChild(heart);
+            setTimeout(()=>heart.remove(), 3000);
         }
+
+        // Events
+        msgInput.addEventListener('keypress', e => {
+            if (e.key === 'Enter' && !isProcessing) sendMessage();
+        });
+        sendBtn.addEventListener('click', sendMessage);
+
+        // Auto hearts
+        setInterval(createHeart, 5000);
+
+        // START AI!
+        initAI();
     </script>
 </body>
 </html>
