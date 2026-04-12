@@ -2,269 +2,308 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Good Morning baby ☀️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Good Morning 💖</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap');
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            /* White Romantic Theme: Very light grey/white background */
-            background: radial-gradient(circle, #ffffff 0%, #f9f9f9 100%);
-            color: #2d2d2d;
-            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* Fixed Insta ID - Changed to Dark Pink with soft shadow for clarity */
+        body {
+            background-color: #050505;
+            color: #fff;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Floating Instagram Handle */
         .insta-tag {
-            position: fixed;
-            top: 15px;
+            position: absolute;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 2000;
-            font-weight: 900;
-            color: #ff0055; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+            z-index: 1000;
+            text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+        }
+
+        /* Section Containers */
+        .section {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glassmorphism Card Style */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .photo-frame {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff4d6d;
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffb3c1;
+            line-height: 1.4;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #ff4d6d;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(45deg, #ff4d6d, #c9184a);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
             font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(201, 24, 74, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Scanner Animation */
+        .scanner-box {
+            width: 220px;
+            height: 220px;
+            position: relative;
+            border: 2px solid rgba(255, 77, 109, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 20px rgba(255, 77, 109, 0.2);
+        }
+
+        .scanner-box::before {
+            content: 'Scanning Target...';
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
             letter-spacing: 2px;
-            text-transform: uppercase;
+            animation: pulseText 1.5s infinite;
         }
 
-        .header {
-            position: fixed; top: 50px; width: 100%; z-index: 1000;
-            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
-            padding: 12px; text-align: center;
-            font-family: 'Dancing Script', cursive; font-size: 26px;
-            color: #d6004a; border-bottom: 1px solid rgba(0,0,0,0.05);
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #ff4d6d;
+            box-shadow: 0 0 15px #ff4d6d, 0 0 30px #ff4d6d;
+            animation: scanning 2s infinite linear;
         }
 
-        /* Pink Petals */
-        .petals-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
-        .petal { position: absolute; background: rgba(255, 105, 180, 0.3); border-radius: 50%; animation: floatPetal 8s linear infinite; }
-        
-        @keyframes floatPetal {
-            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0.8; }
-            100% { transform: translateY(110vh) translateX(50px) rotate(360deg); opacity: 0; }
+        @keyframes scanning {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
         }
 
-        .page { 
-            min-height: 100vh; display: none; flex-direction: column; 
-            justify-content: center; align-items: center; text-align: center; 
-            padding: 20px; position: relative; z-index: 10; 
-        }
-        .page.active { display: flex; animation: fadeIn 0.8s ease-in-out; }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* Elegant White Frames with darker shadow for pop */
-        .photo-frame { 
-            width: 280px; height: 350px; background-size: cover; 
-            background-position: center; border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 30px; 
-            border: 8px solid #fff;
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
         }
 
-        /* MAIN TEXT: Changed from White to Deep Pink/Dark Grey for visibility */
-        .message { 
-            font-family: 'Dancing Script', cursive; font-size: 32px; 
-            color: #b3003b; /* Deep Rose Pink */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-            line-height: 1.4; max-width: 90%;
-            font-weight: bold;
+        /* Fullscreen Videos */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .scratch-card { 
-            position: relative; width: 280px; height: 380px; 
-            background: white; border-radius: 20px; overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 5px solid #fff;
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            pointer-events: none; /* Prevents user from pausing/clicking */
         }
-        .scratch-canvas { position: absolute; top: 0; left: 0; z-index: 20; touch-action: none; }
 
-        .nav-bar { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 30px; }
-        
-        /* Buttons: Solid Pink with White Text for clarity */
-        .btn { 
-            background: #ff0055; color: #fff; border: none; padding: 12px 28px; 
-            border-radius: 50px; cursor: pointer; font-weight: bold; font-family: 'Poppins';
-            transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 0, 85, 0.3);
+        /* Message over video after it ends */
+        .video-overlay-msg {
+            display: none;
+            position: relative;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 77, 109, 0.5);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s forwards;
         }
-        .btn:hover { background: #d6004a; transform: scale(1.05); }
 
-        .music-toggle { position: fixed; top: 110px; right: 20px; z-index: 1000; background: white; border: 1px solid #eee; padding: 12px; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); font-size: 20px; cursor: pointer;}
+        .video-overlay-msg h2 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
-<body onclick="startMusicOnce()">
+<body>
 
-    <div class="insta-tag">insta - @smss1708</div>
-    <div class="header">Made by sivasingh ☕✨</div>
-    <div class="petals-container" id="petals"></div>
-
-    <button class="music-toggle" onclick="toggleMusic(event)">🎵</button>
     <audio id="bgMusic" loop>
         <source src="tere-liye.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="page active" data-page="1">
-        <div class="photo-frame" style="background-image: url('photo1.jpg');"></div>
-        <div class="message">Good Morning, Beautiful! 🌸<br>Hope you slept well.</div>
-    </div>
+    <div class="insta-tag">insta - @smss1708</div>
 
-    <div class="page" data-page="2">
-        <div class="photo-frame" style="background-image: url('photo2.jpg');"></div>
-        <div class="message">The sun is up, but you're still the brightest thing in my life. ☀️</div>
-    </div>
+    <section id="screen1" class="section active">
+        <div class="card">
+            <img src="photo1.jpg" alt="Baby" class="photo-frame">
+            <h2>Good morning baby, have a beautiful day just like you 🥰</h2>
+            <button class="btn" onclick="startScanner()">Click Here ❤️</button>
+        </div>
+    </section>
 
-    <div class="page" data-page="3">
-        <div class="photo-frame" style="background-image: url('photo3.jpg');"></div>
-        <div class="message">Sending you a virtual hug and a morning kiss! 💋✨</div>
-    </div>
+    <section id="screen2" class="section">
+        <div class="scanner-box">
+            <div class="scan-line"></div>
+        </div>
+    </section>
 
-    <div class="page" data-page="4">
-        <div class="photo-frame" style="background-image: url('photo4.jpg');"></div>
-        <div class="message">I hope your coffee is as sweet as your smile today. ☕💗</div>
-    </div>
+    <section id="screen3" class="section">
+        <div class="card">
+            <h3>Result: You are a cutie 😍</h3>
+            <button class="btn" onclick="playFirstVideo()">Bachchu I want to say something</button>
+        </div>
+    </section>
 
-    <div class="page" data-page="5">
-        <div class="photo-frame" style="background-image: url('photo5.jpg');"></div>
-        <div class="message">Just a reminder: You are loved, you are special, and you are mine. 🔒💖</div>
-    </div>
-
-    <div class="page" data-page="6">
-        <div class="photo-frame" style="background-image: url('photo6.jpg');"></div>
-        <div class="message">Go out there and kill it today! I’m your #1 fan. 👸🙌</div>
-    </div>
-
-    <div class="page" data-page="7">
-        <div class="photo-frame" style="background-image: url('photo7.jpg');"></div>
-        <div class="message">Every morning is a blessing because I have you. 💎💕</div>
-    </div>
-
-    <div class="page" data-page="8">
-        <div class="photo-frame" style="background-image: url('photo8.jpg');"></div>
-        <div class="message">I can’t wait to see you later. Have the best day! 🍬✨</div>
-    </div>
-
-    <div class="page" data-page="9">
-        <div class="message" style="font-size: 38px; color: #ff0055;">One more thing before you start your day... 🎁👇</div>
-    </div>
-
-    <div class="page" data-page="10">
-        <div class="scratch-card" id="scratchCard">
-            <div class="hidden-content" style="width:100%; height:100%;">
-                <div style="background-image: url('photo10.jpg'); width:100%; height:100%; background-size:cover;"></div>
+    <section id="screen4" class="section" style="padding: 0;">
+        <div class="video-container">
+            <video id="vid1" playsinline disablePictureInPicture>
+                <source src="video1.mp4" type="video/mp4">
+            </video>
+            
+            <div id="vid1-msg" class="video-overlay-msg">
+                <h2>Mera Kuchupuchu 🌺<br>I have one more</h2>
+                <button class="btn" onclick="playSecondVideo()">Show Me 💖</button>
             </div>
-            <canvas class="scratch-canvas" id="canvas"></canvas>
         </div>
-        <div id="finalText" style="display:none; margin-top:20px;" class="message">
-            You make every morning worth waking up for! ♾️💖
-        </div>
-        <p id="hint" style="color: #ff0055; margin-top:10px; font-weight: bold; font-family: 'Poppins';">Scratch for a surprise, baby! ✨</p>
-    </div>
+    </section>
 
-    <div class="nav-bar">
-        <button class="btn" style="background: #fff; color: #ff0055; border: 1px solid #ff0055;" onclick="changePage(-1)">← Back</button>
-        <button class="btn" onclick="changePage(1)">Next →</button>
-    </div>
+    <section id="screen5" class="section" style="padding: 0;">
+        <div class="video-container">
+            <video id="vid2" playsinline disablePictureInPicture loop>
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
 
     <script>
-        let current = 1;
-        const total = 10;
-        const music = document.getElementById('bgMusic');
-        let musicStarted = false;
+        const bgMusic = document.getElementById('bgMusic');
+        const vid1 = document.getElementById('vid1');
+        const vid2 = document.getElementById('vid2');
 
-        function startMusicOnce() {
-            if (!musicStarted) {
-                music.play().catch(e => console.log("Audio waiting for user"));
-                musicStarted = true;
-            }
+        function switchScreen(hideId, showId) {
+            document.getElementById(hideId).classList.remove('active');
+            document.getElementById(showId).classList.add('active');
         }
 
-        function changePage(step) {
-            startMusicOnce();
-            if(current + step >= 1 && current + step <= total) {
-                current += step;
-                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-                document.querySelector(`[data-page="${current}"]`).classList.add('active');
-                if(current === 10) initScratch();
-            }
+        // Starts BG music and triggers the scanner
+        function startScanner() {
+            // Play background music on first interaction
+            bgMusic.play();
+            
+            switchScreen('screen1', 'screen2');
+            
+            // Simulate scanning for 3.5 seconds, then show result
+            setTimeout(() => {
+                switchScreen('screen2', 'screen3');
+            }, 3500);
         }
 
-        function toggleMusic(event) {
-            event.stopPropagation();
-            music.paused ? music.play() : music.pause();
+        // Plays First Video
+        function playFirstVideo() {
+            switchScreen('screen3', 'screen4');
+            bgMusic.pause(); // Pause BG music so video voice is clear
+            vid1.play();
         }
 
-        function createPetals() {
-            const container = document.getElementById('petals');
-            for(let i=0; i<25; i++) {
-                const petal = document.createElement('div');
-                petal.className = 'petal';
-                petal.style.left = Math.random() * 100 + 'vw';
-                const size = Math.random() * 10 + 10 + 'px';
-                petal.style.width = size;
-                petal.style.height = size;
-                petal.style.animationDelay = Math.random() * 8 + 's';
-                container.appendChild(petal);
-            }
+        // When Video 1 ends
+        vid1.onended = function() {
+            bgMusic.play(); // Resume BG music
+            vid1.style.opacity = "0.3"; // Dim the video in background
+            document.getElementById('vid1-msg').style.display = 'block'; // Show "Kuchupuchu" message
+        };
+
+        // Plays Second Video
+        function playSecondVideo() {
+            switchScreen('screen4', 'screen5');
+            bgMusic.pause(); // Pause BG music again
+            vid2.play();
         }
 
-        function initScratch() {
-            const canvas = document.getElementById('canvas');
-            const ctx = canvas.getContext('2d');
-            const card = document.getElementById('scratchCard');
-            canvas.width = card.offsetWidth;
-            canvas.height = card.offsetHeight;
-
-            // Scratch cover - Light Silver
-            ctx.fillStyle = '#dcdcdc';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#ff0055';
-            ctx.font = 'bold 18px Poppins';
-            ctx.textAlign = 'center';
-            ctx.fillText('SCRATCH TO REVEAL ❤️', canvas.width/2, canvas.height/2);
-
-            let painting = false;
-            function start() { painting = true; }
-            function end() { painting = false; check(); }
-            function draw(e) {
-                if(!painting) return;
-                const rect = canvas.getBoundingClientRect();
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-                const x = clientX - rect.left;
-                const y = clientY - rect.top;
-                ctx.globalCompositeOperation = 'destination-out';
-                ctx.beginPath();
-                ctx.arc(x, y, 35, 0, Math.PI*2);
-                ctx.fill();
-            }
-
-            function check() {
-                const pixels = ctx.getImageData(0,0,canvas.width,canvas.height).data;
-                let trans = 0;
-                for(let i=3; i<pixels.length; i+=4) if(pixels[i] === 0) trans++;
-                if(trans > pixels.length/6) {
-                    canvas.style.transition = 'opacity 0.5s';
-                    canvas.style.opacity = '0';
-                    setTimeout(() => {
-                        canvas.style.display = 'none';
-                        document.getElementById('finalText').style.display = 'block';
-                        document.getElementById('hint').style.display = 'none';
-                    }, 500);
-                }
-            }
-
-            canvas.addEventListener('mousedown', start);
-            canvas.addEventListener('touchstart', start);
-            canvas.addEventListener('mousemove', draw);
-            canvas.addEventListener('touchmove', draw);
-            window.addEventListener('mouseup', end);
-            window.addEventListener('touchend', end);
-        }
-
-        createPetals();
+        // If you want BG music to resume after Video 2 ends (optional, currently it loops)
+        vid2.onended = function() {
+            bgMusic.play(); 
+        };
     </script>
 </body>
-    </html>
+</html>
